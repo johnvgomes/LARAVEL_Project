@@ -6,8 +6,8 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                Informe abaixo as informações do cliente
-                <a class="pull-right" href="{{url('clientes')}}">Listagem cliente</a>
+                Informe abaixo as informações do produto
+                <a class="pull-right" href="{{url('products')}}">Listagem dos produtos</a>
                 </div>
 
                 <div class="panel-body">
@@ -16,14 +16,17 @@
                 @if(Session::has('mensagem_sucesso'))
                   <div class= "alert alert-success">{{ Session::get('mensagem_sucesso')}}</div>
                 @endif
+                @if(Session::has('mensagem_fail'))
+                  <div class= "alert alert-danger">{{ Session::get('mensagem_sucesso')}}</div>
+                @endif
 
                 @if(Request::is('*/editar'))
                       <!-- editando -->
-                      {{Form::model($cliente, ['method' => 'PATCH','url' => 'clientes/'.$cliente->id])}}
+                      {{Form::model($product, ['method' => 'PATCH','url' => 'products/'.$product->id])}}
                 @else
                      <!-- incluindo -->
 
-                      {{ Form::open(['url' => 'clientes/salvar']) }}
+                      {{ Form::open(['url' => 'products/salvar']) }}
                 @endif
 
 
@@ -39,21 +42,31 @@
                         </div>
 
                         <div class="form-group col-md-2">
-                            {{ form::label('endereco','Endereço')}}
+                            {{ form::label('valor','Valor (R$)')}}
                         </div>
 
                         <div class="form-group col-md-10">
-                        {{ form::input('text','endereco',null,['class' => 'form-control', 'autofocus', 'placeholder' => ' Endereço'])}}
+                        {{ form::input('text','valor',null,['class' => 'form-control', '', 'placeholder' => ' Valor'])}}
                         </div>
 
                         <div class="form-group col-md-2">
-                            {{ form::label('numero','Número')}}
+                            {{ form::label('qtd','Quantidade')}}
                         </div>
 
                         <div class="form-group col-md-10">
-                        {{ form::input('text','numero',null,['class' => 'form-control', 'autofocus', 'placeholder' => ' Número'])}}
+                        {{ form::input('number','qtd',null,['class' => 'form-control', '', 'placeholder' => ' Quantidade'])}}
                         </div>
 
+                        
+                        <div class="form-group col-md-2">
+                            {{ form::label('categories_id','Categoria')}}
+                        </div>
+
+                        <div class="form-group col-md-10">
+                        {{ Form::select('categories_id', $categories, null, ['class' => 'form-control']) }}  
+                          
+
+                        </div>
 
                         <div class="col-md-4 col-md-offset-8">
                         <div class="form-group pull-right">

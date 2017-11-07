@@ -5,8 +5,8 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Clientes
-                <a class="pull-right" href="{{url('clientes/novo')}}">Novo cliente</a>
+                <div class="panel-heading">Produtos
+                <a class="pull-right" href="{{url('products/novo')}}">Novo produto</a>
                 </div>
                 <div class="panel-body">
 
@@ -16,35 +16,29 @@
 
                 <table class ="table">
                     <th>Nome</th>
-                    <th>Endereco</th>
-                    <th>Número</th>
+                    <th>Valor</th>
+                    <th>Quantidade</th>
+                    <th>Categoria</th>
                     <th></th>
                     <tbody>
-                            @foreach ($clientes as $cliente)
+                            @foreach ($product as $products)
                             <tr>
-                                <td>{{ $cliente->nome }}</td>
-                                <td>{{ $cliente->endereco }}</td>
-                                <td>{{ $cliente->numero }}</td>
+                                <td>{{ $products->nome }}</td>
+                                <td>{{ $products->valor }}</td>
+                                <td>{{ $products->qtd }}</td>
+                                <td>{{ $products->descricao }}</td>
                                 <td>
 
 
-                                <a href="clientes/{{ $cliente->id }}/editar" class="btn btn-info btn-sm">
+                                <a href="products/{{ $products->id }}/editar" class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </a>
 
 
-                                <a href="clientes/{{ $cliente->id }}/confirmDelete" class="btn btn-danger btn-sm">
+                                <a href="products/{{ $products->id }}/confirmDelete" class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </a>
-<!--
-                                {{ Form::open(['method' => 'DELETE', 'url' => '/clientes/'.$cliente->id.'/excluir', 'style' => 'display: inline;']) }}
-
-                                <button type="submit" class="btn btn-danger btn-sm">
-                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                </button>
-                                {{ Form::close() }}
--->
-
+                                
                                  </td>
                             </tr>
                             @endforeach
