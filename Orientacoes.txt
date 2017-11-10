@@ -1,0 +1,26 @@
+Projeto Integrador - Instruções
+
+O projeto será baseado no arquivo anexado nessa notícia, o modelo foi "desnormalizado" para facilitar o desenvolvimento e ser possível entregar no prazo.
+
+Passos para desenvolvimento da aplicação:
+
+Criar migrations e models (analisando o modelo ER)
+Criar rotas no padrão REST
+Criar os controllers
+Criar as Views
+Funcionalidades extras que caso feitas, renderão nota a mais.
+
+Validação de formulário (back end)
+Validação de formulário (front-end com javascript)
+Forma de avaliação:
+
+Será analisado o código se está no padrão correto.
+Código limpo e bem empregado.
+Compromisso da equipe.
+Contribuição com a disciplina.
+Boa usabilidade da inscrição e acompanhamento da inscrição no sistema.
+ 
+
+Será feito 2 pequenas avaliações que ajudaram na composição da nota final do PI toda quinta-feira, (16, 23).
+
+Com entrega do trabalho prevista para dia 30/11. Será apresentado em sala de aula para os demais alunos.

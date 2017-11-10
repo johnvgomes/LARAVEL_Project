@@ -1,0 +1,21 @@
+
+---validacao de form--
+
+
+https://www.youtube.com/watch?v=o7ed7R6HRjI
+
+https://www.youtube.com/watch?v=wwhdXicyyMw
+
+--validar com js --
+
+https://www.youtube.com/watch?v=JmvHTg0sy6o
+
+https://www.youtube.com/watch?v=fKX3MmqQwZA
+
+
+https://www.youtube.com/watch?v=Px3fAXb4sZw
+
+
+NOME ---> PARSLEY.JS
+
+VALIDACAO NO LARAVEL

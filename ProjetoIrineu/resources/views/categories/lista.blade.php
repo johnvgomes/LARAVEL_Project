@@ -5,8 +5,8 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Produtos
-                <a class="pull-right" href="{{url('products/novo')}}">Novo produto</a>
+                <div class="panel-heading">Categorias
+                <a class="pull-right" href="{{url('categories/novo')}}">Nova categoria</a>
                 </div>
                 <div class="panel-body">
 
@@ -15,30 +15,24 @@
                 @endif
 
                 <table class ="table">
-                    <th>Nome</th>
-                    <th>Valor</th>
-                    <th>Quantidade</th>
-                    <th>Categoria</th>
+                    <th>Descrição</th>
                     <th></th>
                     <tbody>
-                            @foreach ($products as $product)
+                            @foreach ($category as $categories)
                             <tr>
-                                <td>{{ $product->nome }}</td>
-                                <td>{{ $product->valor }}</td>
-                                <td>{{ $product->qtd }}</td>
-                                <td>{{ $product->category->descricao }}</td>
+                                <td>{{ $categories->descricao }}</td>
                                 <td>
 
 
-                                <a href="products/{{ $product->id }}/editar" class="btn btn-info btn-sm">
+                                <a href="categories/{{ $categories->id }}/editar" class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </a>
 
 
-                                <a href="products/{{ $product->id }}/confirmDelete" class="btn btn-danger btn-sm">
+                                <a href="categories/{{ $categories->id }}/confirmDelete" class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </a>
-                                
+
                                  </td>
                             </tr>
                             @endforeach
