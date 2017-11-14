@@ -15,6 +15,17 @@ class ProductsController extends Controller
 {
     public function index()
     {
+
+
+        // $product = DB::table('products')
+        
+        //        ->join('categories', 'products.categories_id', '=', 'categories.id')
+         
+        //        ->select('products.id', 'products.nome', 'products.qtd','products.valor' , 'categories.descricao')
+         
+        //        ->get();
+        
+        
         $products = Product::all();
        
 
