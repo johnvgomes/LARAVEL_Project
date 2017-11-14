@@ -15,18 +15,18 @@ class CreateNecessidadesespeciaisTable extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
-            $table->date('data');
+            $table->string('name');
+            $table->date('date');
             $table->string('rg');
-            $table->string('emissorrg');
+            $table->string('rg-emitter');
             $table->string('cpf');
-            $table->string('sexo');
-            $table->string('nomepai');
-            $table->string('nomemae');
-            $table->string('passaporte');
-            $table->string('naturalidade');
-            $table->string('emissorrg');
-            $table->string('emissorrg');
+            $table->string('sex');
+            $table->string('namefather');
+            $table->string('namemother');
+            $table->string('passport');
+            $table->string('naturaless');
+            $table->string('phone');
+            $table->string('mobile');
             $table->timestamps();
         });
     }
