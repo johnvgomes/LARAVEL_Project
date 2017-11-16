@@ -21,7 +21,7 @@ class ProductsController extends Controller
         return view('products.lista',['products'=> $products]);
     }
 
-    public function novo()
+    public function create()
     {
         $categories = Category::all()->pluck('descricao','id');
              
@@ -29,7 +29,7 @@ class ProductsController extends Controller
         return view('products.formulario', ['categories'=> $categories]);
     }
 
-    public function salvar(Request $request)
+    public function store(Request $request)
     {
         $product = new Product();
         
@@ -38,11 +38,11 @@ class ProductsController extends Controller
 
         \Session::flash('mensagem_sucesso', 'Produto cadastrado com sucesso');
 
-        return Redirect::to('products/novo');
+        return Redirect::to('products/create');
     }
 
 
-    public function editar($id)
+    public function edit($id)
     {
 
         $categories = Category::all()->pluck('descricao','id');
@@ -52,7 +52,7 @@ class ProductsController extends Controller
         return view('products.formulario', ['categories'=> $categories, 'product' => $product]);
     }
     
-    public function atualizar($id, Request $request)
+    public function update($id, Request $request)
     {
 
             
@@ -62,33 +62,33 @@ class ProductsController extends Controller
 
         \Session::flash('mensagem_sucesso', 'Produto atualizado com sucesso');
         
-         return Redirect::to('products/'.$product->id.'/editar');
-       }
+         return Redirect::to('products/'.$product->id.'/edit');
+    }
 
 
-       public function deletar($id)
-       {
+    public function destroy($id)
+    {
 
-        $product = Product::findorfail($id);
-        
-        $product->delete();
+    $product = Product::findorfail($id);
+    
+    $product->delete();
 
-        \Session::flash('mensagem_sucesso', 'Produto deletado com sucesso');
-       
-        return Redirect::to('products');
-
-
-        }
-
-       public function confirmarDelete($id)
-       {
-
-        $product = Product::findorfail($id);
-        
-        return view('products.deleteConfirm',['product'=> $product]);
+    \Session::flash('mensagem_sucesso', 'Produto deletado com sucesso');
+    
+    return Redirect::to('products');
 
 
-        }
+    }
+
+    public function confirmDestroy($id)
+    {
+
+    $product = Product::findorfail($id);
+    
+    return view('products.deleteConfirm',['product'=> $product]);
+
+
+    }
 
 
 }

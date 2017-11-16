@@ -43,7 +43,6 @@
                        
                         @else
                         <li><a href="{{url('/') }}">Home</a></li>
-                        <li><a href="{{url('/clientes') }}">Clientes</a></li>
                         <li><a href="{{url('/products') }}">Produtos</a></li>
                         <li><a href="{{url('/categories') }}">Categorias</a></li>
 

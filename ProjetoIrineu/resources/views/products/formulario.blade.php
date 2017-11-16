@@ -20,13 +20,13 @@
                   <div class= "alert alert-danger">{{ Session::get('mensagem_sucesso')}}</div>
                 @endif
 
-                @if(Request::is('*/editar'))
+                @if(Request::is('*/edit'))
                       <!-- editando -->
                       {{Form::model($product, ['method' => 'PATCH','url' => 'products/'.$product->id])}}
                 @else
                      <!-- incluindo -->
 
-                      {{ Form::open(['url' => 'products/salvar']) }}
+                      {{ Form::open(['url' => 'products/store']) }}
                 @endif
 
 

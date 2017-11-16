@@ -19,12 +19,12 @@ class CategoriesController extends Controller
         return view('categories.lista',['category'=> $category]);
     }
 
-    public function novo()
+    public function create()
     {
         return view('categories.formulario');
     }
 
-    public function salvar(Request $request)
+    public function store(Request $request)
     {
         $category = new Category();
 
@@ -32,11 +32,11 @@ class CategoriesController extends Controller
 
         \Session::flash('mensagem_sucesso', 'Categoria cadastrada com sucesso');
 
-        return Redirect::to('categories/novo');
+        return Redirect::to('categories/create');
     }
 
 
-    public function editar($id)
+    public function edit($id)
     {
 
         $category = Category::findorfail($id);
@@ -44,7 +44,7 @@ class CategoriesController extends Controller
         return view('categories.formulario',['category'=> $category]);
     }
     
-    public function atualizar($id, Request $request)
+    public function update($id, Request $request)
     {
 
             
@@ -54,16 +54,16 @@ class CategoriesController extends Controller
 
         \Session::flash('mensagem_sucesso', 'Categoria atualizada com sucesso');
         
-         return Redirect::to('categories/'.$category->id.'/editar');
+         return Redirect::to('categories/'.$category->id.'/edit');
        }
 
 
-       public function deletar($id)
+       public function destroy($id)
        {
 
         $category = Category::findorfail($id);
         
-       $category->delete();
+        $category->delete();
 
        \Session::flash('mensagem_sucesso', 'Categoria deletada com sucesso');
        
@@ -72,7 +72,7 @@ class CategoriesController extends Controller
 
         }
 
-       public function confirmarDelete($id)
+       public function confirmDestroy($id)
        {
 
         $category = Category::findorfail($id);

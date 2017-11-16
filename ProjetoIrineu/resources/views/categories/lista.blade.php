@@ -24,12 +24,12 @@
                                 <td>
 
 
-                                <a href="categories/{{ $categories->id }}/editar" class="btn btn-info btn-sm">
+                                <a href="categories/{{ $categories->id }}/edit" class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </a>
 
 
-                                <a href="categories/{{ $categories->id }}/confirmDelete" class="btn btn-danger btn-sm">
+                                <a href="categories/{{ $categories->id }}/confirmDestroy" class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </a>
 
