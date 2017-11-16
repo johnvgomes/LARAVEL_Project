@@ -5,89 +5,121 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>CRUD JOHN</title>
+        <link href="//cdn.muicss.com/mui-0.9.28/css/mui.min.css" rel="stylesheet" type="text/css" />
+        <script src="//cdn.muicss.com/mui-0.9.28/js/mui.min.js"></script>
+
+        <title>Processo Seletivo da Greve</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
         <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
+            /**
+            * Body CSS
+            */
+            html,
+            body {
+            height: 100%;
             }
 
-            .full-height {
-                height: 100vh;
+            html,
+            body,
+            input,
+            textarea,
+            buttons {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
             }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
+
+            /**
+            * Header CSS
+            */
+            header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 2;
             }
 
-            .position-ref {
-                position: relative;
+            header ul.mui-list--inline {
+            margin-bottom: 0;
             }
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
+            header a {
+            color: white;
             }
 
-            .content {
-                text-align: center;
+            header table {
+            width: 100%;
             }
 
-            .title {
-                font-size: 84px;
+
+            /**
+            * Content CSS
+            */
+            #content-wrapper {
+            min-height: 100%;
+
+            /* sticky footer */
+            box-sizing: border-box;
+            margin-bottom: -100px;
+            padding-bottom: 100px;
             }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
 
-            .m-b-md {
-                margin-bottom: 30px;
+            /**
+            * Footer CSS
+            */
+            footer {
+            box-sizing: border-box;
+            height: 100px;
+            background-color: #eee;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 35px;
             }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Entrar</a>
-                        <a href="{{ route('register') }}">Cadastre-se</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
+        <header class="mui-appbar mui--z1">
+            <div class="mui-container">
+                <table>
+                    <tr class="mui--appbar-height">
+                        <td class="mui--text-title">Processo Seletivo da Greve</td>
+                        <td class="mui--text-right">
+                            <ul class="mui-list--inline mui--text-body2">
+                                @if (Route::has('login'))
+                                    @auth
+                                        <li><a href="{{ url('/home') }}">Home</a></li>
+                                    @else
+                                        <li><a href="{{ route('login') }}">Entrar</a></li>
+                                        <li><a href="{{ route('register') }}">Cadastre-se</a></li>
+                                    @endauth
+                                @endif
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </header>
+        <div class="mui-container">
+            <div id="content-wrapper" class="mui--text-center">
+            <div class="mui--appbar-height"></div>
+                <br />
+                <br />
+                <div class="mui--text-display1">
                     JOHN CRUD LARAVEL
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <button class="mui-btn"><a href="https://laravel.com/docs">Documentation</a></button>
+                    <button class="mui-btn"><a href="https://laracasts.com">Laracasts</a></button>
+                    <button class="mui-btn"><a href="https://laravel-news.com">News</a></button>
+                    <button class="mui-btn"><a href="https://forge.laravel.com">Forge</a></button>
+                    <button class="mui-btn"><a href="https://github.com/laravel/laravel">GitHub</a></button>
                 </div>
             </div>
         </div>
