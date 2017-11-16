@@ -26,17 +26,9 @@
                 color: #FFF;
             }
 
-            .mui--text-title, h3 {
-                font-weight: 400;
-                font-size: 20px;
-                line-height: 28px;
-                color: #FFF;
-            }
-
             html,
             body {
             height: 100%;
-            background-color: #fff;
             }
 
             html,
@@ -79,7 +71,7 @@
             * Content CSS
             */
             #content-wrapper {
-            min-height: 20%;
+            min-height: 100%;
 
             /* sticky footer */
             box-sizing: border-box;
@@ -102,7 +94,6 @@
 </head>
 <body>
     <div id="app">
-<<<<<<< HEAD
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -130,6 +121,7 @@
                        
                         @else
                         <li><a href="{{url('/') }}">Home</a></li>
+                        <li><a href="{{url('/clientes') }}">Clientes</a></li>
                         <li><a href="{{url('/products') }}">Produtos</a></li>
                         <li><a href="{{url('/categories') }}">Categorias</a></li>
 
@@ -154,61 +146,20 @@
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Sair
-=======
-        <header class="mui-appbar mui--z1">
-            <div class="mui-container">
-                <table>
-                    <tr class="mui--appbar-height">
-                        <td class="mui--text-title">Processo Seletivo - IFC Videira</td>
-                        <td class="mui--text-center">
-                            <ul class="mui-list--inline mui--text-body2">
-                                @guest
-                                <li><a href="{{url('/') }}">Home</a></li>
-                            
-                                @else
-                                <li><a href="{{url('/') }}">Home</a></li>
-                                <li><a href="{{url('/clientes') }}">Clientes</a></li>
-                                <li><a href="{{url('/products') }}">Produtos</a></li>
-                                <li><a href="{{url('/categories') }}">Categorias</a></li>
-        
-                                @endguest
-                            </ul>
-                        </td>
-                        <td class="mui--text-right">
-                            <ul class="mui-list--inline mui--text-body2">
-                                <!-- Authentication Links -->
-                                @guest
-                                    <li><a href="{{ route('login') }}">Entrar</a></li>
-                                    <li><a href="{{ route('register') }}">Cadastre-se</a></li>
-                                @else
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                            {{ Auth::user()->name }} <span class="caret"></span>
->>>>>>> c476a349047789f207a4dc69e287dd1293a0366b
                                         </a>
 
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <a href="{{ route('logout') }}"
-                                                    onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();">
-                                                    Sair
-                                                </a>
-
-                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                    {{ csrf_field() }}
-                                                </form>
-                                            </li>
-                                        </ul>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
                                     </li>
-                                @endguest
-                            </ul>
-                        </td>
-                    </tr>
-                </table>
+                                </ul>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
             </div>
-        </header>
-        <br /><br /><br /><br />
+        </nav>
+
         @yield('content')
     </div>
 
