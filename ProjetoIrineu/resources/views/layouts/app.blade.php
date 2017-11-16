@@ -102,59 +102,6 @@
 </head>
 <body>
     <div id="app">
-<<<<<<< HEAD
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'CRUD JOHN') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav"> 
-                    
-                        @guest
-                        <li><a href="{{url('/') }}">Home</a></li>
-                       
-                        @else
-                        <li><a href="{{url('/') }}">Home</a></li>
-                        <li><a href="{{url('/products') }}">Produtos</a></li>
-                        <li><a href="{{url('/categories') }}">Categorias</a></li>
-
-                        @endguest
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('login') }}">Entrar</a></li>
-                            <li><a href="{{ route('register') }}">Cadastre-se</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Sair
-=======
         <header class="mui-appbar mui--z1">
             <div class="mui-container">
                 <table>
@@ -184,7 +131,6 @@
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                             {{ Auth::user()->name }} <span class="caret"></span>
->>>>>>> c476a349047789f207a4dc69e287dd1293a0366b
                                         </a>
 
                                         <ul class="dropdown-menu">
