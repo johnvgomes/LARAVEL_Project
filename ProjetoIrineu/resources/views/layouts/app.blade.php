@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <link href="//cdn.muicss.com/mui-0.9.28/css/mui.min.css" rel="stylesheet" type="text/css" />
-    <script src="//cdn.muicss.com/mui-0.9.28/js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="js/mui.min.js"></script>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'CRUD JOHN') }}</title>
 
-    <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Styles -->
     <!-- Styles -->
     <style>
             /**
@@ -69,6 +69,7 @@
             header a {
             color: white;
             }
+            
 
             header table {
             width: 100%;
@@ -106,14 +107,13 @@
             <div class="mui-container">
                 <table>
                     <tr class="mui--appbar-height">
-                        <td class="mui--text-title">Processo Seletivo - IFC Videira</td>
+
+                        <td class="mui--text-title"> <a href="{{url('/') }}"><span class="glyphicon glyphicon-home"></span>  Processo Seletivo - IFC Videira </a></td>
                         <td class="mui--text-center">
                             <ul class="mui-list--inline mui--text-body2">
                                 @guest
-                                <li><a href="{{url('/') }}">Home</a></li>
                             
                                 @else
-                                <li><a href="{{url('/') }}">Home</a></li>
                                 <li><a href="{{url('/products') }}">Produtos</a></li>
                                 <li><a href="{{url('/categories') }}">Categorias</a></li>
         

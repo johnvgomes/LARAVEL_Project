@@ -18,9 +18,9 @@
                     <th>Descrição</th>
                     <th></th>
                     <tbody>
-                            @foreach ($category as $categories)
+                            @foreach ($spneeds as $spneed)
                             <tr>
-                                <td>{{ $categories->descricao }}</td>
+                                <td>{{ $spneed->description }}</td>
                                 <td>
 
 

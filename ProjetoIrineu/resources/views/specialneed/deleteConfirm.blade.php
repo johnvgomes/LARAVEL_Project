@@ -9,11 +9,11 @@
                 </div>
                 <div class="panel-body">
                 <div class="form-group col-md-12">
-                Ei, Você deseja realmente deletar a Necessidade especial: {{ $category->descricao }}?
+                Ei, Você deseja realmente deletar a Necessidade especial: {{ $spneeds->descricao }}?
                 </div>
                 
                 <div class="form-group col-md-1">
-                {{ Form::open(['method' => 'DELETE', 'url' => '/categories/'.$category->id, 'style' => 'display: inline;']) }}
+                {{ Form::open(['method' => 'DELETE', 'url' => '/specialneeds/'.$spneeds->id, 'style' => 'display: inline;']) }}
                 
                         <button type="submit" class="btn btn-primary btn-sm">
                            SIM
@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="form-group col-md-11">
-                <a href="../../categories" class="btn btn-danger btn-sm">
+                <a href="../../specialneeds" class="btn btn-danger btn-sm">
                                
                 NÃO
                 </a>
