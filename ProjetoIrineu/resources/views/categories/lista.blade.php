@@ -6,7 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Categorias
-                <a class="pull-right" href="{{url('categories/novo')}}">Nova categoria</a>
+                <a class="pull-right" href="{{url('categories/create')}}">Nova categoria</a>
                 </div>
                 <div class="panel-body">
 

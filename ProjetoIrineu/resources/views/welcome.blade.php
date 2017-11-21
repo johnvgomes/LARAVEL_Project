@@ -5,7 +5,7 @@
             <br />
             <br />
             <div class="mui--text-display1">
-                <img src="/img/IFClogo.png" style="height: auto; width: 50%;"/>
+                <img src="img/IFClogo.png" style="height: auto; width: 50%;"/>
             </div>
 
             <div class="links">

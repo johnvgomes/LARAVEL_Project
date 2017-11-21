@@ -6,7 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                Informe abaixo as informações da categoria
+                Informe abaixo as informações da necessidade especial
                 <a class="pull-right" href="{{url('specialneeds')}}">Listagem das necessidades especiais</a>
                 </div>
 
@@ -17,13 +17,13 @@
                   <div class= "alert alert-success">{{ Session::get('mensagem_sucesso')}}</div>
                 @endif
 
-                @if(Request::is('*/editar'))
+                @if(Request::is('*/edit'))
                       <!-- editando -->
                       {{Form::model($spneeds, ['method' => 'PATCH','url' => 'specialneeds/'.$spneeds->id])}}
                 @else
                      <!-- incluindo -->
 
-                      {{ Form::open(['url' => 'specialneeds/salvar']) }}
+                      {{ Form::open(['url' => "specialneeds"] ) }}
                 @endif
 
 

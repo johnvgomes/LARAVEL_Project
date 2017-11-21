@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,7 +11,7 @@ class SpecialNeed extends Model
                 'description'
             ];
 
-            public function profiles() {
+            public function profile() {
                 
                 return $this->belongsToMany('App\Models\Profile')->withPivot('permanent','observation');
                 
