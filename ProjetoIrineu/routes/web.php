@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 ###################     rotas do cliente     #######################
 
-Route::resource('clientes', 'ClientesController');
+// Route::resource('clientes', 'ClientesController');
 
 #################### ###################### #######################
 
@@ -36,3 +36,10 @@ Route::resource('categories', 'CategoriesController');
 Route::resource('products', 'ProductsController');
 
 #################### ###################### #######################
+
+################### rotas da necessidade especial #################
+
+Route::resource('specialneeds', 'SpecialNeedController');
+
+#################### ###################### #######################
+

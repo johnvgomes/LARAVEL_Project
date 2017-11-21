@@ -5,8 +5,8 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Categorias
-                <a class="pull-right" href="{{url('categories/novo')}}">Nova categoria</a>
+                <div class="panel-heading">Necessidades especiais
+                <a class="pull-right" href="{{url('specialneeds/create')}}">Nova Necessidade Especial</a>
                 </div>
                 <div class="panel-body">
 
@@ -24,12 +24,12 @@
                                 <td>
 
 
-                                <a href="categories/{{ $categories->id }}/editar" class="btn btn-info btn-sm">
+                                <a href="specialneeds/{{ $spneed->id }}/edit" class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </a>
 
 
-                                <a href="categories/{{ $categories->id }}/confirmDelete" class="btn btn-danger btn-sm">
+                                <a href="specialneeds/{{ $spneed->id }}/confirmDestroy" class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </a>
 

@@ -6,8 +6,8 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                Informe abaixo as informações da categoria
-                <a class="pull-right" href="{{url('categories')}}">Listagem das categorias</a>
+                Informe abaixo as informações da necessidade especial
+                <a class="pull-right" href="{{url('specialneeds')}}">Listagem das necessidades especiais</a>
                 </div>
 
                 <div class="panel-body">
@@ -17,22 +17,22 @@
                   <div class= "alert alert-success">{{ Session::get('mensagem_sucesso')}}</div>
                 @endif
 
-                @if(Request::is('*/editar'))
+                @if(Request::is('*/edit'))
                       <!-- editando -->
-                      {{Form::model($category, ['method' => 'PATCH','url' => 'categories/'.$category->id])}}
+                      {{Form::model($spneeds, ['method' => 'PATCH','url' => 'specialneeds/'.$spneeds->id])}}
                 @else
                      <!-- incluindo -->
 
-                      {{ Form::open(['route' => 'categories.store']) }}
+                      {{ Form::open(['url' => 'specialneeds/store']) }}
                 @endif
 
 
                         <div class="form-group col-md-2 ">
-                            {{ form::label('descricao','Descrição')}}
+                            {{ form::label('description','Descrição')}}
                         </div>
 
                         <div class="form-group col-md-10">
-                            {{ form::input('text','descricao',null,['class' => 'form-control', 'autofocus', 'placeholder' => ' Descrição'])}}
+                            {{ form::input('text','description',null,['class' => 'form-control', 'autofocus', 'placeholder' => ' Descrição'])}}
                         </div>
 
                         
