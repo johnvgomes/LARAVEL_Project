@@ -8,13 +8,9 @@
 
     <link href="/css/mui.min.css" rel="stylesheet" type="text/css" />
     <script src="/js/mui.min.js"></script>
+    <!-- olha elaaaaaaaaaaaaaaaaaaa -->
     <!-- CSRF Token -->
 
-       <!-- o ta aqui denis
-        <link href="/Laravel/ProjetoIrineu/public/css/mui.min.css" rel="stylesheet" type="text/css" />
-    <script src="/Laravel/ProjetoIrineu/public/js/mui.min.js"></script>
-  
-       -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'CRUD JOHN') }}</title>
 
