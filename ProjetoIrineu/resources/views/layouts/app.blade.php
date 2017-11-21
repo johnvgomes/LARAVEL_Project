@@ -9,8 +9,13 @@
     <link href="/Laravel/ProjetoIrineu/public/css/mui.min.css" rel="stylesheet" type="text/css" />
     <script src="/Laravel/ProjetoIrineu/public/js/mui.min.js"></script>
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
 
+       <!-- o ta aqui denis
+        <link href="/Laravel/ProjetoIrineu/public/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="/Laravel/ProjetoIrineu/public/js/mui.min.js"></script>
+  
+       -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'CRUD JOHN') }}</title>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
