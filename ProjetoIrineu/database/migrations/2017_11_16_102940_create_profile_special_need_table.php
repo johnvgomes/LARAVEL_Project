@@ -4,7 +4,11 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+<<<<<<< HEAD
+class CreateProfileSpecialNeedTable extends Migration
+=======
 class CreateProfileSpecialneedTable extends Migration
+>>>>>>> 60b9dbc57f330eed6e2a92569634760a14283f08
 {
     /**
      * Run the migrations.
