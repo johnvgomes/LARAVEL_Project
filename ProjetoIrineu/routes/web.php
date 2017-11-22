@@ -19,11 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-###################     rotas do cliente     #######################
-
-// Route::resource('clientes', 'ClientesController');
-
-#################### ###################### #######################
 
 ###################     rotas da categoria  #######################
 
@@ -41,5 +36,6 @@ Route::resource('products', 'ProductsController');
 
 Route::resource('specialneeds', 'SpecialNeedController');
 
+Route::get('specialneeds/{specialneed}/confirmDestroy', 'SpecialNeedController@confirmDestroy');
 #################### ###################### #######################
 

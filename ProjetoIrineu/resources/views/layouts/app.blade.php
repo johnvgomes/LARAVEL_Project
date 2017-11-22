@@ -109,7 +109,6 @@
             <div class="mui-container">
                 <table>
                     <tr class="mui--appbar-height">
-
                         <td class="mui--text-title"><a href="{{url('/') }}"><img src="/img/IFClogo2.png" style="width: 35px; height: auto;"/></a></td>
                         <td class="mui--text-center">
                             <ul class="mui-list--inline mui--text-body2">

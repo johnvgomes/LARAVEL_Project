@@ -104,8 +104,26 @@ class SpecialNeedController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+     public function destroy($id)
+     {
+         
+        $spneeds = SpecialNeed::findorfail($id);
+        
+        $spneeds->delete();
+
+       \Session::flash('mensagem_sucesso', 'Necessidade Especial deletada com sucesso');
+       
+        return Redirect::to('specialneeds');
+ 
+     }
+
+    public function confirmdestroy($id)
     {
-        //
+        
+        $spneeds = SpecialNeed::findorfail($id);
+        
+        return view('specialneeds.deleteConfirm',['spneeds'=> $spneeds]);
+
+
     }
 }
