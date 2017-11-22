@@ -10,6 +10,7 @@
 
     <link href="/css/mui.min.css" rel="stylesheet" type="text/css" />
     <script src="/js/mui.min.js"></script>
+    <script src="/js/jquery-2.1.4.min.js"></script>
     <!-- CSRF Token -->
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -64,6 +65,78 @@
             z-index: 2;
             }
 
+            #header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 2;
+            transition: left 0.2s;
+            }
+
+
+            #sidedrawer {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: 200px;
+            left: -200px;
+            overflow: auto;
+            z-index: 2;
+            background-color: #fff;
+            transition: transform 0.2s;
+            }
+
+            #sidedrawer.active {
+            transform: translate(200px);
+            }
+
+            .sidedrawer-toggle {
+            color: #fff;
+            cursor: pointer;
+            font-size: 20px;
+            line-height: 20px;
+            margin-right: 10px;
+            }
+
+            .sidedrawer-toggle:hover {
+            color: #fff;
+            text-decoration: none;
+            }
+
+            /**
+            * Side drawer CSS
+            */
+            #sidedrawer-brand {
+            padding-left: 20px;
+            }
+
+            #sidedrawer ul {
+            list-style: none;
+            }
+
+            #sidedrawer > ul {
+            padding-left: 0px;
+            }
+
+            #sidedrawer > ul > li:first-child {
+            padding-top: 15px;
+            }
+
+            #sidedrawer strong {
+            display: block;
+            padding: 15px 22px;
+            cursor: pointer;
+            }
+
+            #sidedrawer strong:hover {
+            background-color: #E0E0E0;
+            }
+
+            #sidedrawer strong + ul > li {
+            padding: 6px 0px;
+            }
+
             header ul.mui-list--inline {
             margin-bottom: 0;
             }
@@ -90,6 +163,10 @@
             padding-bottom: 100px;
             }
 
+            .drawer {
+                width: 10px;
+            }
+
 
             /**
             * Footer CSS
@@ -105,24 +182,36 @@
 </head>
 <body>
     <div id="app">
-        <header class="mui-appbar mui--z1">
-            <div class="mui-container">
+    @guest
+                                    
+    @else
+    <div id="sidedrawer" class="mui--no-user-select">
+    <ul>
+        <li>
+            <strong>Opções</strong>
+            <ul>
+            <li><a href="{{url('/specialneeds') }}">Necessidades Especiais</a></li>
+            <li><a href="{{url('/products') }}">Produtos</a></li>
+            <li><a href="{{url('/categories') }}">Categorias</a></li>
+            </ul>
+        </li>
+        </ul>
+    @endguest
+    </div>
+        <header id="header" class="mui-appbar mui--z1">
+        <div class="mui-appbar mui--appbar-line-height">
+            <div class="mui-container-fluid">          
                 <table>
                     <tr class="mui--appbar-height">
-
-                        <td class="mui--text-title"><a href="{{url('/') }}"><img src="/img/IFClogo2.png" style="width: 35px; height: auto;"/></a></td>
-                        <td class="mui--text-center">
-                            <ul class="mui-list--inline mui--text-body2">
-                                @guest
-                            
-                                @else
-
-                                <li><a href="{{url('/specialneeds') }}">Necessidades Especiais</a></li>
-                                <li><a href="{{url('/products') }}">Produtos</a></li>
-                                <li><a href="{{url('/categories') }}">Categorias</a></li>
-        
-                                @endguest
-                            </ul>
+                        @guest
+                        
+                        @else
+                        <td class = "drawer">
+                            <a class="sidedrawer-toggle js-show-sidedrawer " style="font-size: 175%;">☰</a>
+                        </td>
+                        @endguest
+                        <td>
+                            <a href="{{url('/') }}"><img src="/img/IFClogo2.png" style="width: 30px; height: auto;"/></a>
                         </td>
                         <td class="mui--text-right">
                             <ul class="mui-list--inline mui--text-body2">
@@ -156,6 +245,7 @@
                     </tr>
                 </table>
             </div>
+        </div>    
         </header>
         <br /><br /><br /><br />
         @yield('content')
@@ -163,5 +253,51 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        jQuery(function($) {
+        var $bodyEl = $('body'),
+            $sidedrawerEl = $('#sidedrawer');
+
+
+        function showSidedrawer() {
+            // show overlay
+            var options = {
+            onclose: function() {
+                $sidedrawerEl
+                .removeClass('active')
+                .appendTo(document.body);
+            }
+            };
+
+            var $overlayEl = $(mui.overlay('on', options));
+
+            // show element
+            $sidedrawerEl.appendTo($overlayEl);
+            setTimeout(function() {
+            $sidedrawerEl.addClass('active');
+            }, 20);
+        }
+
+
+        function hideSidedrawer() {
+            $bodyEl.toggleClass('hide-sidedrawer');
+        }
+
+
+        $('.js-show-sidedrawer').on('click', showSidedrawer);
+        $('.js-hide-sidedrawer').on('click', hideSidedrawer);
+        });
+    </script>
+    <script>
+        var $titleEls = $('strong', $sidedrawer);
+
+        $titleEls
+        .next()
+        .hide();
+
+        $titleEls.on('click', function() {
+        $(this).next().slideToggle(200);
+        });
+    </script>
 </body>
 </html>
