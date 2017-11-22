@@ -23,7 +23,7 @@
                 @else
                      <!-- incluindo -->
 
-                      {{ Form::open(['url' => "specialneeds"] ) }}
+                {{ Form::open(['route' => 'specialneeds.store']) }}
                 @endif
 
 

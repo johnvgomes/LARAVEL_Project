@@ -44,15 +44,15 @@ class SpecialNeedController extends Controller
      */
     public function store(Request $request)
     {
-        return "jhon gayzao";
-        //  $spneeds = new SpecialNeed();
+       
+          $spneeds = new SpecialNeed();
         
-        //  $spneeds = $spneeds->create($request->all());
+          $spneeds = $spneeds->create($request->all());
 
 
-        // //  Session::flash('mensagem_sucesso', 'Necessidade especial cadastrada com sucesso');
+          \Session::flash('mensagem_sucesso', 'Necessidade especial cadastrada com sucesso');
 
-        //  return Redirect::to('specialneeds/create');
+          return Redirect::to('specialneeds/create');
     }
 
     /**
@@ -74,7 +74,10 @@ class SpecialNeedController extends Controller
      */
     public function edit($id)
     {
-        //
+        $spneeds = SpecialNeed::findorfail($id);
+        
+        return view('specialneeds.formulario',['spneeds'=> $spneeds]);
+          
     }
 
     /**
@@ -86,7 +89,13 @@ class SpecialNeedController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $spneeds = SpecialNeed::findorfail($id);
+        
+        $spneeds->update($request->all());
+
+        \Session::flash('mensagem_sucesso', 'Necessidade Especial atualizada com sucesso');
+        
+         return Redirect::to('specialneeds/'.$spneeds->id.'/edit');
     }
 
     /**
