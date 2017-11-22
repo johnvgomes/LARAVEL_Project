@@ -203,7 +203,6 @@
             <div class="mui-container-fluid">          
                 <table>
                     <tr class="mui--appbar-height">
-<<<<<<< HEAD
                         @guest
                         
                         @else
@@ -213,21 +212,6 @@
                         @endguest
                         <td>
                             <a href="{{url('/') }}"><img src="/img/IFClogo2.png" style="width: 30px; height: auto;"/></a>
-=======
-                        <td class="mui--text-title"><a href="{{url('/') }}"><img src="/img/IFClogo2.png" style="width: 35px; height: auto;"/></a></td>
-                        <td class="mui--text-center">
-                            <ul class="mui-list--inline mui--text-body2">
-                                @guest
-                            
-                                @else
-
-                                <li><a href="{{url('/specialneeds') }}">Necessidades Especiais</a></li>
-                                <li><a href="{{url('/products') }}">Produtos</a></li>
-                                <li><a href="{{url('/categories') }}">Categorias</a></li>
-        
-                                @endguest
-                            </ul>
->>>>>>> 4b2c554f32d76ccb9d9d8c1f554234b8a366e979
                         </td>
                         <td class="mui--text-right">
                             <ul class="mui-list--inline mui--text-body2">
