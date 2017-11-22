@@ -41,7 +41,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" style="margin-left: -100px;">
                     <div class="col-md-8 col-md-offset-4">
                         <button type="submit" class="mui-btn mui-btn--raised mui-btn--primary">Entrar</button>
                         <a class="btn btn-link" href="{{ route('password.request') }}">
