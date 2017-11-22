@@ -20,165 +20,181 @@
     <!-- Styles -->
     <!-- Styles -->
     <style>
-            /**
-            * Body CSS
-            */
+        /**
+        * Body CSS
+        */
 
-            .mui-appbar {
-                background-color: #1f871f;
-                color: #FFF;
-            }
+        .mui-appbar {
+            background-color: #1f871f;
+            color: #FFF;
+        }
 
-            .mui--text-title, h3 {
-                font-weight: 400;
-                font-size: 20px;
-                line-height: 28px;
-                color: #FFF;
-            }
-
-            html,
-            body {
-            height: 100%;
-            background-color: #fff;
-            }
-
-            html,
-            body,
-            input,
-            textarea,
-            buttons {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
-            }
-
-
-            /**
-            * Header CSS
-            */
-            header {
-            position: fixed;
-            background-color: #f00;
-            top: 0;
-            right: 0;
-            left: 0;
-            z-index: 2;
-            }
-
-            #header {
-            position: fixed;
-            top: 0;
-            right: 0;
-            left: 0;
-            z-index: 2;
-            transition: left 0.2s;
-            }
-
-
-            #sidedrawer {
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            width: 200px;
-            left: -200px;
-            overflow: auto;
-            z-index: 2;
-            background-color: #fff;
-            transition: transform 0.2s;
-            }
-
-            #sidedrawer.active {
-            transform: translate(200px);
-            }
-
-            .sidedrawer-toggle {
-            color: #fff;
-            cursor: pointer;
+        .mui--text-title, h3 {
+            font-weight: 400;
             font-size: 20px;
-            line-height: 20px;
-            margin-right: 10px;
-            }
+            line-height: 28px;
+            color: #FFF;
+        }
 
-            .sidedrawer-toggle:hover {
-            color: #fff;
-            text-decoration: none;
-            }
+        html,
+        body {
+        height: 100%;
+        background-color: #fff;
+        font-family: 'Roboto', sans-serif;
+        }
 
-            /**
-            * Side drawer CSS
-            */
-            #sidedrawer-brand {
-            padding-left: 20px;
-            }
-
-            #sidedrawer ul {
-            list-style: none;
-            }
-
-            #sidedrawer > ul {
-            padding-left: 0px;
-            }
-
-            #sidedrawer > ul > li:first-child {
-            padding-top: 15px;
-            }
-
-            #sidedrawer strong {
-            display: block;
-            padding: 15px 22px;
-            cursor: pointer;
-            }
-
-            #sidedrawer strong:hover {
-            background-color: #E0E0E0;
-            }
-
-            #sidedrawer strong + ul > li {
-            padding: 6px 0px;
-            }
-
-            header ul.mui-list--inline {
-            margin-bottom: 0;
-            }
-
-            header a {
-            color: white;
-            }
-            
-
-            header table {
-            width: 100%;
-            }
+        html,
+        body,
+        input,
+        textarea,
+        buttons {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+        }
 
 
-            /**
-            * Content CSS
-            */
-            #content-wrapper {
-            min-height: 30%;
+        /**
+        * Header CSS
+        */
+        header {
+        position: fixed;
+        background-color: #f00;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 2;
+        font-family: 'Roboto', sans-serif;
+        }
 
-            /* sticky footer */
-            box-sizing: border-box;
-            margin-bottom: -100px;
-            padding-bottom: 100px;
-            }
+        #header {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 2;
+        transition: left 0.2s;
+        }
 
-            .drawer {
-                width: 10px;
-            }
+
+        #sidedrawer {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        width: 200px;
+        left: -200px;
+        overflow: auto;
+        z-index: 2;
+        background-color: #fff;
+        transition: transform 0.2s;
+        font-size: 12px;
+        }
+
+        #sidedrawer.active {
+        transform: translate(200px);
+        }
+
+        .sidedrawer-toggle {
+        color: #fff;
+        cursor: pointer;
+        font-size: 20px;
+        line-height: 20px;
+        margin-right: 10px;
+        }
+
+        .sidedrawer-toggle:hover {
+        color: #fff;
+        text-decoration: none;
+        }
+
+        /**
+        * Side drawer CSS
+        */
+        #sidedrawer-brand {
+        padding-left: 20px;
+        }
+
+        #sidedrawer ul {
+        list-style: none;
+        }
+
+        #sidedrawer > ul {
+        padding-left: 0px;
+        }
+
+        #sidedrawer > ul > li:first-child {
+        padding-top: 15px;
+        }
+
+        #sidedrawer strong {
+        display: block;
+        padding: 15px 22px;
+        cursor: pointer;
+        }
+
+        #sidedrawer strong:hover {
+        background-color: #E0E0E0;
+        }
+
+        #sidedrawer strong + ul > li {
+        padding: 6px 0px;
+        }
+
+        .drawertitle{
+           color:#9F9FA7;
+           font-size:20;
+           margin-left: 20px;
+           margin-top: 15px;
+        }
+
+        .dash{
+           margin-top:15px;
+           border-bottom: solid #E0E0E0;
+           border-width: 1px;
+        }
+
+        header ul.mui-list--inline {
+        margin-bottom: 0;
+        }
+
+        header a {
+        color: white;
+        }
+        
+
+        header table {
+        width: 100%;
+        }
 
 
-            /**
-            * Footer CSS
-            */
-            footer {
-            box-sizing: border-box;
-            height: 100px;
-            background-color: #eee;
-            border-top: 1px solid #e0e0e0;
-            padding-top: 35px;
-            }
-        </style>
+        /**
+        * Content CSS
+        */
+        #content-wrapper {
+        min-height: 30%;
+
+        /* sticky footer */
+        box-sizing: border-box;
+        margin-bottom: -100px;
+        padding-bottom: 100px;
+        }
+
+        .drawer {
+            width: 10px;
+        }
+
+
+        /**
+        * Footer CSS
+        */
+        footer {
+        box-sizing: border-box;
+        height: 100px;
+        background-color: #eee;
+        border-top: 1px solid #e0e0e0;
+        padding-top: 35px;
+        }
+</style>
 </head>
 <body>
     <div id="app">
@@ -187,12 +203,14 @@
     @else
     <div id="sidedrawer" class="mui--no-user-select">
     <ul>
+    <div class="drawertitle">Processo Seletivo</div>
+    <div class="dash"></div>
         <li>
-            <strong>Opções</strong>
+            <strong style="color: #000; font-size:12;">Opções</strong>
             <ul>
-            <li><a href="{{url('/specialneeds') }}">Necessidades Especiais</a></li>
-            <li><a href="{{url('/products') }}">Produtos</a></li>
-            <li><a href="{{url('/categories') }}">Categorias</a></li>
+            <li><a href="{{url('/specialneeds') }}" style="color:#000;">Necessidades Especiais</a></li>
+            <li><a href="{{url('/products') }}" style="color:#000;">Produtos</a></li>
+            <li><a href="{{url('/categories') }}" style="color:#000;">Categorias</a></li>
             </ul>
         </li>
         </ul>
