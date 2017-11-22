@@ -183,6 +183,9 @@
             width: 10px;
         }
 
+        .logo {
+            margin-left: 10px;
+        }
 
         /**
         * Footer CSS
@@ -225,11 +228,11 @@
                         
                         @else
                         <td class = "drawer">
-                            <a class="sidedrawer-toggle js-show-sidedrawer " style="font-size: 175%;">☰</a>
+                            <a class="sidedrawer-toggle js-show-sidedrawer logo" style="font-size: 120%;">☰</a>
                         </td>
                         @endguest
                         <td>
-                            <a href="{{url('/') }}"><img src="/img/IFClogo2.png" style="width: 30px; height: auto;"/></a>
+                            <a class="logo" href="{{url('/') }}"><img src="/img/IFClogo2.png" style="width: 30px; height: auto;"/></a>
                         </td>
                         <td class="mui--text-right">
                             <ul class="mui-list--inline mui--text-body2">
