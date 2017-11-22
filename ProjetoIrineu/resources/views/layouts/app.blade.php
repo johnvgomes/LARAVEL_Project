@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <link href="/Laravel/ProjetoIrineu/public/css/mui.min.css" rel="stylesheet" type="text/css" />
     <script src="/Laravel/ProjetoIrineu/public/js/mui.min.js"></script>
@@ -111,7 +110,7 @@
                 <table>
                     <tr class="mui--appbar-height">
 
-                        <td class="mui--text-title"> <a href="{{url('/') }}"><span class="glyphicon glyphicon-home"></span>  Processo Seletivo - IFC Videira </a></td>
+                        <td class="mui--text-title"><a href="{{url('/') }}"><img src="/img/IFClogo2.png" style="width: 35px; height: auto;"/></a></td>
                         <td class="mui--text-center">
                             <ul class="mui-list--inline mui--text-body2">
                                 @guest
