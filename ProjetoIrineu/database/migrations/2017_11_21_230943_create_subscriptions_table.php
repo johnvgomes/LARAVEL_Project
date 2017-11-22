@@ -19,17 +19,17 @@ class CreateSubscriptionsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->date('payment_date');
             $table->boolean('paid');
-            $table->date_time_set('subscription_date');
+            $table->date('subscription_date');
             $table->timestamps();
         });
 
-        Schema::table('selective_processes', function(Blueprint $table){
+        Schema::table('subscriptions', function(Blueprint $table){
             $table->foreign('selective_process_id')
                   ->references('id')
                   ->on('selective_processes');
         });
 
-        Schema::table('users', function(Blueprint $table){
+        Schema::table('subscriptions', function(Blueprint $table){
             $table->foreign('user_id')
                   ->references('id')
                   ->on('users');
