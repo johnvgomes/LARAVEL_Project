@@ -9,7 +9,7 @@
                 </div>
                 <div class="panel-body">
                 <div class="form-group col-md-12">
-                Ei, Você deseja realmente deletar a Necessidade especial: {{ $spneeds->descricao }}?
+                Ei, Você deseja realmente deletar a Necessidade especial: {{ $spneeds->description }}?
                 </div>
                 
                 <div class="form-group col-md-1">
