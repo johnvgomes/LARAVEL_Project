@@ -14,7 +14,7 @@
                     @endif
                     @if (Auth::user()->profile()->count() == 0)
                     
-                     Profile
+                     COLOQUEM ALGO AQUI PELO AMOR DE JEOVÀ
 
                     @else
                         não PROFILE
