@@ -39,3 +39,11 @@ Route::resource('specialneeds', 'SpecialNeedController');
 Route::get('specialneeds/{specialneed}/confirmDestroy', 'SpecialNeedController@confirmDestroy');
 #################### ###################### #######################
 
+###################     rotas do processo seletivo  #######################
+
+Route::resource('selectiveprocesses', 'SelectiveProcessController');
+
+###################     rotas da inscrição  #######################
+
+Route::resource('subscriptions', 'SubscriptionController');
+

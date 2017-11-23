@@ -32,6 +32,5 @@
     </div>
     <footer>
         <div class="mui--text-center">Feito com ♥ por <br/><a href="https://www.youtube.com/watch?v=jSl1uVVvSsk" style="color: #1f871f;">Geremaia, Denisu e Labarousk</a></div>
-        <div class="mui--text-right"><br>cofap - pq o john quer</div>
     </footer>
     
