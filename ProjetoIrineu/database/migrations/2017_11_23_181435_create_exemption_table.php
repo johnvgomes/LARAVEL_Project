@@ -19,7 +19,7 @@ class CreateExemptionTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('subscriptions', function(Blueprint $table){
+        Schema::table('exemption', function(Blueprint $table){
             $table->foreign('subscription_id')
                   ->references('id')
                   ->on('subscriptions');
