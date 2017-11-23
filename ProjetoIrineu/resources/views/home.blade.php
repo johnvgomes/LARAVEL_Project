@@ -12,8 +12,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                   Bem-vindo!
+                    @if (Auth::user()->profile()->count() == 0)
+                        PROFILE
+                    @else
+                        não PROFILE
+                    @endif
                 </div>
             </div>
         </div>
