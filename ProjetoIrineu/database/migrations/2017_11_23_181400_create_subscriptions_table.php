@@ -17,6 +17,8 @@ class CreateSubscriptionsTable extends Migration
             $table->increments('id');
             $table->integer('selective_process_id')->unsigned();
             $table->integer('user_id')->unsigned();
+            $table->integer('quota_id')->unsigned();
+            $table->integer('course_id')->unsigned();
             $table->date('payment_date');
             $table->boolean('paid');
             $table->date('subscription_date');
@@ -34,6 +36,18 @@ class CreateSubscriptionsTable extends Migration
                   ->references('id')
                   ->on('users');
         });
+
+        Schema::table('subscriptions', function(Blueprint $table){
+            $table->foreign('quota_id')
+                  ->references('id')
+                  ->on('quotas');
+        });
+
+        Schema::table('subscriptions', function(Blueprint $table){
+            $table->foreign('course_id')
+                  ->references('id')
+                  ->on('courses');
+        });
     }
 
     /**
@@ -46,4 +60,3 @@ class CreateSubscriptionsTable extends Migration
         Schema::dropIfExists('subscriptions');
     }
 }
-
