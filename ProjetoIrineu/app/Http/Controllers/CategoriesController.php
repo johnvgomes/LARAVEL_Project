@@ -16,12 +16,12 @@ class CategoriesController extends Controller
     public function index()
     {
         $category = Category::get();
-        return view('categories.lista',['category'=> $category]);
+        return view('categories.list',['category'=> $category]);
     }
 
     public function create()
     {
-        return view('categories.formulario');
+        return view('categories.form');
     }
 
     public function store(Request $request)
@@ -32,7 +32,7 @@ class CategoriesController extends Controller
 
         \Session::flash('mensagem_sucesso', 'Categoria cadastrada com sucesso');
 
-        return Redirect::to('categories/create');
+        return Redirect::to('categories');
     }
 
 
@@ -41,7 +41,7 @@ class CategoriesController extends Controller
 
         $category = Category::findorfail($id);
 
-        return view('categories.formulario',['category'=> $category]);
+        return view('categories.form',['category'=> $category]);
     }
     
     public function update($id, Request $request)

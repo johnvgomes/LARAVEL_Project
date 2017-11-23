@@ -20,7 +20,7 @@
                     <tbody>
                             @foreach ($profiles as $profile)
                             <tr>
-                                <td>{{ $profiles->name }}</td>
+                                <td>{{ $profile->user->name }}</td>
                                 <td>
 
 

@@ -5,15 +5,15 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Deletar Categoria
+                <div class="panel-heading">Deletar Perfil
                 </div>
                 <div class="panel-body">
                 <div class="form-group col-md-12">
-                Ei, Você deseja realmente deletar a categoria: {{ $category->descricao }}?
+                Ei, Você deseja realmente deletar o perfil: {{ $profile->user->name }}?
                 </div>
                 
                 <div class="form-group col-md-1">
-                {{ Form::open(['method' => 'DELETE', 'url' => '/categories/'.$category->id, 'style' => 'display: inline;']) }}
+                {{ Form::open(['method' => 'DELETE', 'url' => '/profiles/'.$profile->id, 'style' => 'display: inline;']) }}
                 
                         <button type="submit" class="btn btn-primary btn-sm">
                            SIM
@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="form-group col-md-11">
-                <a href="../../categories" class="btn btn-danger btn-sm">
+                <a href="../../profiles" class="btn btn-danger btn-sm">
                                
                 NÃO
                 </a>

@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     protected $fillable =[        
-        'name',
+        
         'date',
         'rg',
-        'rg-emitter',
+        'rgemitter',
         'cpf',
         'sex',
         'namefather',
@@ -19,7 +19,8 @@ class Profile extends Model
         'naturaless',
         'phone',
         'mobile',
-        'escolaridade'
+        'scholarity',
+        'user_id'
     ];
 
     public function specialneed() {        

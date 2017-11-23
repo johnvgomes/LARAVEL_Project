@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 
@@ -18,8 +19,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $profiles = Profile::all();
-        return view('profiles.lista',['profiles'=> $profiles]);
+        $profile = Profile::all();
+        return view('profiles.list',['profiles'=> $profile]);
    
     }
 
@@ -30,7 +31,7 @@ class ProfileController extends Controller
      */
     public function create()
     { 
-        return view('profiles.formulario');
+        return view('profiles.form');
         
     }
 
@@ -43,14 +44,33 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
        
-          $profiles = new Profile();
-        
-          $profiles = $profiles->create($request->all());
+          $profile = new Profile();
+            $profile->date = $request->date;
+            $profile->rg = $request->rg;
+            $profile->rgemitter = $request->rgemitter;
+            $profile->cpf = $request->cpf;
+            $profile->sex = $request->sex;
+            $profile->namefather = $request->namefather;
+            $profile->namemother = $request->namemother;
+            $profile->passport = $request->passport;
+            $profile->naturaless = $request->naturaless;
+            $profile->phone = $request->phone;
+            $profile->mobile = $request->phone;
+            $profile->scholarity = $request->scholarity;
+            $profile->user_id = Auth::user()->id;
 
+            if ($profile->save()){
+                \Session::flash('mensagem_sucesso', 'Perfil cadastrado com sucesso');
+                
+                 return Redirect::to('profiles');
+            }
 
-          \Session::flash('mensagem_sucesso', 'Perfil cadastrado com sucesso');
-
-          return Redirect::to('profiles/create');
+            else{
+                \Session::flash('mensagem_sucesso', 'Perfil cadastrado com sucesso');
+                
+                 return Redirect::to('profiles/create');
+            }
+            
     }
 
     /**
@@ -72,9 +92,9 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        $profiles = Profile::findorfail($id);
+        $profile = Profile::findorfail($id);
         
-        return view('profiles.formulario',['profiles'=> $profiles]);
+        return view('profiles.form',['profiles'=> $profile]);
           
     }
 
@@ -87,13 +107,13 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $profiles = Profile::findorfail($id);
+        $profile = Profile::findorfail($id);
         
-        $profiles->update($request->all());
+        $profile->update($request->all());
 
         \Session::flash('mensagem_sucesso', 'Perfil atualizado com sucesso');
         
-         return Redirect::to('profiles/'.$spneeds->id.'/edit');
+         return Redirect::to('profiles');
     }
 
     /**
@@ -105,9 +125,9 @@ class ProfileController extends Controller
      public function destroy($id)
      {
          
-        $profiles = Profile::findorfail($id);
+        $profile = Profile::findorfail($id);
         
-        $profiles->delete();
+        $profile->delete();
 
        \Session::flash('mensagem_sucesso', 'Perfil deletado com sucesso');
        
@@ -118,9 +138,9 @@ class ProfileController extends Controller
     public function confirmdestroy($id)
     {
         
-        $profiles = Profile::findorfail($id);
+        $profile = Profile::findorfail($id);
         
-        return view('profiles.deleteConfirm',['profiles'=> $profiles]);
+        return view('profiles.deleteConfirm',['profile'=> $profile]);
 
 
     }
