@@ -13,7 +13,9 @@
                         </div>
                     @endif
                     @if (Auth::user()->profile()->count() == 0)
-                        PROFILE
+                    
+                     Profile
+
                     @else
                         não PROFILE
                     @endif

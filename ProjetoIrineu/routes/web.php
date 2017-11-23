@@ -24,11 +24,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('categories', 'CategoriesController');
 
+Route::get('categories/{category}/confirmDestroy', 'CategoriesController@confirmDestroy');
+
 #################### ###################### #######################
 
 ###################     rotas do produto  #######################
 
 Route::resource('products', 'ProductsController');
+
+Route::get('products/{product}/confirmDestroy', 'ProductsController@confirmDestroy');
 
 #################### ###################### #######################
 
@@ -42,8 +46,18 @@ Route::get('specialneeds/{specialneed}/confirmDestroy', 'SpecialNeedController@c
 ###################     rotas do processo seletivo  #######################
 
 Route::resource('selectiveprocesses', 'SelectiveProcessController');
+Route::get('selectiveprocesses/{selectiveprocess}/confirmDestroy', 'SelectiveProcessController@confirmDestroy');
 
+#################### ###################### #######################
 ###################     rotas da inscrição  #######################
 
 Route::resource('subscriptions', 'SubscriptionController');
+Route::get('subscriptions/{subscription}/confirmDestroy', 'SubscriptionController@confirmDestroy');
 
+#################### ###################### #######################
+###################     rotas do profile  #######################
+
+Route::resource('profiles', 'ProfileController');
+Route::get('profiles/{profile}/confirmDestroy', 'ProfileController@confirmDestroy');
+
+#################### ###################### #######################
