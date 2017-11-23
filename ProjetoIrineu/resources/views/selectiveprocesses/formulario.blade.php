@@ -27,27 +27,27 @@
                 @endif
 
                         <div class="form-group col-md-2 ">
-                            {{ form::label('nome','Nome')}}
+                            {{ form::label('name','Nome')}}
                         </div>
 
                         <div class="form-group col-md-10">
-                            {{ form::input('text','nome',null,['class' => 'form-control', 'autofocus', 'placeholder' => ' Nome'])}}
+                            {{ form::input('text','name',null,['class' => 'form-control', 'autofocus', 'placeholder' => ' Nome'])}}
                         </div>
 
                         <div class="form-group col-md-2 ">
-                            {{ form::label('datainicio','Data Inicio')}}
+                            {{ form::label('start_date','Inicio')}}
                         </div>
 
                         <div class="form-group col-md-10">
-                            {{ form::date('text','datainicio',null,['class' => 'form-control', 'autofocus', 'placeholder' => ' Data Inicio'])}}
+                            {{ form::date('text','start_date',null,['class' => 'form-control', 'autofocus', 'placeholder' => 'Inicio'])}}
                         </div>
 
                         <div class="form-group col-md-2 ">
-                            {{ form::label('datafim','Data Fim')}}
+                            {{ form::label('end_date','Termino')}}
                         </div>
 
                         <div class="form-group col-md-10">
-                            {{ form::date('text','datafim',null,['class' => 'form-control', 'autofocus', 'placeholder' => ' Data Fim'])}}
+                            {{ form::date('text','end_date',null,['class' => 'form-control', 'autofocus', 'placeholder' => ' Termino'])}}
                         </div>
 
                         <div class="form-group col-md-2 ">
@@ -59,14 +59,12 @@
                         </div>
 
                         <div class="form-group col-md-2 ">
-                            {{ form::label('ativo','Ativo')}}
+                            {{ form::label('active','Ativo')}}
                         </div>
 
                         <div class="form-group col-md-10">
-                            {{ form::checkbox('boolean','ativo',true,['class' => 'form-control', 'autofocus', 'placeholder' => ' Ativo'])}}
-                        </div>
-
-                        
+                            {{ form::checkbox('boolean','active',true,['class' => 'form-control', 'autofocus', 'placeholder' => ' Ativo'])}}
+                        </div>             
 
                         <div class="col-md-4 col-md-offset-8">
                         <div class="form-group pull-right">
