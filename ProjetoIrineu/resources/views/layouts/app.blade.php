@@ -214,6 +214,7 @@
             <li><a href="{{url('/specialneeds') }}" style="color:#000;">Necessidades Especiais</a></li>
             <li><a href="{{url('/products') }}" style="color:#000;">Produtos</a></li>
             <li><a href="{{url('/categories') }}" style="color:#000;">Categorias</a></li>
+            <li><a href="{{url('/profiles') }}" style="color:#000;">Profiles</a></li>
             </ul>
         </li>
         </ul>
