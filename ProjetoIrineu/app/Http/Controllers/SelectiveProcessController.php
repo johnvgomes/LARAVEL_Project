@@ -14,7 +14,7 @@ class SelectiveProcessController extends Controller
         $selectiveprocesses = SelectiveProcess::all();
        
 
-        return view('selectiveprocess.lista',['selectiveprocesses'=> $selectiveprocesses]);
+        return view('selectiveprocesses.lista',['selectiveprocesses'=> $selectiveprocesses]);
     }
 
     /**
@@ -24,7 +24,7 @@ class SelectiveProcessController extends Controller
      */
     public function create()
     { 
-        return view('selectiveprocess.formulario');
+        return view('selectiveprocesses.formulario');
         
     }
 
