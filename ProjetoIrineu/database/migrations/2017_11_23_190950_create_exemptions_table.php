@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExemptionTable extends Migration
+class CreateExemptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,9 @@ class CreateExemptionTable extends Migration
      */
     public function up()
     {
-        Schema::create('exemption', function (Blueprint $table) {
+        Schema::create('exemptions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('subscription_id')->unsigned();
             $table->timestamps();
-        });
-
-        Schema::table('exemption', function(Blueprint $table){
-            $table->foreign('subscription_id')
-                  ->references('id')
-                  ->on('subscriptions');
         });
     }
 
@@ -33,6 +26,6 @@ class CreateExemptionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('exemption');
+        Schema::dropIfExists('exemptions');
     }
 }
