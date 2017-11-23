@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if (! Auth::user()->profile) {
+            return redirect()->route('profiles.create')->with('mensagem_sucesso', 'É necessário completar o cadastro');
+        }
         return view('home');
     }
 }

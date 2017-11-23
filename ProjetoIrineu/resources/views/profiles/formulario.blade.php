@@ -35,6 +35,15 @@
                             {{ form::input('text','name',null,['class' => 'form-control', 'autofocus', 'placeholder' => ' Nome'])}}
                         </div>
 
+                        <div class="form-group col-md-2 ">
+                            {{ form::label('date','Nascimento')}}
+                        </div>
+
+                        <div class="form-group col-md-10">
+                            {{ form::date('text','date',null,['class' => 'form-control', 'autofocus', 'placeholder' => 'Data Nascimento'])}}
+                        </div>
+
+
                         
 
                         <div class="col-md-4 col-md-offset-8">
