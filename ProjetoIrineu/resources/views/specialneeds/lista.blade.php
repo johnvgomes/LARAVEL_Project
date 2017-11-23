@@ -13,23 +13,23 @@
                   <div class= "alert alert-success">{{ Session::get('mensagem_sucesso')}}</div>
                 @endif
 
-                <table class ="mui-table mui-table--bordered" style="box-shadow: 0px 0px 30px #fff, 0px 0px 15px #888888;">
-                    <thead>
+                <table class ="mui-table" >
+                    <thead >
                         <tr>
                             <th>Descrição</th>
-                            <th>Ações</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach ($spneeds as $spneed)
-                    <tr>
+                    <tr style="border-top: 1px solid #E0E0E0; border-collapse: separate;">
                         <td>{{ $spneed->description }}</td>
-                        <td style="display: inline-block;">
+                        <td style="display: block; margin-left: 65%;">
                             <form action="specialneeds/{{ $spneed->id }}/edit">
                                 <button class="mui-btn mui-btn--small mui-btn--raised mui-btn--primary" style="display: inline; font-size: 25;"><img src="/icon/ic_mode_edit_white_24px.svg" height="20" width="20"/></button>
                             </form>    
                         </td> 
-                        <td style="display: inline-block;">                
+                        <td style="margin-left: 30px;">                
                             <form action="specialneeds/{{ $spneed->id }}/confirmDestroy">
                                 <button class="mui-btn mui-btn--small mui-btn--raised mui-btn--danger" style="display: inline; font-size: 20;"><img src="/icon/ic_delete_forever_white_24px.svg" height="20" width="20" /></button>
                             </form>
