@@ -14,7 +14,7 @@ class SelectiveProcessController extends Controller
         $selectiveprocesses = SelectiveProcess::all();
        
 
-        return view('selectiveprocesses.lista',['selectiveprocesses'=> $selectiveprocesses]);
+        return view('selectiveprocesses.list',['selectiveprocesses'=> $selectiveprocesses]);
     }
 
     /**
@@ -24,7 +24,7 @@ class SelectiveProcessController extends Controller
      */
     public function create()
     { 
-        return view('selectiveprocesses.formulario');
+        return view('selectiveprocesses.form');
         
     }
 
@@ -68,7 +68,7 @@ class SelectiveProcessController extends Controller
     {
         $selectiveprocesses = SelectiveProcess::findorfail($id);
         
-        return view('selectiveprocesses.formulario',['selectiveprocesses'=> $selectiveprocesses]);
+        return view('selectiveprocesses.form',['selectiveprocesses'=> $selectiveprocesses]);
           
     }
 
