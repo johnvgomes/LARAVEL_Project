@@ -215,6 +215,7 @@
             <li><a href="{{url('/products') }}" style="color:#000;">Produtos</a></li>
             <li><a href="{{url('/categories') }}" style="color:#000;">Categorias</a></li>
             <li><a href="{{url('/profiles') }}" style="color:#000;">Profiles</a></li>
+            <li><a href="{{url('/selectiveprocesses') }}" style="color:#000;">Processos Seletivos</a></li>
             </ul>
         </li>
         </ul>
