@@ -37,9 +37,9 @@ class SelectiveProcessController extends Controller
     public function store(Request $request)
     {
        
-          $selectiveprocesses = new SelectiveProcess();
+          $selectiveprocess = new SelectiveProcess();
         
-          $selectiveprocesses = $selectiveprocesses->create($request->all());
+          $selectiveprocess = $selectiveprocess->create($request->all());
 
 
           \Session::flash('mensagem_sucesso', 'processo seletivo criado com sucesso!');
@@ -66,9 +66,9 @@ class SelectiveProcessController extends Controller
      */
     public function edit($id)
     {
-        $selectiveprocesses = SelectiveProcess::findorfail($id);
+        $selectiveprocess = SelectiveProcess::findorfail($id);
         
-        return view('selectiveprocesses.form',['selectiveprocesses'=> $selectiveprocesses]);
+        return view('selectiveprocesses.form',['selectiveprocesses'=> $selectiveprocess]);
           
     }
 
@@ -81,13 +81,13 @@ class SelectiveProcessController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $selectiveprocesses = SelectiveProcess::findorfail($id);
+        $selectiveprocess = SelectiveProcess::findorfail($id);
         
-        $selectiveprocesses->update($request->all());
+        $selectiveprocess->update($request->all());
 
         \Session::flash('mensagem_sucesso', 'Processo seletivo atualizado com sucesso!');
         
-         return Redirect::to('selectiveprocesses/'.$selectiveprocesses->id.'/edit');
+         return Redirect::to('selectiveprocesses/'.$selectiveprocess->id.'/edit');
     }
 
     /**
@@ -99,9 +99,9 @@ class SelectiveProcessController extends Controller
     public function destroy($id)
     {
         
-       $selectiveprocesses = SelectiveProcess::findorfail($id);
+       $selectiveprocess = SelectiveProcess::findorfail($id);
        
-       $selectiveprocesses->delete();
+       $selectiveprocess->delete();
 
       \Session::flash('mensagem_sucesso', 'Processo seletivo deletado com sucesso!');
       
@@ -112,10 +112,9 @@ class SelectiveProcessController extends Controller
     public function confirmdestroy($id)
     {
         
-        $selectiveprocesses = SelectiveProcess::findorfail($id);
+        $selectiveprocess = SelectiveProcess::findorfail($id);
         
-        return view('selectiveprocesses.deleteConfirm',['selectiveprocesses'=> $selectiveprocesses]);
-
+        return view('selectiveprocesses.deleteConfirm',['selectiveprocesses'=> $selectiveprocess]);
 
     }
 }
