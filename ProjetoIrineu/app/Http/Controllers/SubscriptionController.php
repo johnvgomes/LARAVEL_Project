@@ -109,7 +109,7 @@ class SubscriptionController extends Controller
 
     }
 
-    public function confirmdestroy($id)
+    public function confirmDestroy($id)
     {
         
         $subscriptions = Subscription::findorfail($id);

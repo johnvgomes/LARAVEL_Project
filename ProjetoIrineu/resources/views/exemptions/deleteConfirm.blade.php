@@ -8,18 +8,17 @@
                 <div class="panel-heading">Deletar isenção</div>
                 <div class="panel-body">
                     <div class="form-group col-md-12">
-                        Ei, Você deseja realmente deletar a isenção: {{ $exeption->name }}?
+                        Ei, Você deseja realmente deletar a isenção?
                     </div>
                 
                     <div class="form-group col-md-1">
-                    {{ Form::open(['method' => 'DELETE', 'url' => '/exeptions/'.$exeption->id, 'style' => 'display: inline;']) }}
+                    {{ Form::open(['method' => 'DELETE', 'url' => '/exeptions/'.$exemption->id, 'style' => 'display: inline;']) }}
                 
                         <button type="submit" class="btn btn-primary btn-sm">
                             SIM
                         </button>
                     {{ Form::close() }}
                     </div>
-
                     <div class="form-group col-md-11">
                         <a href="../../exeptions" class="btn btn-danger btn-sm">
                             NÃO

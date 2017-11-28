@@ -71,4 +71,4 @@ Route::get('quotas/{quota}/confirmDestroy', 'QuotaController@confirmDestroy');
 ###################     rotas de insenção  #######################
 
 Route::resource('exemptions', 'ExemptionController');
-Route::get('exemptions/{exemption}/confirmDestroy', 'ExemptionsController@confirmDestroy');
+Route::get('exemptions/{exemption}/confirmDestroy', 'ExemptionController@confirmDestroy');

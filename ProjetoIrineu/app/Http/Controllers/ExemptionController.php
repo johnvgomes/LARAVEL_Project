@@ -25,6 +25,7 @@ class ExemptionController extends Controller
    
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -46,7 +47,8 @@ class ExemptionController extends Controller
     {
        
         $exemption = new Exemption();
-        $exemption->name = $request->name;
+        $exemption = $exemption->create($request->all());
+
 
         if($exemption->save()) {
             return redirect()->route('exemptions.index')->with('success_message', 'Isenção solicitada com sucesso!');
@@ -77,7 +79,7 @@ class ExemptionController extends Controller
     {
         $exemption = Exemption::findorfail($id);
         
-        return view('exemptions.form',compact('exemption'));
+        return view('exemptions.form',['exemptions'=> $exemption]);
           
     }
 
@@ -92,7 +94,7 @@ class ExemptionController extends Controller
     {
         $exemption = Exemption::findorfail($id);
 
-        $exemption->name = $request->input('name');
+        $exemption->update($request->all());
 
         if($exemption->save()) {
             return redirect()->route('exemptions.index')->with('success_message', 'isenção alterada com sucesso!');
@@ -109,21 +111,20 @@ class ExemptionController extends Controller
      */
      public function destroy($id)
      {
-         
-        $quotexemptiona = Exemption::findorfail($id);
-        
+        $exemption = Exemption::findorfail($id);
+
         $exemption->delete();
 
         return redirect()->route('exemptions.index')->with('success_message', 'Isenção deletada com sucesso.');
  
      }
 
-    public function confirmdestroy($id)
+    public function confirmDestroy($id)
     {
         
         $exemption = Exemption::findorfail($id);
         
-        return view('exemptions.deleteConfirm',compact('exemption'));
+        return view('exemptions.deleteConfirm',['exemption'=> $exemption]);
 
 
     }

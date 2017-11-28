@@ -109,7 +109,7 @@ class SelectiveProcessController extends Controller
 
     }
 
-    public function confirmdestroy($id)
+    public function confirmDestroy($id)
     {
         
         $selectiveprocess = SelectiveProcess::findorfail($id);

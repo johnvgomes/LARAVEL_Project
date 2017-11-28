@@ -118,7 +118,7 @@ class QuotaController extends Controller
  
      }
 
-    public function confirmdestroy($id)
+    public function confirmDestroy($id)
     {
         
         $quota = Quota::findorfail($id);
