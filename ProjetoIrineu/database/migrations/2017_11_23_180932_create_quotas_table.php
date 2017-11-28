@@ -15,7 +15,7 @@ class CreateQuotasTable extends Migration
     {
         Schema::create('quotas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description');
+            $table->string('name');
             $table->timestamps();
         });
     }

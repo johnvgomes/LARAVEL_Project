@@ -61,3 +61,8 @@ Route::resource('profiles', 'ProfileController');
 Route::get('profiles/{profile}/confirmDestroy', 'ProfileController@confirmDestroy');
 
 #################### ###################### #######################
+
+###################     rotas da cotas  #######################
+
+Route::resource('quotas', 'QuotaController');
+Route::get('quotas/{quota}/confirmDestroy', 'QuotaController@confirmDestroy');
