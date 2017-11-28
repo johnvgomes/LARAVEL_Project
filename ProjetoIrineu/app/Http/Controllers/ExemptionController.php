@@ -77,7 +77,7 @@ class ExemptionController extends Controller
     {
         $exemption = Exemption::findorfail($id);
         
-        return view('exemptions.form',['exemptions'=> $exemption]);
+        return view('exemptions.form',compact('exemption'));
           
     }
 
@@ -90,14 +90,14 @@ class ExemptionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $quota = Quota::findorfail($id);
+        $exemption = Exemption::findorfail($id);
 
-        $quota->name = $request->input('name');
+        $exemption->name = $request->input('name');
 
-        if($quota->save()) {
-            return redirect()->route('quotas.index')->with('success_message', 'Cota alterada com sucesso!');
+        if($exemption->save()) {
+            return redirect()->route('exemptions.index')->with('success_message', 'isenção alterada com sucesso!');
         } else {
-            return redirect()->route('quotas.edit', $id)->with('error_message', 'Houve um erro ao alterar a cota!');
+            return redirect()->route('exemptions.edit', $id)->with('error_message', 'Houve um erro ao alterar a isenção!');
         }
     }
 
@@ -110,20 +110,20 @@ class ExemptionController extends Controller
      public function destroy($id)
      {
          
-        $quota = Quota::findorfail($id);
+        $quotexemptiona = Exemption::findorfail($id);
         
-        $quota->delete();
+        $exemption->delete();
 
-        return redirect()->route('quotas.index')->with('success_message', 'Cota deletada com sucesso.');
+        return redirect()->route('exemptions.index')->with('success_message', 'Isenção deletada com sucesso.');
  
      }
 
     public function confirmdestroy($id)
     {
         
-        $quota = Quota::findorfail($id);
+        $exemption = Exemption::findorfail($id);
         
-        return view('quotas.deleteConfirm',['quota'=> $quota]);
+        return view('exemptions.deleteConfirm',compact('exemption'));
 
 
     }

@@ -15,6 +15,8 @@ class CreateExemptionsTable extends Migration
     {
         Schema::create('exemptions', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('reason');
+            $table->string('homologated');
             $table->timestamps();
         });
     }
