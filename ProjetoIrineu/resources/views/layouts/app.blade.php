@@ -361,7 +361,7 @@
                         @endguest
                         <td>
                             <a class="logo" href="{{url('/') }}"><img src="/img/IFClogo2.png" style="width: 30px; height: auto;"/></a>
-                            <spam style="color: #fff; font: 20px roboto, sans-serif; margin-left: 18px; vertical-align: middle;">
+                            <spam style="color: #fff; font: 20px roboto, sans-serif; margin-left: 15px; vertical-align: middle;">
                                 @yield('title')
                             </spam>
                         </td>
