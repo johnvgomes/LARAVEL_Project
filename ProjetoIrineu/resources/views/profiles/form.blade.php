@@ -25,6 +25,8 @@ Perfis
                             {{ form::label('name','Nome')}}
                         </div>
 
+
+
                         <div class="form-group col-md-9 ">
                         {{ form::label('name',strtoupper(Auth::user()->name))}}
                         </div>

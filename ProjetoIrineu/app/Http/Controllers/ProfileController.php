@@ -54,6 +54,9 @@ class ProfileController extends Controller
             $profile->rgemitter = $request->rgemitter;
             $profile->cpf = $request->cpf;
             $profile->sex = $request->sex;
+
+
+            
             $profile->namefather = $request->namefather;
             $profile->namemother = $request->namemother;
             $profile->passport = $request->passport;
