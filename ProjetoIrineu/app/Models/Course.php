@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     protected $fillable =[
-        
-                'name',
-            ];
+        'name',
+    ];
+
+    public function selectiveProcess() {
+        return $this->belongsToMany('App\Models\SelectiveProcess')->withPivot('vacancy');
+    }
 }

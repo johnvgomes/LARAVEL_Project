@@ -11,10 +11,10 @@ class SpecialNeed extends Model
                 'description'
             ];
 
-            public function profile() {
-                
-                return $this->belongsToMany('App\Models\Profile')->withPivot('permanent','observation');
-                
-          
-              }
+    public function profile() {
+        
+        return $this->belongsToMany('App\Models\Profile')->withPivot('permanent','observation');
+        
+    
+    }
 }
