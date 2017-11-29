@@ -41,4 +41,3 @@ Cotas
         </div>
     </div>
 </div>
-@endsection
