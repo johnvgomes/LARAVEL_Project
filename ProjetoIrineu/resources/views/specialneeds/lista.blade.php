@@ -55,6 +55,6 @@ Necessidades Especiais
 </div>
 <form action="{{url('specialneeds/create')}}" style="margin-left: 100px; margin-bottom: -20px;">
     <div class="fixed-action-btn horizontal click-to-toggle">
-        <button class="mui-btn mui-btn--fab mui-btn--primary">+</button>
+        <button class="mui-btn mui-btn--fab mui-btn--primary" style="font-size: 25px;">+</button>
     </div>
 </form>
