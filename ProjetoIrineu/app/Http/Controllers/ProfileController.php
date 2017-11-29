@@ -108,10 +108,8 @@ class ProfileController extends Controller
     {
         $profile = Profile::findorfail($id);
         $specialNeeds = SpecialNeed::all();
-       // $spneedselected = $profile->profiles()->findOrFail($id);
-       
-        
-        return view('profiles.form',compact('profile','specialNeeds'));
+
+        return view('profiles.edit',compact('profile','specialNeeds'));
           
     }
 

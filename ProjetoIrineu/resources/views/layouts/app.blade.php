@@ -1,7 +1,4 @@
-<?php
 
-use App\Models\Profile;
-?>
 
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">

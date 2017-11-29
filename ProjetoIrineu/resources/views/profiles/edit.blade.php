@@ -15,18 +15,16 @@ Perfis
 
                 <div class="panel-body">
 
-
+               
+                      <!-- editando -->
+                      {{Form::model($profile, ['method' => 'PATCH','url' => 'profiles/'.$profile->id])}}
                 
-                     <!-- incluindo -->
-
-                {{ Form::open(['route' => 'profiles.store']) }}
-
-                        <div class="form-group col-md-3 ">
+                      <div class="form-group col-md-3 ">
                             {{ form::label('name','Nome')}}
                         </div>
 
                         <div class="form-group col-md-9 ">
-                        {{ form::label('name',strtoupper(Auth::user()->name))}}
+                        {{ form::label('name',strtoupper($profile->user->name))}}
                         </div>
                 
                         <div class="form-group col-md-3 ">
@@ -53,7 +51,6 @@ Perfis
                         <div class="form-group col-md-9">
                             {{ form::input('text','rgemitter',null,['class' => 'form-control', 'autofocus', 'placeholder' => ' Nome'])}}
                         </div>
-
                         
                         <div class="form-group col-md-3 ">
                             {{ form::label('cpf','CPF')}}
@@ -63,7 +60,6 @@ Perfis
                             {{ form::input('text','cpf',null,['class' => 'form-control', 'autofocus', 'placeholder' => 'CPF'])}}
                         </div>
 
-                          
                         <div class="form-group col-md-3 ">
                             {{ form::label('sex','Sexo')}}
                         </div>
@@ -165,11 +161,11 @@ Perfis
                                         <div class="form-group col-md-12 "> 
                                         <div class="form-group col-md-3 ">
                                         
-                                         {{ form::checkbox("special_need[$sn->id][id]", $sn->id ,null,['class' => 'cb', 'id' => ''.$sn->description])}}
+                                         {{ form::checkbox("special_need[$sn->id][id]", $sn->id , ($profile->specialNeeds->find($sn->id)) ? true : false, ['class' => 'cb', 'id' => ''.$sn->description])}}
                                          {{ form::label('scholarity',$sn->description)}}
                                          </div>
                                          <div class="form-group col-md-3 ">
-                                         {{ form::input('text',"special_need[$sn->id][observation]",null,['class' => 'form-control', 'autofocus', 'placeholder' => 'Observação'])}}
+                                         {{ form::input('text',"special_need[$sn->id][observation]",($profile->specialNeeds->find($sn->id)) ? $profile->specialNeeds->find($sn->id)->pivot->observation : false,['class' => 'form-control', 'autofocus', 'placeholder' => 'Observação'])}}
                                         </div>      
                                          <div class="form-group col-md-6 "> 
 
@@ -178,12 +174,12 @@ Perfis
                                          </div>      
 
                                          <div class="form-group col-md-3 "> 
-                                         {{ form::radio("special_need[$sn->id][permanent]", 1) }}
+                                         {{ form::radio("special_need[$sn->id][permanent]", 1, ($profile->specialNeeds->find($sn->id) && $profile->specialNeeds->find($sn->id)->pivot->permanent ==1) ? true : false) }}
                                          {{ form::label("special_need[$sn->id][permanent]",'sim')}}
                                          </div>
                                        
 	                                    <div class="form-group col-md-3 "> 
-                                         {{ form::radio("special_need[$sn->id][permanent]", 0, true) }}
+                                         {{ form::radio("special_need[$sn->id][permanent]", 0,($profile->specialNeeds->find($sn->id) && $profile->specialNeeds->find($sn->id)->pivot->permanent ==1) ? false : true)}}
                                          {{ form::label("special_need[$sn->id][permanent]",'não')}}
                                          </div>
                                          
