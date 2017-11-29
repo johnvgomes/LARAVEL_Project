@@ -24,7 +24,7 @@ class Profile extends Model
     ];
 
     public function specialNeeds() {        
-        return $this->belongsToMany('App\Models\SpecialNeed')->withPivot('permanent','observation');
+        return $this->belongsToMany('App\Models\SpecialNeed')->withPivot('permanent','observation')->withTimestamps();
     }
 
     public function user(){

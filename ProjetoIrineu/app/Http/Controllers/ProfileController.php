@@ -47,9 +47,8 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-       
-        dd($request);
-          $profile = new Profile();
+            $profile = new Profile();
+          
             $profile->date = $request->date;
             $profile->rg = $request->rg;
             $profile->rgemitter = $request->rgemitter;
@@ -60,20 +59,27 @@ class ProfileController extends Controller
             $profile->passport = $request->passport;
             $profile->naturaless = $request->naturaless;
             $profile->phone = $request->phone;
-            $profile->mobile = $request->phone;
+            $profile->mobile = $request->mobile;
             $profile->scholarity = $request->scholarity;
 
             $profile->user_id = Auth::user()->id;
+            $status = $profile->save();
 
+            $selected_special_needs = array();
 
+            foreach ($request->special_need as $sn) {
+                if(array_key_exists('id', $sn)) {
+                    $selected_special_needs[$sn['id']] = array('observation' => "". $sn['observation'], 'permanent' => $sn['permanent']);
+                }
+            }
 
-            if ($profile->save()){
+            $profile->specialNeeds()->sync($selected_special_needs);
+
+            if ($status){
                 \Session::flash('mensagem_sucesso', 'Perfil cadastrado com sucesso');
                 
                  return Redirect::to('profiles');
-            }
-
-            else{
+            } else {
                 \Session::flash('mensagem_sucesso', 'Perfil cadastrado com sucesso');
                 
                  return Redirect::to('profiles/create');
@@ -101,8 +107,11 @@ class ProfileController extends Controller
     public function edit($id)
     {
         $profile = Profile::findorfail($id);
+        $specialNeeds = SpecialNeed::all();
+       // $spneedselected = $profile->profiles()->findOrFail($id);
+       
         
-       // return view('profiles.form',compact('profile'));
+        return view('profiles.form',compact('profile','specialNeeds'));
           
     }
 
@@ -116,12 +125,43 @@ class ProfileController extends Controller
     public function update(Request $request, $id)
     {
         $profile = Profile::findorfail($id);
-        
-        $profile->update($request->all());
+        $profile->date = $request->date;
+        $profile->rg = $request->rg;
+        $profile->rgemitter = $request->rgemitter;
+        $profile->cpf = $request->cpf;
+        $profile->sex = $request->sex;
+        $profile->namefather = $request->namefather;
+        $profile->namemother = $request->namemother;
+        $profile->passport = $request->passport;
+        $profile->naturaless = $request->naturaless;
+        $profile->phone = $request->phone;
+        $profile->mobile = $request->mobile;
+        $profile->scholarity = $request->scholarity;
 
-        \Session::flash('mensagem_sucesso', 'Perfil atualizado com sucesso');
+        $profile->user_id = Auth::user()->id;
+        $status = $profile->save();
+
+        $selected_special_needs = array();
+
+        foreach ($request->special_need as $sn) {
+            if(array_key_exists('id', $sn)) {
+                $selected_special_needs[$sn['id']] = array('observation' => "". $sn['observation'], 'permanent' => $sn['permanent']);
+            }
+        }
+
+        $profile->specialNeeds()->sync($selected_special_needs);
+
         
-         return Redirect::to('profiles');
+        if ($status){
+            \Session::flash('mensagem_sucesso', 'Perfil atualizado com sucesso');
+            
+             return Redirect::to('profiles');
+        } else {
+            \Session::flash('mensagem_sucesso', 'Erro ao atualizar o perfil.');
+            
+             return Redirect::to('profiles');
+        }
+
     }
 
     /**

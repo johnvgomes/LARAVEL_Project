@@ -19,7 +19,7 @@
 -->
                 @if(Request::is('*/edit'))
                       <!-- editando -->
-                      {{Form::model($profile, ['method' => 'PATCH','url' => 'profiles/'.$profiles->id])}}
+                      {{Form::model($profile, ['method' => 'PATCH','url' => 'profiles/'.$profile->id])}}
                 @else
                      <!-- incluindo -->
 
@@ -178,6 +178,7 @@
                             
                                         <div class="form-group col-md-12 "> 
                                         <div class="form-group col-md-3 ">
+                                        
                                          {{ form::checkbox("special_need[$sn->id][id]", $sn->id ,null,['class' => 'cb', 'id' => ''.$sn->description])}}
                                          {{ form::label('scholarity',$sn->description)}}
                                          </div>
