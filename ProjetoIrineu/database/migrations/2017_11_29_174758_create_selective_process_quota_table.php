@@ -16,7 +16,7 @@ class CreateSelectiveProcessQuotaTable extends Migration
         Schema::create('selective_process_quota', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('selective_process_id')->unsigned();
-            $table->integer('course_id')->unsigned();
+            $table->integer('quota_id')->unsigned();
             $table->integer('vacancy');
             $table->timestamps();
         });
@@ -28,7 +28,7 @@ class CreateSelectiveProcessQuotaTable extends Migration
         });
 
         Schema::table('selective_process_quota', function(Blueprint $table){
-            $table->foreign('course_id')
+            $table->foreign('quota_id')
                   ->references('id')
                   ->on('courses');
         });
