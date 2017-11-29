@@ -49,3 +49,11 @@
         </div>
     </div>
 </div>
+<form action="{{url('specialneeds/create')}}" style="margin-left: 100px; margin-bottom: -20px;">
+    <div class="fixed-action-btn horizontal click-to-toggle">
+    <button class="mui-btn mui-btn--fab mui-btn--primary">+</button>
+        <ul>
+            <li><a class="btn-floating green"><i class="material-icons">insert_chart</i></a></li>
+        </ul>
+    </div>
+</form>
