@@ -15,7 +15,7 @@ Necessidades Especiais
                 @endif
                     <div style="margin-left: calc(30% - 150px);">
                         <table class ="mui-table" style="margin-top: -35px;">
-                            <thead>
+                            <thead style="border-bottom: 2px solid #E0E0E0;">
                                 <tr>
                                     <th>
                                         <div style="margin-top: 20px;">
