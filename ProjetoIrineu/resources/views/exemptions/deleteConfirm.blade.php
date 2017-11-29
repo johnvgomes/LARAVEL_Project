@@ -12,7 +12,7 @@
                     </div>
                 
                     <div class="form-group col-md-1">
-                    {{ Form::open(['method' => 'DELETE', 'url' => '/exeptions/'.$exemption->id, 'style' => 'display: inline;']) }}
+                    {{ Form::open(['method' => 'DELETE', 'url' => '/exemptions/'.$exemption->id, 'style' => 'display: inline;']) }}
                 
                         <button type="submit" class="btn btn-primary btn-sm">
                             SIM
@@ -20,7 +20,7 @@
                     {{ Form::close() }}
                     </div>
                     <div class="form-group col-md-11">
-                        <a href="../../exeptions" class="btn btn-danger btn-sm">
+                        <a href="../../exemptions" class="btn btn-danger btn-sm">
                             NÃO
                         </a>
                     </div>
