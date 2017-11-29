@@ -48,6 +48,7 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
        
+        dd($request);
           $profile = new Profile();
             $profile->date = $request->date;
             $profile->rg = $request->rg;
@@ -61,7 +62,10 @@ class ProfileController extends Controller
             $profile->phone = $request->phone;
             $profile->mobile = $request->phone;
             $profile->scholarity = $request->scholarity;
+
             $profile->user_id = Auth::user()->id;
+
+
 
             if ($profile->save()){
                 \Session::flash('mensagem_sucesso', 'Perfil cadastrado com sucesso');

@@ -178,11 +178,11 @@
                             
                                         <div class="form-group col-md-12 "> 
                                         <div class="form-group col-md-3 ">
-                                         {{ form::checkbox('special_need_id[]',1,null,['class' => 'cb', 'id' => ''.$sn->description])}}
+                                         {{ form::checkbox("special_need[$sn->id][id]", $sn->id ,null,['class' => 'cb', 'id' => ''.$sn->description])}}
                                          {{ form::label('scholarity',$sn->description)}}
                                          </div>
                                          <div class="form-group col-md-3 ">
-                                         {{ form::input('text','observation',null,['class' => 'form-control', 'autofocus', 'placeholder' => 'Observação'])}}
+                                         {{ form::input('text',"special_need[$sn->id][observation]",null,['class' => 'form-control', 'autofocus', 'placeholder' => 'Observação'])}}
                                         </div>      
                                          <div class="form-group col-md-6 "> 
 
@@ -191,13 +191,13 @@
                                          </div>      
 
                                          <div class="form-group col-md-3 "> 
-                                         {{ form::radio('permanent'.$sn->description, 'yes') }}
-                                         {{ form::label('permanent'.$sn->description,'sim')}}
+                                         {{ form::radio("special_need[$sn->id][permanent]", 1) }}
+                                         {{ form::label("special_need[$sn->id][permanent]",'sim')}}
                                          </div>
                                        
 	                                    <div class="form-group col-md-3 "> 
-                                         {{ form::radio('permanent'.$sn->description,null, 'no') }}
-                                         {{ form::label('permanent'.$sn->description,'nao')}}
+                                         {{ form::radio("special_need[$sn->id][permanent]", 0, true) }}
+                                         {{ form::label("special_need[$sn->id][permanent]",'não')}}
                                          </div>
                                          
                                          </div>
