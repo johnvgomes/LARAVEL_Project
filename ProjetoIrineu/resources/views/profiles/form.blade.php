@@ -23,27 +23,40 @@ Perfis
                 @if(Request::is('*/edit'))
                       <!-- editando -->
                       {{Form::model($profile, ['method' => 'PATCH','url' => 'profiles/'.$profile->id])}}
+                
+                      <div class="form-group col-md-3 ">
+                            {{ form::label('name','Nome')}}
+                        </div>
+
+                        <div class="form-group col-md-9 ">
+                        {{ form::label('name',strtoupper($profile->user->name))}}
+                        </div>
+                
                 @else
                      <!-- incluindo -->
 
                 {{ Form::open(['route' => 'profiles.store']) }}
-                @endif
-<!--
-                        <div class="form-group col-md-3 ">
-                            {{ form::label('name','IMG')}}
-                        </div>
 
-                        <div class="form-group col-md-9">
-                            {{ form::input('file','name',null,['class' => '', ''])}}
-                        </div>
--->
                         <div class="form-group col-md-3 ">
                             {{ form::label('name','Nome')}}
                         </div>
 
                         <div class="form-group col-md-9 ">
                         {{ form::label('name',strtoupper(Auth::user()->name))}}
-                         </div>
+                        </div>
+                @endif
+<!--
+                        <div class="form-group col-md-3 ">
+                            {{ form::label('name','IMG')}}
+                        </div>
+Auth::user()->name
+
+$profiles->user->name
+                        <div class="form-group col-md-9">
+                            {{ form::input('file','name',null,['class' => '', ''])}}
+                        </div>
+-->
+                        
 
 
                         <div class="form-group col-md-3 ">

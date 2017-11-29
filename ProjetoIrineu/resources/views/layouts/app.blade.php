@@ -1,3 +1,8 @@
+<?php
+
+use App\Models\Profile;
+?>
+
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -385,10 +390,15 @@
                                                             document.getElementById('logout-form').submit();">
                                                     Sair
                                                 </a>
-                                                
-                                                <a href="../../profiles/{{ $profile->id }}/edit">
-                                                    Meu Perfil
-                                                </a>
+                                                @if(Auth::user()->profile)
+                                                    <a href="/profiles/{{ Auth::user()->profile->id }}/edit">
+                                                        Meu Perfil
+                                                    </a>
+                                                @else
+                                                    <a href="/profiles/create">
+                                                        Meu Perfil
+                                                    </a>
+                                                @endif
                                             
 
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
