@@ -1,6 +1,9 @@
 @extends('layouts.app')
-
-@section('content')
+<br /><br /><br /><br />
+@section('title')
+<img src="/icon/seta.svg" height="30" width="25" style="margin-top: -3px;"/>
+Cotas
+@endsection
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -43,4 +46,3 @@
         </div>
     </div>
 </div>
-@endsection
