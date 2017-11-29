@@ -46,15 +46,49 @@ class SelectiveProcessController extends Controller
      */
     public function store(Request $request)
     {
-       
-          $selectiveprocess = new SelectiveProcess();
+     
+        $selectiveprocess = new SelectiveProcess();
         
-          $selectiveprocess = $selectiveprocess->create($request->all());
+          $selectiveprocess->name = $request->name;
+          $selectiveprocess->start_date = $request->start_date;
+          $selectiveprocess->end_date = $request->end_date;
+          $selectiveprocess->description = $request->description;
+          $selectiveprocess->active = $request->active;
+
+        $status = $selectiveprocess->save();
 
 
-          \Session::flash('mensagem_sucesso', 'processo seletivo criado com sucesso!');
+        $selected_courses = array();
+        #$selected_quotas = array();
+dd($request);   
+        foreach ($request->course as $course) {
+            if(array_key_exists('id', $course)) {
+                $selected_courses[$course['id']] = array('vacancy' => "". $course['vacancy']);
+            }
+        }
 
-          return Redirect::to('selectiveprocesses/create');
+        #dd($selected_courses);
+
+        $selectiveprocess->courses()->sync($selected_courses);
+
+
+        foreach ($request->quotas as $quotas) {
+            if(array_key_exists('id', $quotas)) {
+                $selected_courses[$quotas['id']] = array('vacancy' => "". $quotas['vacancy']);
+            }
+        }
+
+        $selectiveprocess->courses()->sync($selected_courses);
+
+        if ($status){
+            \Session::flash('mensagem_sucesso', 'Processo Seletivo cadastrado com sucesso!');
+            
+             return Redirect::to('profiles');
+        } else {
+            \Session::flash('error', 'Ocorreu algum erro ao cadastrar o Processo Seletivo!');
+            
+             return Redirect::to('profiles/create');
+        }
     }
 
     /**

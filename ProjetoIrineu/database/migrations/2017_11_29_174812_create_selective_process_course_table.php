@@ -30,7 +30,7 @@ class CreateSelectiveProcessCourseTable extends Migration
         Schema::table('selective_process_course', function(Blueprint $table){
             $table->foreign('course_id')
                   ->references('id')
-                  ->on('quotas');
+                  ->on('courses');
         });
     }
 

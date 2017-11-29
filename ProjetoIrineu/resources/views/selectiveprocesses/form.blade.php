@@ -25,7 +25,7 @@ Processos Seletivos
                 @else
                      <!-- incluindo -->
 
-                {{ Form::open(['route' => 'selectiveprocesses.store']) }}
+                    {{ Form::open(['route' => 'selectiveprocesses.store']) }}
                 @endif
 
                 <div class="mui-textfield mui-textfield--float-label">
@@ -61,21 +61,22 @@ Processos Seletivos
                     <hr>
                 </div>
                 
-                @foreach ($courses as $courses)                
-                    @if ($courses->count() == 0)
+                @foreach ($courses as $course)                
+                    @if ($course->count() == 0)
                         <div class="form-group col-md-12 "> 
                             <p>não há cursos cadastrados</p>
                         </div>    
                     @else
                         <div class="form-group col-md-12 "> 
                             <div class="form-group col-md-3 ">
-                                {{ form::label('name',$courses->name)}} 
+                                {{ form::label('name',$course->name)}} 
                             </div>
                             <div class="form-group col-md-1 ">
-                                {{ form::checkbox('course_id[]',1,null,['class' => 'cb', 'id' => ''.$courses->name])}}
+                                {{ form::checkbox("special_need[$sn->id][id]", $sn->id ,null,['class' => 'cb', 'id' => ''.$sn->description])}} 
+                                {{ form::checkbox('course[$course->id][id]',$course->id,null,['class' => 'cb', 'id' => ''.$course->name])}}
                             </div>
                             <div class="mui-textfield mui-textfield--float-label">
-                                {{ form::input('text','vacancy',null)}}
+                                {{ form::input('number','vacancy',null)}}
                                 <label>Vagas</label>
                             </div> 
                         </div> 
@@ -98,10 +99,10 @@ Processos Seletivos
                                 {{ form::label('name',$quotas->name)}} 
                             </div>
                             <div class="form-group col-md-1 ">
-                                {{ form::checkbox('course_id[]',1,null,['class' => 'cb', 'id' => ''.$quotas->name])}}
+                                {{ form::checkbox('quotas[$quotas->id][id]',$quotas->id,null,['class' => 'cb', 'id' => ''.$quotas->name])}}
                             </div>
                             <div class="mui-textfield mui-textfield--float-label">
-                                {{ form::input('text','vacancy',null)}}
+                                {{ form::input('number','vacancy',null)}}
                                 <label>Vagas</label>
                             </div> 
                         </div> 

@@ -12,7 +12,9 @@ class SelectiveProcess extends Model
         'start_date',
         'end_date',
         'active',
-        'description'
+        'description',
+        'course_id',
+        'quotas_id'
     ];
 
 
