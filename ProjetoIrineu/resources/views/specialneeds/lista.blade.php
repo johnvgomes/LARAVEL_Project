@@ -1,7 +1,7 @@
 @extends('layouts.app')
 <br /><br /><br /><br />
 @section('title')
-<img src="icon/seta.svg" height="30" width="25" style="margin-top: -3px;"/>
+<img src="/icon/seta.svg" height="30" width="25" style="margin-top: -3px;"/>
 Necessidades Especiais
 @endsection
 <div class="mui-container">

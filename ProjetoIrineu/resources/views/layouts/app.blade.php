@@ -356,7 +356,7 @@
                         
                         @else
                         <td class = "drawer">
-                            <img class="sidedrawer-toggle js-show-sidedrawer logo" src="icon/menu.svg" height="25" width="25" style="margin-right: 15px;"/>
+                            <img class="sidedrawer-toggle js-show-sidedrawer logo" src="/icon/menu.svg" height="25" width="25" style="margin-right: 15px;"/>
                         </td>
                         @endguest
                         <td>
