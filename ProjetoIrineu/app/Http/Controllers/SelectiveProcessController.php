@@ -6,6 +6,8 @@ use App\Models\SelectiveProcess;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Redirect;
+use App\Models\Quota;
+use App\Models\Course;
 
 class SelectiveProcessController extends Controller
 {
@@ -17,7 +19,7 @@ class SelectiveProcessController extends Controller
     public function index()
     {
         $selectiveprocesses = SelectiveProcess::all();
-       
+        
 
         return view('selectiveprocesses.list',['selectiveprocesses'=> $selectiveprocesses]);
     }
@@ -29,7 +31,10 @@ class SelectiveProcessController extends Controller
      */
     public function create()
     { 
-        return view('selectiveprocesses.form');
+        $selectiveprocesses = SelectiveProcess::all();
+        $quotas = Quota::all();
+        $courses = Course::all();
+        return view('selectiveprocesses.form',['selectiveprocesses'=> $selectiveprocesses,'courses'=> $courses ,'quotas'=> $quotas]);
         
     }
 
