@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Quota extends Model
 {
-    //
+    protected $fillable =[
+        
+                'description',
+            ];
 }
