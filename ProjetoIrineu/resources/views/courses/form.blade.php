@@ -1,39 +1,41 @@
 @extends('layouts.app')
-
-@section('content')
+<br /><br /><br /><br />
+@section('title')
+<img src="/icon/seta.svg" height="30" width="25" style="margin-top: -3px;"/>
+Cursos
+@endsection
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                Informe abaixo as informações da categoria
-                <a class="pull-right" href="{{url('categories')}}">Listagem das categorias</a>
+                Informe abaixo as informações de cursos
+                <a class="pull-right" href="{{url('courses')}}">Listagem dos cursos</a>
                 </div>
 
                 <div class="panel-body">
-<!--
+
 
                 @if(Session::has('mensagem_sucesso'))
                   <div class= "alert alert-success">{{ Session::get('mensagem_sucesso')}}</div>
                 @endif
--->
 
-                @if(Request::is('*/editar'))
+                @if(Request::is('*/edit'))
                       <!-- editando -->
-                      {{Form::model($category, ['method' => 'PATCH','url' => 'categories/'.$category->id])}}
+                      {{Form::model($courses, ['method' => 'PATCH','url' => 'courses/'.$courses->id])}}
                 @else
                      <!-- incluindo -->
 
-                      {{ Form::open(['route' => 'categories.store']) }}
+                {{ Form::open(['route' => 'courses.store']) }}
                 @endif
 
 
                         <div class="form-group col-md-2 ">
-                            {{ form::label('descricao','Descrição')}}
+                            {{ form::label('name','Nome')}}
                         </div>
 
                         <div class="form-group col-md-10">
-                            {{ form::input('text','descricao',null,['class' => 'form-control', 'autofocus', 'placeholder' => ' Descrição'])}}
+                            {{ form::input('text','name',null,['class' => 'form-control', 'autofocus', 'placeholder' => ' Nome'])}}
                         </div>
 
                         
@@ -50,4 +52,3 @@
         </div>
     </div>
 </div>
-@endsection

@@ -1,13 +1,15 @@
 @extends('layouts.app')
-
-@section('content')
+<br /><br /><br /><br />
+@section('title')
+<img src="/icon/seta.svg" height="30" width="25" style="margin-top: -3px;"/>
+Necessidades Especiais
+@endsection
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="mui-panel">
                 <div class="panel-heading">
                 Informe abaixo as informações da necessidade especial
-                <a class="pull-right" href="{{url('specialneeds')}}">Listagem das necessidades especiais</a>
                 </div>
 
                 <div class="panel-body">
@@ -22,31 +24,20 @@
                       {{Form::model($spneeds, ['method' => 'PATCH','url' => 'specialneeds/'.$spneeds->id])}}
                 @else
                      <!-- incluindo -->
-
                 {{ Form::open(['route' => 'specialneeds.store']) }}
                 @endif
-
-
-                        <div class="form-group col-md-2 ">
-                            {{ form::label('description','Descrição')}}
-                        </div>
-
-                        <div class="form-group col-md-10">
-                            {{ form::input('text','description',null,['class' => 'form-control', 'autofocus', 'placeholder' => ' Descrição'])}}
-                        </div>
-
-                        
-
-                        <div class="col-md-4 col-md-offset-8">
-                        <div class="form-group pull-right">
-                            {{ form::submit('Salvar',['class'=>'btn btn-primary'])}}
-                        </div>
-                        </div>
-
+                    <div class="mui-textfield mui-textfield--float-label">
+                        {{ form::input('text','description',null)}}
+                        <label>Descrição</label>
+                    </div>
+                    <div style="margin-left: calc(50% - 115px);">
+                        <a class="mui-btn mui-btn--raised" href="{{url('specialneeds')}}">Voltar</a>
+                        <button type="submit" class="mui-btn mui-btn--primary">Salvar</button>
+                    </div>
                 {{ Form::close() }}
+                </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection

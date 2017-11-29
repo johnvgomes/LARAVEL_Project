@@ -72,3 +72,8 @@ Route::get('quotas/{quota}/confirmDestroy', 'QuotaController@confirmDestroy');
 
 Route::resource('exemptions', 'ExemptionController');
 Route::get('exemptions/{exemption}/confirmDestroy', 'ExemptionController@confirmDestroy');
+
+###################     rotas de curso  #######################
+
+Route::resource('courses', 'CourseController');
+Route::get('courses/{course}/confirmDestroy', 'CourseController@confirmDestroy');

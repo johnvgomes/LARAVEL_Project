@@ -9,6 +9,7 @@
     <script src="/Laravel/ProjetoIrineu/public/js/mui.min.js"></script>
 -->
     <link href="/css/mui.min.css" rel="stylesheet" type="text/css" />
+    
     <script src="/js/mui.min.js"></script>
    
     <script src="/js/jquery-2.1.4.min.js"></script>
@@ -152,7 +153,11 @@
            margin-top:15px;
            border-bottom: solid #E0E0E0;
            border-width: 1px;
-        }
+        }<div class="mui-container-fluid">
+                <form action="{{url('specialneeds/create')}}" style="margin-left: 100px; margin-bottom: -20px;">
+                    <button class="mui-btn mui-btn--fab mui-btn--primary">+</button>
+                </form>
+            </div>
 
         header ul.mui-list--inline {
         margin-bottom: 0;
@@ -198,6 +203,125 @@
         border-top: 1px solid #e0e0e0;
         padding-top: 35px;
         }
+
+        .fixed-action-btn {
+        position: fixed;
+        right: 23px;
+        bottom: 23px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 997;
+        }
+
+        .fixed-action-btn.active ul {
+        visibility: visible;
+        }
+
+        .fixed-action-btn.horizontal {
+        padding: 0 0 0 15px;
+        }
+
+        .fixed-action-btn.horizontal ul {
+        text-align: right;
+        right: 64px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+        height: 100%;
+        left: auto;
+        width: 500px;
+        /*width 100% only goes to width of button container */
+        }
+
+        .fixed-action-btn.horizontal ul li {
+        display: inline-block;
+        margin: 15px 15px 0 0;
+        }
+
+        .fixed-action-btn.toolbar {
+        padding: 0;
+        height: 56px;
+        }
+
+        .fixed-action-btn.toolbar.active > a i {
+        opacity: 0;
+        }
+
+        .fixed-action-btn.toolbar ul {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+        }
+
+        .fixed-action-btn.toolbar ul li {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+            -ms-flex: 1;
+                flex: 1;
+        display: inline-block;
+        margin: 0;
+        height: 100%;
+        -webkit-transition: none;
+        transition: none;
+        }
+
+        .fixed-action-btn.toolbar ul li a {
+        display: block;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        -webkit-box-shadow: none;
+                box-shadow: none;
+        color: #fff;
+        line-height: 56px;
+        z-index: 1;
+        }
+
+        .fixed-action-btn.toolbar ul li a i {
+        line-height: inherit;
+        }
+
+        .fixed-action-btn ul {
+        left: 0;
+        right: 0;
+        text-align: center;
+        position: absolute;
+        bottom: 64px;
+        margin: 0;
+        visibility: hidden;
+        }
+
+        .fixed-action-btn ul li {
+        margin-bottom: 15px;
+        }
+
+        .fixed-action-btn ul a.btn-floating {
+        opacity: 0;
+        }
+
+        .fixed-action-btn .fab-backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 40px;
+        height: 40px;
+        background-color: #26a69a;
+        border-radius: 50%;
+        -webkit-transform: scale(0);
+                transform: scale(0);
+        }
+
+        ol, ul {
+            margin-top: 0;
+            margin-bottom: 0px;
+        }
 </style>
 </head>
 <body>
@@ -212,12 +336,13 @@
         <li>
             <strong style="color: #000; font-size:12;">Opções</strong>
             <ul>
+            <li><a href="{{url('/home') }}" style="color:#000;">Home</a></li>
             <li><a href="{{url('/specialneeds') }}" style="color:#000;">Necessidades Especiais</a></li>
-            <li><a href="{{url('/products') }}" style="color:#000;">Produtos</a></li>
-            <li><a href="{{url('/categories') }}" style="color:#000;">Categorias</a></li>
             <li><a href="{{url('/profiles') }}" style="color:#000;">Profiles</a></li>
             <li><a href="{{url('/selectiveprocesses') }}" style="color:#000;">Processos Seletivos</a></li>
-            <li><a href="{{url('/home') }}" style="color:#000;">Home</a></li>
+            <li><a href="{{url('/quotas') }}" style="color:#000;">Cotas</a></li>
+            <li><a href="{{url('/courses') }}" style="color:#000;">Cursos</a></li>
+            <li><a href="{{url('/exemptions') }}" style="color:#000;">Isenção</a></li>
             </ul>
         </li>
         </ul>
@@ -232,11 +357,14 @@
                         
                         @else
                         <td class = "drawer">
-                            <a class="sidedrawer-toggle js-show-sidedrawer logo" style="font-size: 120%;">☰</a>
+                            <img class="sidedrawer-toggle js-show-sidedrawer logo" src="/icon/menu.svg" height="25" width="25" style="margin-right: 15px;"/>
                         </td>
                         @endguest
                         <td>
                             <a class="logo" href="{{url('/') }}"><img src="/img/IFClogo2.png" style="width: 30px; height: auto;"/></a>
+                            <spam style="color: #fff; font: 20px roboto, sans-serif; margin-left: 15px; vertical-align: middle;">
+                                @yield('title')
+                            </spam>
                         </td>
                         <td class="mui--text-right">
                             <ul class="mui-list--inline mui--text-body2">

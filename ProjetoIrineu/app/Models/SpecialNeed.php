@@ -8,7 +8,10 @@ class SpecialNeed extends Model
 {
     protected $fillable = ['description'];
 
-    public function profiles() {
-        return $this->belongsToMany('App\Models\Profile')->withPivot('permanent', 'observation');    
+    public function profile() {
+        
+        return $this->belongsToMany('App\Models\Profile')->withPivot('permanent','observation');
+        
+    
     }
 }
