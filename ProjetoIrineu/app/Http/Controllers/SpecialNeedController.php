@@ -21,7 +21,7 @@ class SpecialNeedController extends Controller
     public function index()
     {
         $spneeds = SpecialNeed::all();
-        return view('specialneeds.lista',['spneeds'=> $spneeds]);
+        return view('specialneeds.list',['spneeds'=> $spneeds]);
    
     }
 
@@ -32,7 +32,7 @@ class SpecialNeedController extends Controller
      */
     public function create()
     { 
-        return view('specialneeds.formulario');
+        return view('specialneeds.form');
         
     }
 
@@ -76,7 +76,7 @@ class SpecialNeedController extends Controller
     {
         $spneeds = SpecialNeed::findorfail($id);
         
-        return view('specialneeds.formulario',['spneeds'=> $spneeds]);
+        return view('specialneeds.form',['spneeds'=> $spneeds]);
           
     }
 
