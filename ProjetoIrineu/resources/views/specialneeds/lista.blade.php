@@ -1,9 +1,12 @@
 @extends('layouts.app')
 <br /><br /><br /><br />
+@section('title')
+<img src="img/seta.svg" height="40" width="35" style="margin-top: -5px;"/>
+Necessidades Especiais
+@endsection
 <div class="mui-container">
     <div class="row">
         <div class="panel-body" style="width: 50%; left:25%; right: 75%; position: absolute;">
-            <p style="margin-left: -15px;">Necessidades especiais</p><br /><br />
                 
                 <div class="panel-body">
 

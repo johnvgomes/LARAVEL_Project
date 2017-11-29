@@ -317,6 +317,11 @@
         -webkit-transform: scale(0);
                 transform: scale(0);
         }
+
+        ol, ul {
+            margin-top: 0;
+            margin-bottom: 0px;
+        }
 </style>
 </head>
 <body>
@@ -356,6 +361,9 @@
                         @endguest
                         <td>
                             <a class="logo" href="{{url('/') }}"><img src="/img/IFClogo2.png" style="width: 30px; height: auto;"/></a>
+                            <spam style="color: #fff; font: 20px roboto, sans-serif; margin-left: 18px; vertical-align: middle;">
+                                @yield('title')
+                            </spam>
                         </td>
                         <td class="mui--text-right">
                             <ul class="mui-list--inline mui--text-body2">
