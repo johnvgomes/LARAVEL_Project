@@ -6,7 +6,7 @@ Processos Seletivos
 @endsection
 <div class="mui-container">
     <div class="row">
-        <div style="width: 60%; left:18%; right: 82%; position: absolute;">
+        <div style="width: 100%; margin-left: -75px;">
                 
                 <div class="panel-body">
 
@@ -38,7 +38,7 @@ Processos Seletivos
                                             </div>
                                         </th>
                                         <th>
-                                            <div style="margin-top: 20px;">
+                                            <div style="margin-top: 20px; margin-left: calc(100% - 55px);">
                                                 Ações
                                             </div>
                                         </th>
