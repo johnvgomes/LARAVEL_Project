@@ -18,6 +18,12 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $course = Course::all();
@@ -45,7 +51,7 @@ class CourseController extends Controller
     public function store(Request $request)
     {
        
-        $course = new Quota();
+        $course = new Course();
         $course= $course->create($request->all());
 
         if($course->save()) {
@@ -90,7 +96,7 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $course = Quota::findorfail($id);
+        $course = Course::findorfail($id);
 
         $course->update($request->all());
 
