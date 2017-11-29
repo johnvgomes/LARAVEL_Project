@@ -10,6 +10,7 @@
 -->
     <link href="/css/mui.min.css" rel="stylesheet" type="text/css" />
     <script src="/js/mui.min.js"></script>
+    <script src="/js/specialneed_observation.js"></script>
     <script src="/js/jquery-2.1.4.min.js"></script>
     <!-- CSRF Token -->
 

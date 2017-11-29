@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProfileSpecialneedTable extends Migration
+class CreateAddressTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,26 +13,27 @@ class CreateProfileSpecialneedTable extends Migration
      */
     public function up()
     {
-        Schema::create('profile_special_need', function (Blueprint $table) {
+        Schema::create('address', function (Blueprint $table) {
             $table->increments('id');
+            $table->date('street'); 
+            $table->string('number');
+            $table->string('cep');
+            $table->string('neighborhood');
+            $table->string('typeaddress');
+            $table->string('city');
+            $table->string('state');
+            $table->string('country');
             $table->integer('profile_id')->unsigned();
-            $table->integer('special_need_id')->unsigned();
-            $table->integer('permanent');
-            $table->string('observation');
             $table->timestamps();
         });
-        
-        Schema::table('profile_special_need', function(Blueprint $table){
+
+        Schema::table('address', function(Blueprint $table){
             $table->foreign('profile_id')
                   ->references('id')
                   ->on('profiles');
         });
+   
 
-        Schema::table('profile_special_need', function(Blueprint $table){
-            $table->foreign('special_need_id')
-                  ->references('id')
-                  ->on('special_needs');
-        });
     }
 
     /**
@@ -42,6 +43,6 @@ class CreateProfileSpecialneedTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profile_special_need');
+        Schema::dropIfExists('address');
     }
 }

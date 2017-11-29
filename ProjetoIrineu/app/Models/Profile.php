@@ -23,11 +23,17 @@ class Profile extends Model
         'user_id'
     ];
 
-    public function specialneed() {        
+    public function specialNeeds() {        
         return $this->belongsToMany('App\Models\SpecialNeed')->withPivot('permanent','observation');
     }
 
     public function user(){
         return $this->belongsTo('App\Models\User');
+    }
+
+    
+    public function address() 
+    {
+        return $this->hasOne('App\Models\Address');
     }
 }

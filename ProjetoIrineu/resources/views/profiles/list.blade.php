@@ -18,18 +18,18 @@
                     <th>Nome</th>
                     <th></th>
                     <tbody>
-                            @foreach ($profiles as $profile)
+                            @foreach ($profile as $profiles)
                             <tr>
-                                <td>{{ $profile->user->name }}</td>
+                                <td>{{ $profiles->user->name }}</td>
                                 <td>
 
 
-                                <a href="profiles/{{ $profile->id }}/edit" class="btn btn-info btn-sm">
+                                <a href="profiles/{{ $profiles->id }}/edit" class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </a>
 
 
-                                <a href="profiles/{{ $profile->id }}/confirmDestroy" class="btn btn-danger btn-sm">
+                                <a href="profiles/{{ $profiles->id }}/confirmDestroy" class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </a>
 

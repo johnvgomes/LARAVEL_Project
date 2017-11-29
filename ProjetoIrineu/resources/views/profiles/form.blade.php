@@ -19,7 +19,7 @@
 -->
                 @if(Request::is('*/edit'))
                       <!-- editando -->
-                      {{Form::model($profiles, ['method' => 'PATCH','url' => 'profiles/'.$profiles->id])}}
+                      {{Form::model($profile, ['method' => 'PATCH','url' => 'profiles/'.$profiles->id])}}
                 @else
                      <!-- incluindo -->
 
@@ -158,6 +158,66 @@
                                                         ], null, ['class' => 'form-control']) 
                                                 }}  
                                                  </div>
+
+
+                                                 <div class="form-group col-md-12 ">
+                                                 <h4>NECESSIDADES ESPECIAIS</h4>
+                                                 <hr>
+                                                 </div>
+                                                 
+
+                        @foreach ($specialNeeds as $sn)
+
+                        
+                            @if ($sn->count() == 0)
+                            <div class="form-group col-md-12 "> 
+                            
+                            <p>não há necessidades especiais cadastradas</p>
+                            </div>    
+                            @else
+                            
+                                        <div class="form-group col-md-12 "> 
+                                        <div class="form-group col-md-3 ">
+                                         {{ form::checkbox('special_need_id[]',1,null,['class' => 'cb', 'id' => ''.$sn->description])}}
+                                         {{ form::label('scholarity',$sn->description)}}
+                                         </div>
+                                         <div class="form-group col-md-3 ">
+                                         {{ form::input('text','observation',null,['class' => 'form-control', 'autofocus', 'placeholder' => 'Observação'])}}
+                                        </div>      
+                                         <div class="form-group col-md-6 "> 
+
+                                         <div class="form-group col-md-6 "> 
+                                         {{ form::label('lblpermanent','Permanente:')}}
+                                         </div>      
+
+                                         <div class="form-group col-md-3 "> 
+                                         {{ form::radio('permanent'.$sn->description, 'yes') }}
+                                         {{ form::label('permanent'.$sn->description,'sim')}}
+                                         </div>
+                                       
+	                                    <div class="form-group col-md-3 "> 
+                                         {{ form::radio('permanent'.$sn->description,null, 'no') }}
+                                         {{ form::label('permanent'.$sn->description,'nao')}}
+                                         </div>
+                                         
+                                         </div>
+                                        </div>
+                                   
+
+                            @endif
+                        @endforeach
+
+                           
+                         
+        <!--
+                        <div class="form-group col-md-9">
+                            {{ form::checkbox('special_need_id[]',null,['class' => 'form-control', 'autofocus', ''])}}
+                            <label>Teste</label><br />
+                            {{ form::checkbox('special_need_id[]',null,['class' => 'form-control', 'autofocus', ''])}}
+                            {{ form::checkbox('special_need_id[]',null,['class' => 'form-control', 'autofocus', ''])}}
+                        </div>
+-->
+
                         <div class="col-md-4 col-md-offset-8">
                         <div class="form-group pull-right">
                             {{ form::submit('Salvar',['class'=>'btn btn-primary'])}}

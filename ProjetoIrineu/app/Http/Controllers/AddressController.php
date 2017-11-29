@@ -4,8 +4,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-use App\Models\Profile;
-use App\Models\SpecialNeed;
+use App\Models\Address;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
@@ -21,7 +20,7 @@ class ProfileController extends Controller
     public function index()
     {
         $profile = Profile::all();
-        return view('profiles.list',['profile'=> $profile]);
+        return view('profiles.list',['profiles'=> $profile]);
    
     }
 
@@ -32,11 +31,8 @@ class ProfileController extends Controller
      */
     public function create()
     { 
-        $profile = Profile::all();
-        $specialNeeds = SpecialNeed::all();
-
-        return view('profiles.form',['profile'=> $profile, 'specialNeeds' => $specialNeeds]);
-    
+        return view('profiles.form');
+        
     }
 
     /**
@@ -98,7 +94,7 @@ class ProfileController extends Controller
     {
         $profile = Profile::findorfail($id);
         
-       // return view('profiles.form',compact('profile'));
+        return view('profiles.form',['profiles'=> $profile]);
           
     }
 
@@ -148,5 +144,4 @@ class ProfileController extends Controller
 
 
     }
-
 }
