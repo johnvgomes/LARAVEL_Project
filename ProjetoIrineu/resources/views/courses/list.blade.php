@@ -19,6 +19,11 @@ Cursos
                                 <tr>
                                     <th>
                                         <div style="margin-top: 20px;">
+                                            ID
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div style="margin-top: 20px;">
                                             Nome
                                         </div>
                                     </th>
@@ -32,6 +37,7 @@ Cursos
                             <tbody>
                             @foreach ($course as $course)
                             <tr style="border-top: 1px solid #E0E0E0; border-collapse: separate;">
+                                <td>{{ $course->id }}</td>
                                 <td>{{ $course->name }}</td>
                                 <td>
                                     <form action="courses/{{ $course->id }}/edit" style="margin-top: 10px; margin-left: calc(100% + 40px);">
