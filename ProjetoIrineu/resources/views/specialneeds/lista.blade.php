@@ -23,7 +23,7 @@ Necessidades Especiais
                                         </div>
                                     </th>
                                     <th>
-                                        <div style="margin-top: 20px; margin-left: calc(100% + 75px);">
+                                        <div style="margin-top: 20px; margin-left: calc(100% + 40px);">
                                             Ações
                                         </div>
                                     </th>
