@@ -72,7 +72,6 @@ Processos Seletivos
                                 {{ form::label('name',$course->name)}} 
                             </div>
                             <div class="form-group col-md-1 ">
-                                {{ form::checkbox("special_need[$sn->id][id]", $sn->id ,null,['class' => 'cb', 'id' => ''.$sn->description])}} 
                                 {{ form::checkbox('course[$course->id][id]',$course->id,null,['class' => 'cb', 'id' => ''.$course->name])}}
                             </div>
                             <div class="mui-textfield mui-textfield--float-label">
