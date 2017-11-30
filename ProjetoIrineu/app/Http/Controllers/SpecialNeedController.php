@@ -52,7 +52,7 @@ class SpecialNeedController extends Controller
 
           \Session::flash('mensagem_sucesso', 'Necessidade especial cadastrada com sucesso');
 
-          return Redirect::to('specialneeds/create');
+          return Redirect::to('specialneeds');
     }
 
     /**

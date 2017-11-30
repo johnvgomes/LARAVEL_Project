@@ -27,8 +27,9 @@ Necessidades Especiais
                 {{ Form::open(['route' => 'specialneeds.store']) }}
                 @endif
                     <div class="mui-textfield mui-textfield--float-label">
-                        {{ form::input('text','description',null)}}
-                        <label>Descrição</label>
+                    {{ form::input('text','description',null,['class' => 'form-control', 'autofocus', 'placeholder' => 'Descrição'])}}
+
+                         <label>Descrição</label>
                     </div>
                     <div style="margin-left: calc(50% - 115px);">
                         <a class="mui-btn mui-btn--raised" href="{{url('specialneeds')}}">Voltar</a>
