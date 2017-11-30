@@ -98,23 +98,24 @@ Processos Seletivos
                     </tr>
                 </thead>
                 @if ($quotas->count() == 0)
-                        <tr class=""> 
-                            <p>não há cursos cadastrados</p>
-                        </tr>    
+                    <tr class=""> 
+                        <p>não há cursos cadastrados</p>
+                    </tr>    
                 @else
                     @foreach ($quotas as $quotas)                
-                            <tr>
-                                <td>
-                                    {{ form::checkbox("quotas[$quotas->id][id]",$quotas->id,null,['class' => 'cb', 'id' => ''.$quotas->name])}}
-                                    <span style="margin-left: 10px;">{{ form::label('name',$quotas->name)}}</span>
-                                </td> 
-                            </tr> 
-                            <tr>    
-                                <td class="mui-textfield mui-textfield--float-label">
-                                    {{ form::input('number',"quotas[$quotas->id][vacancy]",null)}}
-                                    <label>Vagas</label>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                {{ form::checkbox("quotas[$quotas->id][id]",$quotas->id,null,['class' => 'cb', 'id' => ''.$quotas->name])}}
+                                <span style="margin-left: 10px;">{{ form::label('name',$quotas->name)}}</span>
+                            </td> 
+                        </tr> 
+                        <tr>    
+                            <td class="mui-textfield mui-textfield--float-label">
+                                {{ form::input('number',"quotas[$quotas->id][vacancy]",null)}}
+                                
+                                <label>Vagas</label>
+                            </td>
+                        </tr>
                     @endforeach
                 @endif
                 </tbody>

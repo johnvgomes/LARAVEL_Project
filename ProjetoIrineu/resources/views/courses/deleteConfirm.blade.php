@@ -22,7 +22,7 @@ Curso
                         </button>
                     {{ Form::close() }}
                     </div>
-
+                        
                     <div class="mui-col-md-offset-2">
                         <a href="../../selectiveprocesses" class="mui-btn mui-btn--danger">
                             NÃO

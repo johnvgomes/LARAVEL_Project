@@ -66,7 +66,7 @@ class SelectiveProcessController extends Controller
             }
         }
 
-       # dd($selected_courses);
+       // dd($selected_courses);
 
         $selectiveprocess->courses()->sync($selected_courses);
 

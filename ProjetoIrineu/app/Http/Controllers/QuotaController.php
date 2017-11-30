@@ -121,7 +121,7 @@ class QuotaController extends Controller
         $quota->delete();
         \Session::flash('mensagem_sucesso', 'Cota deletada com sucesso');
         
-         return Redirect::to('quotas.index');
+         return Redirect::to('quotas');
      }
     public function confirmDestroy($id)
     {

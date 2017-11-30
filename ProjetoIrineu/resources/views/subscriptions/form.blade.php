@@ -33,7 +33,7 @@ Inscrição
                                     </th>
                                 </tr>
                             </thead>
-                            @if ($selectiveprocess->count() == 0)
+                            @if ($selectiveprocesses->count() == 0)
                                     <tr> 
                                         <p>não há processos seletivos cadastrados</p>
                                     </tr>  
@@ -58,7 +58,7 @@ Inscrição
                                     </th>
                                 </tr>
                             </thead>
-                            @if ($course->count() == 0)
+                            @if ($courses->count() == 0)
                                     <tr> 
                                         <p>não há processos seletivos cadastrados</p>
                                     </tr>  
@@ -83,7 +83,7 @@ Inscrição
                                     </th>
                                 </tr>
                             </thead>
-                            @if ($course->count() == 0)
+                            @if ($courses->count() == 0)
                                 <tr> 
                                     <p>não há cotas cadastradas</p>
                                 </tr>  

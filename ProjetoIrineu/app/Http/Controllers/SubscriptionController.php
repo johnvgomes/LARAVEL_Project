@@ -21,12 +21,8 @@ class SubscriptionController extends Controller
     public function index()
     {
         $subscriptions = Subscription::all();
-        $courses = Course::all();
-        $quotas = Quota::all();
-        $selectiveprocesses = SelectiveProcess::all();
-       
 
-        return view('subscriptions.list',['subscription'=> $subscriptions,'courses'=> $courses, 'quotas'=> $quotas, 'selectiveprocesses'=> $selectiveprocesses]);
+        return view('subscriptions.list',['subscription'=> $subscriptions]);
     }
 
     /**
@@ -36,7 +32,14 @@ class SubscriptionController extends Controller
      */
     public function create()
     { 
-        return view('subscriptions.form');
+
+        $subscriptions = Subscription::all();
+        $courses = Course::all();
+        $quotas = Quota::all();
+        $selectiveprocesses = SelectiveProcess::all();
+       
+
+        return view('subscriptions.form',['subscription'=> $subscriptions,'courses'=> $courses, 'quotas'=> $quotas, 'selectiveprocesses'=> $selectiveprocesses]);
         
     }
 
