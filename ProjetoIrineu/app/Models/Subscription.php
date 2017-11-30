@@ -14,6 +14,13 @@ class Subscription extends Model
         'subscription_date'
     ];
 
+    public $rules =[
+        'payment_date' => 'required|date',
+        'paid',
+        'subscription_date'
+
+    ];
+
     public function users()
     {
         return $this->belongsTo('App\Models\Users');

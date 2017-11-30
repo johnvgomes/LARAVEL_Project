@@ -11,4 +11,11 @@ class Exemption extends Model
                 'homologated',
                 'reason',
             ];
+
+
+    public $rules =[
+        'homologated' => 'required',
+        'reason' =>'required|min:3|max:100'
+
+    ];
 }

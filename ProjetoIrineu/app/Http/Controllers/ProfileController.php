@@ -55,7 +55,7 @@ class ProfileController extends Controller
     {
             $profile = new Profile();
           
-            //$this->validate($request, $profile->rules);
+            $this->validate($request, $profile->rules);
             
             $profile->date = $request->date;
             $profile->rg = $request->rg;
@@ -135,6 +135,9 @@ class ProfileController extends Controller
     public function update(Request $request, $id)
     {
         $profile = Profile::findorfail($id);
+
+          
+        $this->validate($request, $profile->rules);
         $profile->date = $request->date;
         $profile->rg = $request->rg;
         $profile->rgemitter = $request->rgemitter;

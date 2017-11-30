@@ -54,7 +54,6 @@ class SpecialNeedController extends Controller
           $spneeds = new SpecialNeed();
         
           $this->validate($request, $spneeds->rules);
-
           $spneeds = $spneeds->create($request->all());
 
           \Session::flash('mensagem_sucesso', 'Necessidade especial cadastrada com sucesso');
@@ -97,12 +96,14 @@ class SpecialNeedController extends Controller
     public function update(Request $request, $id)
     {
         $spneeds = SpecialNeed::findorfail($id);
+
+        $this->validate($request, $spneeds->rules);
         
         $spneeds->update($request->all());
 
         \Session::flash('mensagem_sucesso', 'Necessidade Especial atualizada com sucesso');
         
-         return Redirect::to('specialneeds/'.$spneeds->id.'/edit');
+         return Redirect::to('specialneeds');
     }
 
     /**

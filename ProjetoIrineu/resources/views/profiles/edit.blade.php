@@ -13,7 +13,14 @@ Perfis
                 </div>
 
                 <div class="panel-body">
-
+                @if(isset($errors) && count($errors)>0)
+                  <div class= "alert alert-danger">
+                  
+                  @foreach($errors->all() as $error)
+                  <p>{{$error}}</p>
+                  @endforeach
+                  </div>
+                @endif
 
                <!-- editando -->
                {{Form::model($profile, ['method' => 'PATCH','url' => 'profiles/'.$profile->id])}}

@@ -43,6 +43,8 @@ class QuotaController extends Controller
     public function store(Request $request)
     {
         $quota = new Quota();
+
+        $this->validate($request, $quota->rules);
         $quota->name = $request->name;
 
         $status = $quota->save();
@@ -92,13 +94,14 @@ class QuotaController extends Controller
     {
         $quota = Quota::findorfail($id);
         
+        $this->validate($request, $quota->rules);
         $quota->update($request->all());
         
                 
         if($quota->save()) {
             \Session::flash('mensagem_sucesso', 'Cota atualizada com sucesso');
             
-             return Redirect::to('quotas.index');
+             return Redirect::to('quotas');
             
         } else {
            

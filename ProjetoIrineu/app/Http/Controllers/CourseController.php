@@ -52,12 +52,21 @@ class CourseController extends Controller
     {
        
         $course = new Course();
+         
+        $this->validate($request, $course->rules);
         $course= $course->create($request->all());
 
+     
         if($course->save()) {
-            return redirect()->route('courses.index')->with('success_message', 'Curso criado com sucesso!');
+            
+        \Session::flash('mensagem_sucesso', 'Curso cadastrado com sucesso');
+                        
+        return Redirect::to('courses');
         } else {
-            return redirect()->route('courses.create', $id)->with('error_message', 'Houve um erro ao criar o curso!');
+                    
+        \Session::flash('mensagem_sucesso', 'Erro ao cadastrar curso');
+                        
+        return Redirect::to('courses.create');
         }
             
     }
@@ -98,12 +107,19 @@ class CourseController extends Controller
     {
         $course = Course::findorfail($id);
 
+        $this->validate($request, $course->rules);
         $course->update($request->all());
 
         if($course->save()) {
-            return redirect()->route('courses.index')->with('success_message', 'Curso alterado com sucesso!');
+
+            \Session::flash('mensagem_sucesso', 'Curso atualizado com sucesso');
+            
+            return Redirect::to('courses');
         } else {
-            return redirect()->route('courses.edit', $id)->with('error_message', 'Houve um erro ao alterar o curso!');
+        
+            \Session::flash('mensagem_sucesso', 'Erro ao atualizado curso');
+            
+            return Redirect::to('courses.edit');
         }
     }
 
@@ -119,9 +135,9 @@ class CourseController extends Controller
         $course = Course::findorfail($id);
         
         $course->delete();
-
-        return redirect()->route('courses.index')->with('success_message', 'Curso deletado com sucesso.');
- 
+        \Session::flash('mensagem_sucesso', 'Curso deletado com sucesso');
+        
+        return Redirect::to('courses');
      }
 
     public function confirmDestroy($id)

@@ -10,6 +10,11 @@ class Course extends Model
         'name',
     ];
 
+    public $rules =[
+        'name' => 'required|min:3|max:100'
+
+    ];
+
     public function selectiveProcess() {
         return $this->belongsToMany('App\Models\SelectiveProcess')->withPivot('vacancy');
     }

@@ -12,7 +12,7 @@ class SpecialNeed extends Model
         
         return $this->belongsToMany('App\Models\Profile')->withPivot('permanent','observation');
         
-    }
+    } 
 
     public $rules =[
             'description' => 'required|min:3|max:100'

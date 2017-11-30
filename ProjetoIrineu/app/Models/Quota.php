@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Quota extends Model
 {
     protected $fillable =[
-        'description',
+        'name',
+    ];
+
+    public $rules =[
+        'name' => 'required|min:3|max:100'
+
     ];
 
     public function selectiveProcess() {
