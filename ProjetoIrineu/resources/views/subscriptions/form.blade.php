@@ -9,11 +9,9 @@ Inscrição
         <div class="col-md-8 col-md-offset-2">
             <div class="mui-panel">
                 <div class="panel-heading">
-                Informe abaixo as informações da inscrição
+                    Informe abaixo as informações da inscrição
                 </div>
-
                 <div class="panel-body">
-
 
                 @if(Session::has('mensagem_sucesso'))
                   <div class= "alert alert-success">{{ Session::get('mensagem_sucesso')}}</div>
@@ -26,73 +24,81 @@ Inscrição
                      <!-- incluindo -->
                 {{ Form::open(['route' => 'subscriptions.store']) }}
                 @endif
-                    <div class="mui-textfield mui-textfield--float-label">
-                    {{ form::input('text','name',null,['autofocus'])}}
-
-                         <label>Nome</label>
-                    </div>
-                        @foreach ($specialNeeds as $sn)  
-                            @if ($sn->count() == 0)
-
-                            <p class="mui-textfield mui-textfield" >não há necessidades especiais cadastradas</p>
-                        
-                            @else
-
-                            <div class="form-group col-md-12 "> 
-                                <div class="form-group col-md-3 ">
-                                    <div class="mui-checkbox">
-                                                <label>
-                                                {{ form::checkbox("special_need[$sn->id][id]", $sn->id ,null,['id' => ''.$sn->description])}}
-                                                {{$sn->description}}
-                                                </label>
-                                    </div>
-                                </div>
-                                                
-                                <div class="form-group col-md-3 ">
-                                    <div class="mui-textfield mui-textfield--float-label">
-                                        {{ form::input('text','special_need[$sn->id][observation]',null,['autofocus'])}}
-                                            
-                                        <label>observação</label>
-                                    </div>
-                                                
-                                </div>  
-
-                                <div class="form-group col-md-6 "> 
-                                
-                                    <div class="form-group col-md-6 "> 
-                                        <div class="mui-textfield mui-textfield">
-                                            {{ form::input('text','lblpermanent','Permanente:',['disabled'])}}
-
-                                        </div>
-                                    </div> 
-
-                                    <div class="form-group col-md-3 "> 
-                                                <div class="mui-radio ">
-                                                    <br>
-                                                    <label>
-                                                    {{ form::radio("special_need[$sn->id][permanent]", 1) }}
-                                                
-                                                    sim
-                                                    </label>
-                                                </div>             
-                                    </div>
-
-                                    <div class="form-group col-md-3 "> 
-                                                <div class="mui-radio ">
-                                                    <br>
-                                                    <label>
-                                                    {{ form::radio("special_need[$sn->id][permanent]", 0) }}
-                                                
-                                                    não
-                                                    </label>
-                                                </div>             
-                                    </div> 
-                                </div> 
-
-                                
-                            </div>
-                        @endif
-                    @endforeach
+                    <table class="mui-table ">
+                        <tbody>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Processo Seletivo
+                                    </th>
+                                </tr>
+                            </thead>
+                            @foreach ($selectiveprocesses as $selectiveprocess)                
+                                @if ($selectiveprocess->count() == 0)
+                                    <tr> 
+                                        <p>não há processos seletivos cadastrados</p>
+                                    </tr>  
+                                @else
+                                <tr>
+                                    <td class="">
+                                        <span>{{ form::checkbox('selective_proccess[$selectiveprocess->id][id]',$selectiveprocess->id,null,['class' => 'cb', 'id' => ''.$selectiveprocess->name])}}</span>
+                                        <span style="margin-left: 10px;">{{ form::label('name',$selectiveprocess->name)}}</span>
+                                    </td>
+                                </tr> 
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <table class="mui-table ">
+                        <tbody>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Curso
+                                    </th>
+                                </tr>
+                            </thead>
+                            @foreach ($courses as $course)                
+                                @if ($course->count() == 0)
+                                    <tr> 
+                                        <p>não há processos seletivos cadastrados</p>
+                                    </tr>  
+                                @else
+                                <tr>
+                                    <td class="">
+                                        <span>{{ form::checkbox('course[$course->id][id]',$course->id,null,['class' => 'cb', 'id' => ''.$course->name])}}</span>
+                                        <span style="margin-left: 10px;">{{ form::label('name',$course->name)}}</span>
+                                    </td>
+                                </tr> 
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <table class="mui-table ">
+                        <tbody>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Cota
+                                    </th>
+                                </tr>
+                            </thead>
+                            @foreach ($quotas as $quota)                
+                                @if ($course->count() == 0)
+                                    <tr> 
+                                        <p>não há cotas cadastradas</p>
+                                    </tr>  
+                                @else
+                                <tr>
+                                    <td class="">
+                                        <span>{{ form::checkbox('quota[$quota->id][id]',$quota->id,null,['class' => 'cb', 'id' => ''.$quota->name])}}</span>
+                                        <span style="margin-left: 10px;">{{ form::label('name',$quota->name)}}</span>
+                                    </td>
+                                </tr> 
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
                     <div style="margin-left: calc(50% - 115px);">
                         <a class="mui-btn mui-btn--raised" href="{{url('subscriptions')}}">Voltar</a>
                         <button type="submit" class="mui-btn mui-btn--primary">Salvar</button>

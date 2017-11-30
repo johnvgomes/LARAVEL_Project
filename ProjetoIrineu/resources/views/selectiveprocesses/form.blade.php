@@ -72,14 +72,14 @@ Processos Seletivos
                     <tr>
                         <td class="">
                         
-                            <span>{{ form::checkbox('course[$course->id][id]',$course->id,null,['class' => 'cb', 'id' => ''.$course->name])}}</span>
+                            <span>{{ form::checkbox("course[$course->id][id]",$course->id,null,['class' => 'cb', 'id' => ''.$course->name])}}</span>
                             <span style="margin-left: 10px;">{{ form::label('name',$course->name)}}</span>
                         </td>
                     </tr>
                     <tr>
                         <td class="mui-textfield mui-textfield--float-label">
 
-                             {{ form::input('number',"course[$course->id][vacancy]",null,['autofocus'])}}
+                             {{ form::input('number',"course[$course->id]['vacancy']",null,['autofocus'])}}
                                      
                             <label>Vagas</label>
                         </td>
