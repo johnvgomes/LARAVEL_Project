@@ -145,7 +145,9 @@ class SelectiveProcessController extends Controller
     {
         
        $selectiveprocess = SelectiveProcess::findorfail($id);
-       
+       $selectiveprocess->courses()->detach();
+       $selectiveprocess->quotas()->detach();
+
        $selectiveprocess->delete();
 
       \Session::flash('mensagem_sucesso', 'Processo seletivo deletado com sucesso!');

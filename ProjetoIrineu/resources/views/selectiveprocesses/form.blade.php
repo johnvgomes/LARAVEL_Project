@@ -63,7 +63,7 @@ Processos Seletivos
                         </th>
                     </tr>
                 </thead>
-                @if ($course->count() == 0)
+                @if ($courses->count() == 0)
                         <tr> 
                             <p>não há cursos cadastrados</p>
                         </tr>  
