@@ -60,10 +60,11 @@ class SelectiveProcessController extends Controller
 
         $selected_courses = array();
         #$selected_quotas = array();
-dd($request);   
+     
         foreach ($request->course as $course) {
             if(array_key_exists('id', $course)) {
-                $selected_courses[$course['id']] = array('vacancy' => "". $course['vacancy']);
+             dd($course);
+                $selected_courses[$course['id']] = array('vacancy' => $course['vacancy']);
             }
         }
 
