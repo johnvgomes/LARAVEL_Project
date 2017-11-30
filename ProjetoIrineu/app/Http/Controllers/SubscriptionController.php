@@ -117,8 +117,7 @@ class SubscriptionController extends Controller
 
     public function confirmDestroy($id)
     {
-        
-        
+
         $subscriptions = Subscription::findorfail($id);
         
         return view('subscriptions.deleteConfirm',['subscriptions'=> $subscriptions]);
