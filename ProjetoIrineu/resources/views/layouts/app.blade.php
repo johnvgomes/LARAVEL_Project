@@ -340,7 +340,7 @@
             <ul>
             <li><a href="{{url('/home') }}" style="color:#000;">Home</a></li>
             <li><a href="{{url('/specialneeds') }}" style="color:#000;">Necessidades Especiais</a></li>
-            <li><a href="{{url('/profiles') }}" style="color:#000;">Profiles</a></li>
+            <li><a href="{{url('/profiles') }}" style="color:#000;">Perfis</a></li>
             <li><a href="{{url('/selectiveprocesses') }}" style="color:#000;">Processos Seletivos</a></li>
             <li><a href="{{url('/quotas') }}" style="color:#000;">Cotas</a></li>
             <li><a href="{{url('/courses') }}" style="color:#000;">Cursos</a></li>
