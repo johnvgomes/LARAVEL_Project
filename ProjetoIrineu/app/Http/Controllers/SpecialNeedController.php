@@ -53,8 +53,9 @@ class SpecialNeedController extends Controller
        
           $spneeds = new SpecialNeed();
         
-          $spneeds = $spneeds->create($request->all());
+          $this->validate($request, $spneeds->rules);
 
+          $spneeds = $spneeds->create($request->all());
 
           \Session::flash('mensagem_sucesso', 'Necessidade especial cadastrada com sucesso');
 
