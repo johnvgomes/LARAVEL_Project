@@ -18,6 +18,12 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $profile = Profile::all();
@@ -72,10 +78,8 @@ class ProfileController extends Controller
 
             foreach ($request->special_need as $sn) {
 
-                dd($sn);
                 if(array_key_exists('id', $sn)) {
                     $selected_special_needs[$sn['id']] = array('observation' => "". $sn['observation'], 'permanent' => $sn['permanent']);
-               
                
                 }
             }
