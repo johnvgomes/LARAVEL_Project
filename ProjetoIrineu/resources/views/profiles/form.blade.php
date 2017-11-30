@@ -116,7 +116,7 @@ Perfis
                     </div>
 
                     <legend>NECESSIDADES ESPECIAIS</legend>
-                @if ($sn->count() == 0)
+                @if ($specialNeeds->count() == 0)
 
                 <p class="mui-textfield mui-textfield" >não há necessidades especiais cadastradas</p>
                 
