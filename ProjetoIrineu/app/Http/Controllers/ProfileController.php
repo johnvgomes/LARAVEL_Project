@@ -80,7 +80,7 @@ class ProfileController extends Controller
                 
                 
                   if(array_key_exists('id', $sn)) {
-                    //$selected_special_needs[$sn['id']] = array('observation' => "".$sn['observation'], 'permanent' => $sn['permanent']);
+                    $selected_special_needs[$sn['id']] = array('observation' => "".$sn['observation'], 'permanent' => $sn['permanent']);
                
                 }
             }
