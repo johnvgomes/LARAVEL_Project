@@ -7,209 +7,180 @@ Perfis
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="mui-panel">
                 <div class="panel-heading">
                 Informe abaixo as informações do novo perfil
-                <a class="pull-right" href="{{url('profiles')}}">Listagem dos perfis</a>
                 </div>
 
                 <div class="panel-body">
 
+
+               <!-- editando -->
+               {{Form::model($profile, ['method' => 'PATCH','url' => 'profiles/'.$profile->id])}}
                
-                      <!-- editando -->
-                      {{Form::model($profile, ['method' => 'PATCH','url' => 'profiles/'.$profile->id])}}
-                
-                      <div class="form-group col-md-3 ">
-                            {{ form::label('name','Nome')}}
-                        </div>
+                     <div class="mui-textfield mui-textfield--float-label">
+                    {{ form::input('text','name',strtoupper(Auth::user()->name),['autofocus','disabled'])}}
 
-                        <div class="form-group col-md-9 ">
-                        {{ form::label('name',strtoupper($profile->user->name))}}
-                        </div>
-                
-                        <div class="form-group col-md-3 ">
-                            {{ form::label('date','Data de nascimento')}}
-                        </div>
+                         <label>Nome</label>
+                    </div>
 
-                        <div class="form-group col-md-9">
-                                
-                            {{ form::date('date',null,['class' => 'form-control', 'autofocus', 'placeholder' => 'Data Nascimento'])}}
-                        </div>
+                    <div class="mui-textfield mui-textfield">
+                    {{ form::date('date',null,['class' => '', 'autofocus'])}}
+                     
+                         <label>Data de nascimento</label>
+                    </div>
 
-                        <div class="form-group col-md-3 ">
-                            {{ form::label('rg','RG')}}
-                        </div>
+                    <div class="mui-textfield mui-textfield--float-label">
+                    {{ form::input('text','rg',null,['autofocus'])}}
+                                           
+                         <label>RG</label>
+                    </div>
 
-                        <div class="form-group col-md-9">
-                            {{ form::input('text','rg',null,['class' => 'form-control', 'autofocus', 'placeholder' => 'RG'])}}
-                        </div>
+                    <div class="mui-textfield mui-textfield--float-label">
+                    {{ form::input('text','rgemitter',null,['autofocus'])}}
 
-                        <div class="form-group col-md-3 ">
-                            {{ form::label('rg','Emissor do rg')}}
-                        </div>
+                         <label>Emissor do rg</label>
+                    </div>
 
-                        <div class="form-group col-md-9">
-                            {{ form::input('text','rgemitter',null,['class' => 'form-control', 'autofocus', 'placeholder' => ' Nome'])}}
-                        </div>
-                        
-                        <div class="form-group col-md-3 ">
-                            {{ form::label('cpf','CPF')}}
-                        </div>
+                    <div class="mui-textfield mui-textfield--float-label">
+                    {{ form::input('text','cpf',null,['autofocus'])}}
 
-                        <div class="form-group col-md-9">
-                            {{ form::input('text','cpf',null,['class' => 'form-control', 'autofocus', 'placeholder' => 'CPF'])}}
-                        </div>
+                         <label>CPF</label>
+                    </div>
 
-                        <div class="form-group col-md-3 ">
-                            {{ form::label('sex','Sexo')}}
-                        </div>
-
-                        <div class="form-group col-md-9">
-
-
-                        {{ Form::select('sex',  [
+                    <div class="mui-select">
+                    {{ form::select('sex',  [
                                 'masculino' => 'Masculino',
                                 'feminino' => 'Feminino'
-                                ], null, ['class' => 'form-control']) 
+                                ], null, ['autofocus']) 
                         }}  
-                         </div>
-                         
-                         <div class="form-group col-md-3 ">
-                            {{ form::label('namefather','Nome do Pai')}}
-                        </div>
 
-                        <div class="form-group col-md-9">
-                            {{ form::input('text','namefather',null,['class' => 'form-control', 'autofocus', 'placeholder' => ' Nome do Pai'])}}
-                        </div>
+                         <label>Sexo</label>
+                    </div>
 
-                        <div class="form-group col-md-3 ">
-                            {{ form::label('passport','Nome da Mãe')}}
-                        </div>
+                    <div class="mui-textfield mui-textfield--float-label">
+                    {{ form::input('text','namefather',null,['autofocus'])}}
 
-                        <div class="form-group col-md-9">
-                            {{ form::input('text','namemother',null,['class' => 'form-control', 'autofocus', 'placeholder' => ' Nome da Mãe'])}}
-                        </div>
+                         <label>Nome do pai</label>
+                    </div>
 
-                        <div class="form-group col-md-3 ">
-                            {{ form::label('passport','Passaporte')}}
-                        </div>
+                    <div class="mui-textfield mui-textfield--float-label">
+                    {{ form::input('text','namemother',null,['autofocus'])}}
 
-                        <div class="form-group col-md-9">
-                            {{ form::input('text','passport',null,['class' => 'form-control', 'autofocus', 'placeholder' => 'Passaporte'])}}
-                        </div>
+                         <label>Nome da mãe</label>
+                    </div>
 
-                        <div class="form-group col-md-3 ">
-                            {{ form::label('naturaless','Naturalidade')}}
-                        </div>
+                    <div class="mui-textfield mui-textfield--float-label">
+                    {{ form::input('text','passport',null,['autofocus'])}}
 
-                        <div class="form-group col-md-9">
-                            {{ form::input('text','naturaless',null,['class' => 'form-control', 'autofocus', 'placeholder' => 'Naturalidade'])}}
-                        </div>
+                         <label>Passaporte</label>
+                    </div>
 
-                        
-                        <div class="form-group col-md-3 ">
-                            {{ form::label('phone','Telefone')}}
-                        </div>
+                    <div class="mui-textfield mui-textfield--float-label">
+                    {{ form::input('text','naturaless',null,['autofocus'])}}
 
-                        <div class="form-group col-md-9">
-                            {{ form::input('text','phone',null,['class' => 'form-control', 'autofocus', 'placeholder' => 'Telefone'])}}
-                        </div>
+                         <label>Naturalidade</label>
+                    </div>
+                    
+                    <div class="mui-textfield mui-textfield--float-label">
+                    {{ form::input('text','phone',null,['autofocus'])}}
 
-                        <div class="form-group col-md-3 ">
-                            {{ form::label('mobile','Celular')}}
-                        </div>
+                         <label>Telefone</label>
+                    </div>
 
-                        <div class="form-group col-md-9">
-                            {{ form::input('text','mobile',null,['class' => 'form-control', 'autofocus', 'placeholder' => 'Celular'])}}
-                        </div>
+                    <div class="mui-textfield mui-textfield--float-label">
+                    {{ form::input('text','mobile',null,['autofocus'])}}
 
-                        <div class="form-group col-md-3 ">
-                            {{ form::label('scholarity','Escolaridade')}}
-                        </div>
+                         <label>Celular</label>
+                    </div>
 
-                        <div class="form-group col-md-9">
-                        
-                        
-                                                {{ Form::select('scholarity',  [
-                                                        'Fundamental - Incompleto' => 'Fundamental - Incompleto',
-                                                        'Fundamental - Completo' => 'Fundamental - Completo',
-                                                        'Médio - Incompleto' => 'Médio - Incompleto',
-                                                        'Médio - Completo' => 'Médio - Completo',
-                                                        'Superior - Incompleto' => 'Superior - Incompleto',
-                                                        'Superior - Completo' => 'Superior - Completo'
-                                                        ], null, ['class' => 'form-control']) 
-                                                }}  
-                                                 </div>
+                    <div class="mui-select">
+                    {{ Form::select('scholarity',  [
+                        'Fundamental - Incompleto' => 'Fundamental - Incompleto',
+                        'Fundamental - Completo' => 'Fundamental - Completo',
+                        'Médio - Incompleto' => 'Médio - Incompleto',
+                        'Médio - Completo' => 'Médio - Completo',
+                        'Superior - Incompleto' => 'Superior - Incompleto',
+                        'Superior - Completo' => 'Superior - Completo'
+                        ], null, ['autofocus']) 
+                }}  
 
+                         <label>Escolaridade</label>
+                    </div>
 
-                                                 <div class="form-group col-md-12 ">
-                                                 <h4>NECESSIDADES ESPECIAIS</h4>
-                                                 <hr>
-                                                 </div>
-                                                 
+                    <legend>NECESSIDADES ESPECIAIS</legend>
 
-                        @foreach ($specialNeeds as $sn)
+                @foreach ($specialNeeds as $sn)
 
                         
-                            @if ($sn->count() == 0)
-                            <div class="form-group col-md-12 "> 
-                            
-                            <p>não há necessidades especiais cadastradas</p>
-                            </div>    
-                            @else
+                    @if ($sn->count() == 0)
 
-                        
-                            
-                                        <div class="form-group col-md-12 "> 
-                                        <div class="form-group col-md-3 ">
-                                        
-                                         {{ form::checkbox("special_need[$sn->id][id]", $sn->id , ($profile->specialNeeds->find($sn->id)) ? true : false, ['class' => 'cb', 'id' => ''.$sn->description])}}
-                                         {{ form::label('scholarity',$sn->description)}}
-                                         </div>
-                                         <div class="form-group col-md-3 ">
-                                         {{ form::input('text',"special_need[$sn->id][observation]",($profile->specialNeeds->find($sn->id)) ? $profile->specialNeeds->find($sn->id)->pivot->observation : false,['class' => 'form-control', 'autofocus', 'placeholder' => 'Observação'])}}
-                                        </div>      
-                                         <div class="form-group col-md-6 "> 
+                    <p class="mui-textfield mui-textfield" >não há necessidades especiais cadastradas</p>
+                   
+                    @else
 
-                                         <div class="form-group col-md-6 "> 
-                                         {{ form::label('lblpermanent','Permanente:')}}
-                                         </div>      
-
-                                         <div class="form-group col-md-3 "> 
-                                         {{ form::radio("special_need[$sn->id][permanent]", 1, ($profile->specialNeeds->find($sn->id) && $profile->specialNeeds->find($sn->id)->pivot->permanent ==1) ? true : false) }}
-                                         {{ form::label("special_need[$sn->id][permanent]",'sim')}}
-                                         </div>
-                                       
-	                                    <div class="form-group col-md-3 "> 
-                                         {{ form::radio("special_need[$sn->id][permanent]", 0,($profile->specialNeeds->find($sn->id) && $profile->specialNeeds->find($sn->id)->pivot->permanent ==1) ? false : true)}}
-                                         {{ form::label("special_need[$sn->id][permanent]",'não')}}
-                                         </div>
+                    <div class="form-group col-md-12 "> 
+                        <div class="form-group col-md-3 ">
+                            <div class="mui-checkbox">
+                                        <label>
+                                        {{ form::checkbox("special_need[$sn->id][id]", $sn->id , ($profile->specialNeeds->find($sn->id)) ? true : false, ['id' => ''.$sn->description])}}
+                                        {{$sn->description}}
+                                        </label>
+                            </div>
+                        </div>
                                          
-                                         </div>
-                                        </div>
-                                   
+                        <div class="form-group col-md-3 ">
+                            <div class="mui-textfield mui-textfield--float-label">
+                                  {{ form::input('text',"special_need[$sn->id][observation]",($profile->specialNeeds->find($sn->id)) ? $profile->specialNeeds->find($sn->id)->pivot->observation : false,['autofocus'])}}
+                                           
+                                <label>observação</label>
+                             </div>
+                                         
+                        </div>  
 
-                            @endif
-                        @endforeach
-
+                        <div class="form-group col-md-6 "> 
                            
-                         
-        <!--
-                        <div class="form-group col-md-9">
-                            {{ form::checkbox('special_need_id[]',null,['class' => 'form-control', 'autofocus', ''])}}
-                            <label>Teste</label><br />
-                            {{ form::checkbox('special_need_id[]',null,['class' => 'form-control', 'autofocus', ''])}}
-                            {{ form::checkbox('special_need_id[]',null,['class' => 'form-control', 'autofocus', ''])}}
-                        </div>
--->
+                            <div class="form-group col-md-6 "> 
+                                <div class="mui-textfield mui-textfield">
+                                    {{ form::input('text','lblpermanent','Permanente:',['disabled'])}}
 
-                        <div class="col-md-4 col-md-offset-8">
-                        <div class="form-group pull-right">
-                            {{ form::submit('Salvar',['class'=>'btn btn-primary'])}}
-                        </div>
-                        </div>
+                                </div>
+                            </div> 
 
+                            <div class="form-group col-md-3 "> 
+                                        <div class="mui-radio ">
+                                            <br>
+                                            <label>
+                                            {{ form::radio("special_need[$sn->id][permanent]", 1, ($profile->specialNeeds->find($sn->id) && $profile->specialNeeds->find($sn->id)->pivot->permanent ==1) ? true : false) }}
+                                        
+                                            sim
+                                            </label>
+                                        </div>             
+                            </div>
+
+                            <div class="form-group col-md-3 "> 
+                                        <div class="mui-radio ">
+                                            <br>
+                                            <label>
+                                            {{ form::radio("special_need[$sn->id][permanent]", 0,($profile->specialNeeds->find($sn->id) && $profile->specialNeeds->find($sn->id)->pivot->permanent ==1) ? false : true)}}
+                                            
+                                            não
+                                            </label>
+                                        </div>             
+                            </div> 
+                        </div> 
+
+                        
+                    </div>
+                    @endif
+                @endforeach
+<!-- btn voltar -->
+                    <div style="margin-left: calc(50% - 115px);">
+                        <a class="mui-btn mui-btn--raised" href="{{url('profiles')}}">Voltar</a>
+                        <button type="submit" class="mui-btn mui-btn--primary">Salvar</button>
+                    </div>
                 {{ Form::close() }}
+                </form>
                 </div>
             </div>
         </div>

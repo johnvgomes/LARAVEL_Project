@@ -39,7 +39,11 @@ Perfis
                                                 </form>    
                                             </td> 
                                             <td>                
-                                                <form action="specialneeds/{{ $profiles->id }}/confirmDestroy" style="margin-top: 10px; margin-left: calc(10% - 35px);">
+                                                <!--
+                                                    <form action="profiles/{{ $profiles->id }}/confirmDestroy" style="margin-top: 10px; margin-left: calc(10% - 35px);">
+                                                   --> 
+                                                   <form action="#" style="margin-top: 10px; margin-left: calc(10% - 35px);">
+                                                  
                                                     <button class="mui-btn mui-btn--small mui-btn--raised mui-btn--danger" style="display: inline; font-size: 20;"><img src="/icon/ic_delete_forever_white_24px.svg" height="20" width="20" /></button>
                                                 </form>
                                             </td>
@@ -52,7 +56,7 @@ Perfis
         </div>
     </div>
 </div>
-<form action="{{url('specialneeds/create')}}" style="margin-left: 100px; margin-bottom: -20px;">
+<form action="{{url('profiles/create')}}" style="margin-left: 100px; margin-bottom: -20px;">
     <div class="fixed-action-btn horizontal click-to-toggle">
         <button class="mui-btn mui-btn--fab mui-btn--primary" style="font-size: 25px;">+</button>
     </div>
