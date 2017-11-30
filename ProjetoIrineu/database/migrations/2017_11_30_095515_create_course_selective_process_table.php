@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSelectiveProcessQuotaTable extends Migration
+class CreateCourseSelectiveProcessTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,22 @@ class CreateSelectiveProcessQuotaTable extends Migration
      */
     public function up()
     {
-        Schema::create('selective_process_quota', function (Blueprint $table) {
+        Schema::create('course_selective_process', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('selective_process_id')->unsigned();
-            $table->integer('quota_id')->unsigned();
+            $table->integer('course_id')->unsigned();
             $table->integer('vacancy');
             $table->timestamps();
         });
 
-        Schema::table('selective_process_quota', function(Blueprint $table){
+        Schema::table('course_selective_process', function(Blueprint $table){
             $table->foreign('selective_process_id')
                   ->references('id')
                   ->on('selective_processes');
         });
 
-        Schema::table('selective_process_quota', function(Blueprint $table){
-            $table->foreign('quota_id')
+        Schema::table('course_selective_process', function(Blueprint $table){
+            $table->foreign('course_id')
                   ->references('id')
                   ->on('courses');
         });
@@ -41,6 +41,6 @@ class CreateSelectiveProcessQuotaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('selective_process_quota');
+        Schema::dropIfExists('course_selective_process');
     }
 }

@@ -111,8 +111,10 @@ class SelectiveProcessController extends Controller
     public function edit($id)
     {
         $selectiveprocess = SelectiveProcess::findorfail($id);
-        
-        return view('selectiveprocesses.form',['selectiveprocesses'=> $selectiveprocess]);
+
+        $quotas = Quota::all();
+        $courses = Course::all();
+        return view('selectiveprocesses.form',['selectiveprocesses'=> $selectiveprocess,'courses'=> $courses ,'quotas'=> $quotas]);
           
     }
 
