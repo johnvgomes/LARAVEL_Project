@@ -71,8 +71,12 @@ class ProfileController extends Controller
             $selected_special_needs = array();
 
             foreach ($request->special_need as $sn) {
+
+                dd($sn);
                 if(array_key_exists('id', $sn)) {
                     $selected_special_needs[$sn['id']] = array('observation' => "". $sn['observation'], 'permanent' => $sn['permanent']);
+               
+               
                 }
             }
 

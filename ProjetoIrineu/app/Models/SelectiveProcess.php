@@ -24,10 +24,10 @@ class SelectiveProcess extends Model
     }
 
     public function course() {
-        return $this->belongsToMany('App\Models\Course')->withPivot('vacancy');
+        return $this->belongsToMany('App\Models\Course')->withPivot('vacancy')->withTimestamps();
     }
 
     public function quota() {
-        return $this->belongsToMany('App\Models\Quota')->withPivot('vacancy');
+        return $this->belongsToMany('App\Models\Quota')->withPivot('vacancy')->withTimestamps();
     }
 }
