@@ -42,21 +42,21 @@ class QuotaController extends Controller
      */
     public function store(Request $request)
     {
-       
         $quota = new Quota();
-        $quota = $quota->create($request->all());
+        $quota->name = $request->name;
+
+        $status = $quota->save();
         if($quota->save()) {
 
             \Session::flash('mensagem_sucesso', 'Cota criada com sucesso');
 
-            return Redirect::to('quotas.index');
+            return Redirect::to('quotas');
           } else {
            
             \Session::flash('mensagem_sucesso', 'Erro ao criar cota');
             
             return Redirect::to('quotas/create');
         }
-            
     }
     /**
      * Display the specified resource.
