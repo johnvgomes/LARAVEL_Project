@@ -336,7 +336,7 @@
     <div class="drawertitle">Processo Seletivo</div>
     <div class="dash"></div>
         <li>
-            <strong style="color: #000; font-size:12;"><a href="{{url('/home') }}" style="color:#000;">Home</a></strong>
+            <a href="{{url('/home') }}"><strong style="color: #000; font-size:12;">Home</strong></a>
             <strong style="color: #000; font-size:12;">Cadastros</strong>
             <ul>
             <li><a href="{{url('/quotas') }}" style="color:#000;">Cotas</a></li>
