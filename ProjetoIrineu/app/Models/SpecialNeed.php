@@ -12,6 +12,5 @@ class SpecialNeed extends Model
         
         return $this->belongsToMany('App\Models\Profile')->withPivot('permanent','observation');
         
-    
     }
 }
