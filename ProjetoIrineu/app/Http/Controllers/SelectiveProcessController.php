@@ -46,7 +46,7 @@ class SelectiveProcessController extends Controller
      */
     public function store(Request $request)
     {
-     
+        #dd($request);
         $selectiveprocess = new SelectiveProcess();
         
           $selectiveprocess->name = $request->name;
@@ -59,7 +59,7 @@ class SelectiveProcessController extends Controller
 
 
         $selected_courses = array();
-        #$selected_quotas = array();
+        $selected_quotas = array();
      
         foreach ($request->course as $course) {
             if(array_key_exists('id', $course)) {

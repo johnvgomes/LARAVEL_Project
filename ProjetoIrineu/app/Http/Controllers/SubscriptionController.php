@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subscription;
+use App\Models\Course;
+use App\Models\Quota;
+use App\Models\SelectiveProcess;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Redirect;
@@ -18,9 +21,12 @@ class SubscriptionController extends Controller
     public function index()
     {
         $subscriptions = Subscription::all();
+        $courses = Course::all();
+        $quotas = Quota::all();
+        $selectiveprocesses = SelectiveProcess::all();
        
 
-        return view('subscriptions.list',['subscription'=> $subscriptions]);
+        return view('subscriptions.list',['subscription'=> $subscriptions,'courses'=> $courses, 'quotas'=> $quotas, 'selectiveprocesses'=> $selectiveprocesses]);
     }
 
     /**
@@ -42,15 +48,16 @@ class SubscriptionController extends Controller
      */
     public function store(Request $request)
     {
+
        
-          $subscriptions = new Subscription();
-        
-          $subscriptions = $subscriptions->create($request->all());
+        $subscriptions = new Subscription();
+    
+        $subscriptions = $subscriptions->create($request->all());
 
 
-          \Session::flash('mensagem_sucesso', 'Inscrição feita com sucesso!');
+        \Session::flash('mensagem_sucesso', 'Inscrição feita com sucesso!');
 
-          return Redirect::to('subscriptions/create');
+        return Redirect::to('subscriptions/create');
     }
 
     /**
