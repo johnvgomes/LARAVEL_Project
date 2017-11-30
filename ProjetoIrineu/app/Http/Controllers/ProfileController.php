@@ -55,7 +55,7 @@ class ProfileController extends Controller
     {
             $profile = new Profile();
           
-            $this->validate($request, $profile->rules);
+            //$this->validate($request, $profile->rules);
             
             $profile->date = $request->date;
             $profile->rg = $request->rg;
@@ -74,11 +74,13 @@ class ProfileController extends Controller
             $status = $profile->save();
 
             $selected_special_needs = array();
-
-            foreach ($request->special_need as $sn) {
-
-                if(array_key_exists('id', $sn)) {
-                    $selected_special_needs[$sn['id']] = array('observation' => "".$sn['observation'], 'permanent' => $sn['permanent']);
+            $a = $request->special_need;
+            
+            foreach ($a as $sn) {
+                
+                
+                  if(array_key_exists('id', $sn)) {
+                    //$selected_special_needs[$sn['id']] = array('observation' => "".$sn['observation'], 'permanent' => $sn['permanent']);
                
                 }
             }

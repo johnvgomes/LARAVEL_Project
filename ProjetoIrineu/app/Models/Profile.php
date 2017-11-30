@@ -24,9 +24,9 @@ class Profile extends Model
     ];
     public $rules =[
         'date' => 'required|date|before:today',
-        'rg' => 'required|numeric|min:3|max:100',
-        'rgemitter' => 'required|numeric|min:3|max:100',
-        'cpf' => 'required|numeric|min:3|max:100',
+        'rg' => 'required|numeric|min:3',
+        'rgemitter' => 'required|numeric|min:3',
+        'cpf' => 'required|numeric|min:3',
         'sex' => 'required',
         'namefather' => 'required|min:3|max:100',
         'namemother' => 'required|min:3|max:100',

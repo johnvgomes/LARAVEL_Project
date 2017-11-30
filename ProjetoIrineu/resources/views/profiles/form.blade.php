@@ -138,7 +138,7 @@ Perfis
                                          
                         <div class="form-group col-md-3 ">
                             <div class="mui-textfield mui-textfield--float-label">
-                                 {{ form::input('text','special_need[$sn->id][observation]',null,['autofocus'])}}
+                                 {{ form::input('text',"special_need[$sn->id][observation]",null,['autofocus'])}}
                                       
                                 <label>observação</label>
                              </div>
