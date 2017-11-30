@@ -336,15 +336,16 @@
     <div class="drawertitle">Processo Seletivo</div>
     <div class="dash"></div>
         <li>
-            <strong style="color: #000; font-size:12;">Opções</strong>
+            <strong style="color: #000; font-size:12;"><a href="{{url('/home') }}" style="color:#000;">Home</a></strong>
+            <strong style="color: #000; font-size:12;">Cadastros</strong>
             <ul>
-            <li><a href="{{url('/home') }}" style="color:#000;">Home</a></li>
+            <li><a href="{{url('/quotas') }}" style="color:#000;">Cotas</a></li>
+            <li><a href="{{url('/courses') }}" style="color:#000;">Cursos</a></li>
+            <li><a href="{{url('/subscriptions') }}" style="color:#000;">Inscrição</a></li>
+            <li><a href="{{url('/exemptions') }}" style="color:#000;">Isenção</a></li>
             <li><a href="{{url('/specialneeds') }}" style="color:#000;">Necessidades Especiais</a></li>
             <li><a href="{{url('/profiles') }}" style="color:#000;">Perfis</a></li>
             <li><a href="{{url('/selectiveprocesses') }}" style="color:#000;">Processos Seletivos</a></li>
-            <li><a href="{{url('/quotas') }}" style="color:#000;">Cotas</a></li>
-            <li><a href="{{url('/courses') }}" style="color:#000;">Cursos</a></li>
-            <li><a href="{{url('/exemptions') }}" style="color:#000;">Isenção</a></li>
             </ul>
         </li>
         </ul>
