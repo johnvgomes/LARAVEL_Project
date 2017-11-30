@@ -11,16 +11,28 @@ class Subscription extends Model
         'user_id',
         'payment_date',
         'paid',
-        'subscription_date'
+        'subscription_date',
+        'course_id',
+        'quota_id'
     ];
 
-    public function users()
+    public function user()
     {
-        return $this->belongsTo('App\Models\Users');
+        return $this->belongsTo('App\Models\User');
     }
 
     public function selectiveprocess()
     {
         return $this->belongsTo('App\Models\SelectiveProcess');
+    }
+
+    public function quota()
+    {
+        return $this->belongsTo('App\Models\Quota');
+    }
+
+    public function course()
+    {
+        return $this->belongsTo('App\Models\Course');
     }
 }
