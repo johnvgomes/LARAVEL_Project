@@ -20,7 +20,7 @@ class SubscriptionController extends Controller
         $subscriptions = Subscription::all();
        
 
-        return view('subscriptions.lista',['subscriptions'=> $subscriptions]);
+        return view('subscriptions.list',['subscription'=> $subscriptions]);
     }
 
     /**
@@ -30,7 +30,7 @@ class SubscriptionController extends Controller
      */
     public function create()
     { 
-        return view('subscriptions.formulario');
+        return view('subscriptions.form');
         
     }
 
@@ -74,7 +74,7 @@ class SubscriptionController extends Controller
     {
         $subscriptions = Subscription::findorfail($id);
         
-        return view('subscriptions.formulario',['subscriptions'=> $subscriptions]);
+        return view('subscriptions.form',['subscriptions'=> $subscriptions]);
           
     }
 
