@@ -33,20 +33,20 @@ Inscrição
                                     </th>
                                 </tr>
                             </thead>
-                            @foreach ($selectiveprocesses as $selectiveprocess)                
-                                @if ($selectiveprocess->count() == 0)
+                            @if ($selectiveprocesses->count() == 0)
                                     <tr> 
                                         <p>não há processos seletivos cadastrados</p>
                                     </tr>  
-                                @else
-                                <tr>
-                                    <td class="">
-                                        <span>{{ form::checkbox('selective_proccess[$selectiveprocess->id][id]',$selectiveprocess->id,null,['class' => 'cb', 'id' => ''.$selectiveprocess->name])}}</span>
-                                        <span style="margin-left: 10px;">{{ form::label('name',$selectiveprocess->name)}}</span>
-                                    </td>
-                                </tr> 
-                                @endif
-                            @endforeach
+                            @else
+                                @foreach ($selectiveprocesses as $selectiveprocess)                
+                                    <tr>
+                                        <td class="">
+                                            <span>{{ form::checkbox('selective_proccess[$selectiveprocess->id][id]',$selectiveprocess->id,null,['class' => 'cb', 'id' => ''.$selectiveprocess->name])}}</span>
+                                            <span style="margin-left: 10px;">{{ form::label('name',$selectiveprocess->name)}}</span>
+                                        </td>
+                                    </tr> 
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
                     <table class="mui-table ">
@@ -58,20 +58,20 @@ Inscrição
                                     </th>
                                 </tr>
                             </thead>
-                            @foreach ($courses as $course)                
-                                @if ($course->count() == 0)
+                            @if ($courses->count() == 0)
                                     <tr> 
                                         <p>não há processos seletivos cadastrados</p>
                                     </tr>  
-                                @else
-                                <tr>
-                                    <td class="">
-                                        <span>{{ form::checkbox('course[$course->id][id]',$course->id,null,['class' => 'cb', 'id' => ''.$course->name])}}</span>
-                                        <span style="margin-left: 10px;">{{ form::label('name',$course->name)}}</span>
-                                    </td>
-                                </tr> 
-                                @endif
-                            @endforeach
+                            @else
+                                @foreach ($courses as $course)                
+                                    <tr>
+                                        <td class="">
+                                            <span>{{ form::checkbox('course[$course->id][id]',$course->id,null,['class' => 'cb', 'id' => ''.$course->name])}}</span>
+                                            <span style="margin-left: 10px;">{{ form::label('name',$course->name)}}</span>
+                                        </td>
+                                    </tr> 
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
                     <table class="mui-table ">
@@ -83,20 +83,20 @@ Inscrição
                                     </th>
                                 </tr>
                             </thead>
-                            @foreach ($quotas as $quota)                
-                                @if ($course->count() == 0)
-                                    <tr> 
-                                        <p>não há cotas cadastradas</p>
-                                    </tr>  
-                                @else
-                                <tr>
-                                    <td class="">
-                                        <span>{{ form::checkbox('quota[$quota->id][id]',$quota->id,null,['class' => 'cb', 'id' => ''.$quota->name])}}</span>
-                                        <span style="margin-left: 10px;">{{ form::label('name',$quota->name)}}</span>
-                                    </td>
-                                </tr> 
-                                @endif
-                            @endforeach
+                            @if ($courses->count() == 0)
+                                <tr> 
+                                    <p>não há cotas cadastradas</p>
+                                </tr>  
+                            @else
+                                @foreach ($quotas as $quota)                
+                                    <tr>
+                                        <td class="">
+                                            <span>{{ form::checkbox('quota[$quota->id][id]',$quota->id,null,['class' => 'cb', 'id' => ''.$quota->name])}}</span>
+                                            <span style="margin-left: 10px;">{{ form::label('name',$quota->name)}}</span>
+                                        </td>
+                                    </tr> 
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
                     <div style="margin-left: calc(50% - 115px);">

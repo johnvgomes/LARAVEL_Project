@@ -7,24 +7,24 @@ Cotas
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="mui-panel">
                 <div class="panel-heading">Deletar Cota</div>
                 <div class="panel-body">
                     <div class="form-group col-md-12">
-                        Ei, Você deseja realmente deletar a cota: {{ $quota->name }}?
+                        Deseja excluir o processo seletivo: {{ $quota->name }}?
                     </div>
                 
-                    <div class="form-group col-md-1">
+                    <div class="mui-col-md-1">
                     {{ Form::open(['method' => 'DELETE', 'url' => '/quotas/'.$quota->id, 'style' => 'display: inline;']) }}
                 
-                        <button type="submit" class="btn btn-primary btn-sm">
+                        <button type="submit" class="mui-btn mui-btn--primary">
                             SIM
                         </button>
                     {{ Form::close() }}
                     </div>
 
-                    <div class="form-group col-md-11">
-                        <a href="../../quotas" class="btn btn-danger btn-sm">
+                    <div class="mui-col-md-offset-2">
+                        <a href="../../selectiveprocesses" class="mui-btn mui-btn--danger">
                             NÃO
                         </a>
                     </div>

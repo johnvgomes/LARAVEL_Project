@@ -63,29 +63,29 @@ Processos Seletivos
                         </th>
                     </tr>
                 </thead>
-                @foreach ($courses as $course)                
-                    @if ($course->count() == 0)
+                @if ($courses->count() == 0)
                         <tr> 
                             <p>não há cursos cadastrados</p>
                         </tr>  
-                    @else
-                    <tr>
-                        <td class="">
-                        
-                            <span>{{ form::checkbox("course[$course->id][id]",$course->id,null,['class' => 'cb', 'id' => ''.$course->name])}}</span>
-                            <span style="margin-left: 10px;">{{ form::label('name',$course->name)}}</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="mui-textfield mui-textfield--float-label">
+                @else
+                    @foreach ($courses as $course)                
+                        <tr>
+                            <td class="">
+                            
+                                <span>{{ form::checkbox("course[$course->id][id]",$course->id,null,['class' => 'cb', 'id' => ''.$course->name])}}</span>
+                                <span style="margin-left: 10px;">{{ form::label('name',$course->name)}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="mui-textfield mui-textfield--float-label">
 
-                             {{ form::input('number',"course[$course->id]['vacancy']",null,['autofocus'])}}
-                                     
-                            <label>Vagas</label>
-                        </td>
-                    </tr> 
-                    @endif
-                @endforeach
+                                {{ form::input('number',"course[$course->id][vacancy]",null,['autofocus'])}}
+                                        
+                                <label>Vagas</label>
+                            </td>
+                        </tr> 
+                    @endforeach
+                @endif
                 </tbody>
                 </table>
                 <table class="mui-table">
@@ -97,27 +97,27 @@ Processos Seletivos
                         </th>
                     </tr>
                 </thead>
-                @foreach ($quotas as $quotas)                
-                    @if ($quotas->count() == 0)
-                        <tr class=""> 
-                            <p>não há cursos cadastrados</p>
-                        </tr>    
-                    @else
+                @if ($quotas->count() == 0)
+                    <tr class=""> 
+                        <p>não há cursos cadastrados</p>
+                    </tr>    
+                @else
+                    @foreach ($quotas as $quotas)                
                         <tr>
                             <td>
-                                {{ form::checkbox('quotas[$quotas->id][id]',$quotas->id,null,['class' => 'cb', 'id' => ''.$quotas->name])}}
+                                {{ form::checkbox("quotas[$quotas->id][id]",$quotas->id,null,['class' => 'cb', 'id' => ''.$quotas->name])}}
                                 <span style="margin-left: 10px;">{{ form::label('name',$quotas->name)}}</span>
                             </td> 
                         </tr> 
                         <tr>    
                             <td class="mui-textfield mui-textfield--float-label">
-                                {{ form::input('number','vacancy',null)}}
+                                {{ form::input('number',"quotas[$quotas->id][vacancy]",null)}}
+                                
                                 <label>Vagas</label>
                             </td>
                         </tr>
-                        
-                    @endif
-                @endforeach
+                    @endforeach
+                @endif
                 </tbody>
                 </table>
                <!-- btn voltar -->

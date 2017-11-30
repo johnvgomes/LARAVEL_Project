@@ -116,71 +116,69 @@ Perfis
                     </div>
 
                     <legend>NECESSIDADES ESPECIAIS</legend>
+                @if ($sn->count() == 0)
 
-                @foreach ($specialNeeds as $sn)
+                <p class="mui-textfield mui-textfield" >não há necessidades especiais cadastradas</p>
+                
+                @else
+                    @foreach ($specialNeeds as $sn)
 
+                            
                         
-                    @if ($sn->count() == 0)
 
-                    <p class="mui-textfield mui-textfield" >não há necessidades especiais cadastradas</p>
-                   
-                    @else
-
-                    <div class="form-group col-md-12 "> 
-                        <div class="form-group col-md-3 ">
-                            <div class="mui-checkbox">
-                                        <label>
-                                        {{ form::checkbox("special_need[$sn->id][id]", $sn->id ,null,['id' => ''.$sn->description])}}
-                                        {{$sn->description}}
-                                        </label>
-                            </div>
-                        </div>
-                                         
-                        <div class="form-group col-md-3 ">
-                            <div class="mui-textfield mui-textfield--float-label">
-                                 {{ form::input('text',"special_need[$sn->id][observation]",null,['autofocus'])}}
-                                      
-                                <label>observação</label>
-                             </div>
-                                         
-                        </div>  
-
-                        <div class="form-group col-md-6 "> 
-                           
-                            <div class="form-group col-md-6 "> 
-                                <div class="mui-textfield mui-textfield">
-                                    {{ form::input('text','lblpermanent','Permanente:',['disabled'])}}
-
+                        <div class="form-group col-md-12 "> 
+                            <div class="form-group col-md-3 ">
+                                <div class="mui-checkbox">
+                                            <label>
+                                            {{ form::checkbox("special_need[$sn->id][id]", $sn->id ,null,['id' => ''.$sn->description])}}
+                                            {{$sn->description}}
+                                            </label>
                                 </div>
-                            </div> 
-
-                            <div class="form-group col-md-3 "> 
-                                        <div class="mui-radio ">
-                                            <br>
-                                            <label>
-                                            {{ form::radio("special_need[$sn->id][permanent]", 1) }}
-                                        
-                                            sim
-                                            </label>
-                                        </div>             
                             </div>
-
-                            <div class="form-group col-md-3 "> 
-                                        <div class="mui-radio ">
-                                            <br>
-                                            <label>
-                                            {{ form::radio("special_need[$sn->id][permanent]", 0) }}
+                                            
+                            <div class="form-group col-md-3 ">
+                                <div class="mui-textfield mui-textfield--float-label">
+                                    {{ form::input('text',"special_need[$sn->id][observation]",null,['autofocus'])}}
                                         
-                                            não
-                                            </label>
-                                        </div>             
-                            </div> 
-                        </div> 
+                                    <label>observação</label>
+                                </div>
+                                            
+                            </div>  
 
-                        
-                    </div>
-                    @endif
-                @endforeach
+                            <div class="form-group col-md-6 "> 
+                            
+                                <div class="form-group col-md-6 "> 
+                                    <div class="mui-textfield mui-textfield">
+                                        {{ form::input('text','lblpermanent','Permanente:',['disabled'])}}
+
+                                    </div>
+                                </div> 
+
+                                <div class="form-group col-md-3 "> 
+                                            <div class="mui-radio ">
+                                                <br>
+                                                <label>
+                                                {{ form::radio("special_need[$sn->id][permanent]", 1) }}
+                                            
+                                                sim
+                                                </label>
+                                            </div>             
+                                </div>
+
+                                <div class="form-group col-md-3 "> 
+                                            <div class="mui-radio ">
+                                                <br>
+                                                <label>
+                                                {{ form::radio("special_need[$sn->id][permanent]", 0) }}
+                                            
+                                                não
+                                                </label>
+                                            </div>             
+                                </div> 
+                            </div> 
+                        </div>
+                    @endforeach
+                @endif
 <!-- btn voltar -->
                     <div style="margin-left: calc(50% - 115px);">
                         <a class="mui-btn mui-btn--raised" href="{{url('profiles')}}">Voltar</a>
