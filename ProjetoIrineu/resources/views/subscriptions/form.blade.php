@@ -33,16 +33,16 @@ Inscrição
                                     </th>
                                 </tr>
                             </thead>
-                            @foreach ($selectiveproccesses as $selectiveproccess)                
-                                @if ($selectiveproccess->count() == 0)
+                            @foreach ($selectiveprocesses as $selectiveprocess)                
+                                @if ($selectiveprocess->count() == 0)
                                     <tr> 
                                         <p>não há processos seletivos cadastrados</p>
                                     </tr>  
                                 @else
                                 <tr>
                                     <td class="">
-                                        <span>{{ form::checkbox('selective_proccess[$selectiveproccess->id][id]',$selectiveproccess->id,null,['class' => 'cb', 'id' => ''.$selectiveproccess->name])}}</span>
-                                        <span style="margin-left: 10px;">{{ form::label('name',$selectiveproccess->name)}}</span>
+                                        <span>{{ form::checkbox('selective_proccess[$selectiveprocess->id][id]',$selectiveprocess->id,null,['class' => 'cb', 'id' => ''.$selectiveprocess->name])}}</span>
+                                        <span style="margin-left: 10px;">{{ form::label('name',$selectiveprocess->name)}}</span>
                                     </td>
                                 </tr> 
                                 @endif
