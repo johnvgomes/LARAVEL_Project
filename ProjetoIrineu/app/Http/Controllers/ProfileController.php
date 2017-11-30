@@ -186,6 +186,7 @@ class ProfileController extends Controller
        
         return Redirect::to('profiles');
  
+        
      }
 
     public function confirmdestroy($id)
