@@ -46,17 +46,16 @@ class SelectiveProcessController extends Controller
      */
     public function store(Request $request)
     {
-        #dd($request);
+        //dd($request);
         $selectiveprocess = new SelectiveProcess();
-        
-          $selectiveprocess->name = $request->name;
-          $selectiveprocess->start_date = $request->start_date;
-          $selectiveprocess->end_date = $request->end_date;
-          $selectiveprocess->description = $request->description;
-          $selectiveprocess->active = $request->active;
+    
+        $selectiveprocess->name = $request->name;
+        $selectiveprocess->start_date = $request->start_date;
+        $selectiveprocess->end_date = $request->end_date;
+        $selectiveprocess->description = $request->description;
+        $selectiveprocess->active = $request->active;
 
         $status = $selectiveprocess->save();
-
 
         $selected_courses = array();
         $selected_quotas = array();
@@ -67,27 +66,27 @@ class SelectiveProcessController extends Controller
             }
         }
 
-        #dd($selected_courses);
+       # dd($selected_courses);
 
         $selectiveprocess->courses()->sync($selected_courses);
 
 
         foreach ($request->quotas as $quotas) {
             if(array_key_exists('id', $quotas)) {
-                $selected_courses[$quotas['id']] = array('vacancy' => "".$quotas['vacancy']);
+                $selected_quotas[$quotas['id']] = array('vacancy' => "".$quotas['vacancy']);
             }
         }
 
-        $selectiveprocess->courses()->sync($selected_courses);
+        $selectiveprocess->quotas()->sync($selected_quotas);
 
         if ($status){
             \Session::flash('mensagem_sucesso', 'Processo Seletivo cadastrado com sucesso!');
             
-             return Redirect::to('profiles');
+             return Redirect::to('selectiveprocesses');
         } else {
             \Session::flash('error', 'Ocorreu algum erro ao cadastrar o Processo Seletivo!');
             
-             return Redirect::to('profiles/create');
+             return Redirect::to('selectiveprocesses/create');
         }
     }
 
