@@ -6,9 +6,10 @@ Processos Seletivos
 @endsection
 <div class="mui-container">
     <div class="row">
-        <div style="width: 100%; margin-left: -75px;">
-                
+    <div style="width: 50%; left:25%; right: 75%; position: absolute;">
+    
                 <div class="panel-body">
+
 
                 @if(Session::has('mensagem_sucesso'))
                   <div class= "alert alert-success">{{ Session::get('mensagem_sucesso')}}</div>

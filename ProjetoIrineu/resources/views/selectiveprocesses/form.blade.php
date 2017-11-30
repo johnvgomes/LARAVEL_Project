@@ -33,12 +33,16 @@ Processos Seletivos
                     <label>Nome</label>
                 </div>
 
-                <div class="mui-textfield mui-textfield--float-label">
-                    {{ form::date('start_date',null)}}
+                <div class="mui-textfield mui-textfield">
+                {{ form::date('start_date',null,['class' => '', 'autofocus'])}}
+                 
+                     <label>Data de Inicio</label>
                 </div>
 
-                <div class="mui-textfield mui-textfield--float-label">
-                    {{ form::date('end_date',null)}}
+                <div class="mui-textfield mui-textfield">
+                {{ form::date('end_date',null,['class' => '', 'autofocus'])}}
+                 
+                     <label>Data de Fim</label>
                 </div>
 
                 <div class="mui-textfield mui-textfield--float-label">
@@ -116,12 +120,14 @@ Processos Seletivos
                 @endforeach
                 </tbody>
                 </table>
-                <div class="col-md-4 col-md-offset-8">
-                    <div class="form-group pull-right">
-                        {{ form::submit('Salvar',['class'=>'btn btn-primary'])}}
-                    </div>
-                </div>
-                {{ Form::close() }}                
+               <!-- btn voltar -->
+               <div style="margin-left: calc(50% - 115px);">
+               <a class="mui-btn mui-btn--raised" href="{{url('selectiveprocesses')}}">Voltar</a>
+               <button type="submit" class="mui-btn mui-btn--primary">Salvar</button>
+                 </div>
+     
+                {{ Form::close() }}              
+                </form>  
                 </div>
             </div>
         </div>

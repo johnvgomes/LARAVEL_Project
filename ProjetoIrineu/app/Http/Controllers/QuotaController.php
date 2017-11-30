@@ -1,16 +1,11 @@
 <?php
-
-
 namespace App\Http\Controllers;
-
 use Illuminate\Support\Facades\Auth;
 use App\Models\Quota;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Redirect;
-
 class QuotaController extends Controller
 {
     /**
@@ -18,7 +13,6 @@ class QuotaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -30,7 +24,6 @@ class QuotaController extends Controller
         return view('quotas.list',compact('quota'));
    
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -41,7 +34,6 @@ class QuotaController extends Controller
         return view('quotas.form');
         
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -52,16 +44,20 @@ class QuotaController extends Controller
     {
        
         $quota = new Quota();
-        $quota->name = $request->name;
-
+        $quota = $quota->create($request->all());
         if($quota->save()) {
-            return redirect()->route('quotas.index')->with('success_message', 'Cota criada com sucesso!');
-        } else {
-            return redirect()->route('quotas.create', $id)->with('error_message', 'Houve um erro ao criar a cota!');
+
+            \Session::flash('mensagem_sucesso', 'Cota criada com sucesso');
+
+            return Redirect::to('quotas.index');
+          } else {
+           
+            \Session::flash('mensagem_sucesso', 'Erro ao criar cota');
+            
+            return Redirect::to('quotas/create');
         }
             
     }
-
     /**
      * Display the specified resource.
      *
@@ -72,7 +68,6 @@ class QuotaController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -86,7 +81,6 @@ class QuotaController extends Controller
         return view('quotas.form',['quotas'=> $quota]);
           
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -97,16 +91,22 @@ class QuotaController extends Controller
     public function update(Request $request, $id)
     {
         $quota = Quota::findorfail($id);
-
-        $quota->name = $request->input('name');
-
+        
+        $quota->update($request->all());
+        
+                
         if($quota->save()) {
-            return redirect()->route('quotas.index')->with('success_message', 'Cota alterada com sucesso!');
+            \Session::flash('mensagem_sucesso', 'Cota atualizada com sucesso');
+            
+             return Redirect::to('quotas.index');
+            
         } else {
-            return redirect()->route('quotas.edit', $id)->with('error_message', 'Houve um erro ao alterar a cota!');
+           
+            \Session::flash('mensagem_sucesso', 'Erro ao atualizar cota');
+            
+             return Redirect::to('quotas.edit');
         }
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -119,18 +119,15 @@ class QuotaController extends Controller
         $quota = Quota::findorfail($id);
         
         $quota->delete();
-
-        return redirect()->route('quotas.index')->with('success_message', 'Cota deletada com sucesso.');
- 
+        \Session::flash('mensagem_sucesso', 'Cota deletada com sucesso');
+        
+         return Redirect::to('quotas.index');
      }
-
     public function confirmDestroy($id)
     {
         
         $quota = Quota::findorfail($id);
         
         return view('quotas.deleteConfirm',['quota'=> $quota]);
-
-
     }
 }
