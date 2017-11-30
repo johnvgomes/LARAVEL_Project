@@ -11,9 +11,7 @@ Cursos
                 <div class="panel-heading">
                 Informe abaixo as informações de cursos
                 </div>
-
                 <div class="panel-body">
-
 
                 @if(Session::has('mensagem_sucesso'))
                   <div class= "alert alert-success">{{ Session::get('mensagem_sucesso')}}</div>
