@@ -63,15 +63,15 @@ Processos Seletivos
                 
                 @foreach ($courses as $course)                
                     @if ($course->count() == 0)
-                        <div class="form-group col-md-12 "> 
+                        <div class=""> 
                             <p>não há cursos cadastrados</p>
                         </div>    
                     @else
-                        <div class="form-group col-md-12 "> 
-                            <div class="form-group col-md-3 ">
+                        <div class=""> 
+                            <div class="">
                                 {{ form::label('name',$course->name)}} 
                             </div>
-                            <div class="form-group col-md-1 ">
+                            <div class="mui-checkbox">
                                 {{ form::checkbox('course[$course->id][id]',$course->id,null,['class' => 'cb', 'id' => ''.$course->name])}}
                             </div>
                             <div class="mui-textfield mui-textfield--float-label">
@@ -89,20 +89,21 @@ Processos Seletivos
 
                 @foreach ($quotas as $quotas)                
                     @if ($quotas->count() == 0)
-                        <div class="form-group col-md-12 "> 
+                        <div class=""> 
                             <p>não há cursos cadastrados</p>
                         </div>    
                     @else
-                        <div class="form-group col-md-12 "> 
-                            <div class="form-group col-md-3 ">
-                                {{ form::label('name',$quotas->name)}} 
-                            </div>
-                            <div class="form-group col-md-1 ">
-                                {{ form::checkbox('quotas[$quotas->id][id]',$quotas->id,null,['class' => 'cb', 'id' => ''.$quotas->name])}}
-                            </div>
+                        <div class=""> 
+                            
                             <div class="mui-textfield mui-textfield--float-label">
                                 {{ form::input('number','vacancy',null)}}
                                 <label>Vagas</label>
+                            </div>
+                            <div class="">
+                                {{ form::label('name',$quotas->name)}} 
+                            </div>
+                            <div class="">
+                                {{ form::checkbox('quotas[$quotas->id][id]',$quotas->id,null,['class' => 'cb', 'id' => ''.$quotas->name])}}
                             </div> 
                         </div> 
                     @endif
