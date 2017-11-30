@@ -22,6 +22,21 @@ class Profile extends Model
         'scholarity',
         'user_id'
     ];
+    public $rules =[
+        'date' => 'required|date|before:today',
+        'rg' => 'required|numeric|min:3|max:100',
+        'rgemitter' => 'required|numeric|min:3|max:100',
+        'cpf' => 'required|numeric|min:3|max:100',
+        'sex' => 'required',
+        'namefather' => 'required|min:3|max:100',
+        'namemother' => 'required|min:3|max:100',
+        'passport' => 'required|min:3|max:100',
+        'naturaless' => 'required|min:3|max:100',
+        'phone' => 'required|min:3|max:100',
+        'mobile' => 'required|min:3|max:100',
+        'scholarity'  => 'required'
+
+    ];
 
     public function specialNeeds() {        
         return $this->belongsToMany('App\Models\SpecialNeed')->withPivot('permanent','observation')->withTimestamps();
