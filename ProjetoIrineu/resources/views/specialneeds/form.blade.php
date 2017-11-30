@@ -27,7 +27,7 @@ Necessidades Especiais
                 {{ Form::open(['route' => 'specialneeds.store']) }}
                 @endif
                     <div class="mui-textfield mui-textfield--float-label">
-                    {{ form::input('text','description',null,['class' => 'form-control', 'autofocus', 'placeholder' => 'Descrição'])}}
+                    {{ form::input('text','description',null,['autofocus'])}}
 
                          <label>Descrição</label>
                     </div>

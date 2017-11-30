@@ -7,28 +7,28 @@ Necessidades Especiais
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="mui-panel">
                 <div class="panel-heading">Deletar Necessidade Especial
                 </div>
                 <div class="panel-body">
                 <div class="form-group col-md-12">
-                Ei, Você deseja realmente deletar a necessidade especial: {{ $spneeds->description }}?
+                Deseja excluir a necessidade especial: {{ $spneeds->description }}?
                 </div>
                 
-                <div class="form-group col-md-1">
+                <div class="mui-col-md-1">
                 {{ Form::open(['method' => 'DELETE', 'url' => '/specialneeds/'.$spneeds->id, 'style' => 'display: inline;']) }}
                 
-                        <button type="submit" class="btn btn-primary btn-sm">
+                        <button type="submit" class="mui-btn mui-btn--primary">
                            SIM
                         </button>
                 {{ Form::close() }}
                 </div>
 
-                <div class="form-group col-md-11">
-                <a href="../../specialneeds" class="btn btn-danger btn-sm">
-                               
-                NÃO
+                <div class="mui-col-md-offset-2">
+                <a href="../../selectiveprocesses" class="mui-btn mui-btn--danger">
+                    NÃO
                 </a>
+            </div>
 
                 </div>
                 </div>
