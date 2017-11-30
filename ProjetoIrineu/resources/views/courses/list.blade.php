@@ -6,7 +6,7 @@ Cursos
 @endsection
 <div class="mui-container">
     <div class="row">
-        <div class="panel-body" style="width: 50%; left:25%; right: 75%; position: absolute;">
+        <div style="width: 50%; left:25%; right: 75%; position: absolute;">
                 
                 <div class="panel-body">
 
