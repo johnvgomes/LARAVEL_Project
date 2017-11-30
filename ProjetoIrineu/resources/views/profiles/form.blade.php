@@ -16,7 +16,14 @@ Perfis
 
 
                 <!-- incluindo -->
-
+                @if(isset($errors) && count($errors)>0)
+                  <div class= "alert alert-danger">
+                  
+                  @foreach($errors->all() as $error)
+                  <p>{{$error}}</p>
+                  @endforeach
+                  </div>
+                @endif  
                 {{ Form::open(['route' => 'profiles.store']) }}
                     <div class="mui-textfield mui-textfield--float-label">
                     {{ form::input('text','name',strtoupper(Auth::user()->name),['autofocus','disabled'])}}

@@ -55,14 +55,13 @@ class ProfileController extends Controller
     {
             $profile = new Profile();
           
+            $this->validate($request, $profile->rules);
+            
             $profile->date = $request->date;
             $profile->rg = $request->rg;
             $profile->rgemitter = $request->rgemitter;
             $profile->cpf = $request->cpf;
             $profile->sex = $request->sex;
-
-
-            
             $profile->namefather = $request->namefather;
             $profile->namemother = $request->namemother;
             $profile->passport = $request->passport;
@@ -70,8 +69,8 @@ class ProfileController extends Controller
             $profile->phone = $request->phone;
             $profile->mobile = $request->mobile;
             $profile->scholarity = $request->scholarity;
-
             $profile->user_id = Auth::user()->id;
+
             $status = $profile->save();
 
             $selected_special_needs = array();
@@ -79,7 +78,7 @@ class ProfileController extends Controller
             foreach ($request->special_need as $sn) {
 
                 if(array_key_exists('id', $sn)) {
-                    $selected_special_needs[$sn['id']] = array('observation' => "". $sn['observation'], 'permanent' => $sn['permanent']);
+                    $selected_special_needs[$sn['id']] = array('observation' => "".$sn['observation'], 'permanent' => $sn['permanent']);
                
                 }
             }
