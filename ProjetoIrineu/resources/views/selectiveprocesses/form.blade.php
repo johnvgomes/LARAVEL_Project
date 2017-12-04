@@ -14,10 +14,18 @@ Processos Seletivos
                 </div>
 
                 <div class="panel-body">
+                @if(isset($errors) && count($errors)>0)
+                <div class= "alert alert-danger">
+                
+                @foreach($errors->all() as $error)
+                <p>{{$error}}</p>
+                @endforeach
+                </div>
+              @endif
+              @if(Session::has('mensagem_sucesso'))
+                <div class= "alert alert-success">{{ Session::get('mensagem_sucesso')}}</div>
+              @endif
 
-                @if(Session::has('mensagem_sucesso'))
-                  <div class= "alert alert-success">{{ Session::get('mensagem_sucesso')}}</div>
-                @endif
 
                 @if(Request::is('*/edit'))
                       <!-- editando -->

@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Course;
 use Illuminate\Http\Request;
-
+use Validator;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Redirect;
@@ -52,8 +52,24 @@ class CourseController extends Controller
     {
        
         $course = new Course();
-         
-        $this->validate($request, $course->rules);
+          //$this->validate($request, $courses->rules);
+
+       $message =[
+        
+                    'name.required' => 'O campo descrição é de preenchimento obrigatório.',
+                    'name.min' => 'O Número mínimo para preencher o campo descrição é de 3 caracteres.',
+                    'name.max' => 'O Número máximo de caracteres atingido para o campo descrição.'
+        
+        
+                ];
+                $validate = Validator::make($request->all(), $course->rules, $message);
+        
+                if($validate->fails()){
+        
+                    return Redirect::to('courses/create')
+                                    ->WithErrors($validate)
+                                    ->withInput();
+                }
         $course= $course->create($request->all());
 
      
@@ -107,7 +123,25 @@ class CourseController extends Controller
     {
         $course = Course::findorfail($id);
 
-        $this->validate($request, $course->rules);
+        
+           //$this->validate($request, $courses->rules);
+
+       $message =[
+        
+                    'name.required' => 'O campo descrição é de preenchimento obrigatório.',
+                    'name.min' => 'O Número mínimo para preencher o campo descrição é de 3 caracteres.',
+                    'name.max' => 'O Número máximo de caracteres atingido para o campo descrição.'
+        
+        
+                ];
+                $validate = Validator::make($request->all(), $quota->rules, $message);
+        
+                if($validate->fails()){
+        
+                    return Redirect::to("courses/$course->id/edit")
+                                    ->WithErrors($validate)
+                                    ->withInput();
+                }
         $course->update($request->all());
 
         if($course->save()) {

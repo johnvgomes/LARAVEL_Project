@@ -4,7 +4,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SpecialNeed;
-
+use Validator;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 
@@ -52,8 +52,24 @@ class SpecialNeedController extends Controller
     {
        
           $spneeds = new SpecialNeed();
-        
-          $this->validate($request, $spneeds->rules);
+            // $this->validate($request, $spneeds->rules);
+            $message =[
+                
+                            'description.required' => 'O campo descrição é de preenchimento obrigatório.',
+                            'description.min' => 'O Número mínimo para preencher o campo descrição é de 3 caracteres.',
+                            'description.max' => 'O Número máximo de caracteres foi atingido para o campo descrição.'
+                            
+                
+                
+                        ];
+                        $validate = Validator::make($request->all(), $spneeds->rules, $message);
+                
+                        if($validate->fails()){
+                
+                            return Redirect::to('specialneeds/create')
+                                            ->WithErrors($validate)
+                                            ->withInput();
+                        }
           $spneeds = $spneeds->create($request->all());
 
           \Session::flash('mensagem_sucesso', 'Necessidade especial cadastrada com sucesso');
@@ -97,8 +113,25 @@ class SpecialNeedController extends Controller
     {
         $spneeds = SpecialNeed::findorfail($id);
 
-        $this->validate($request, $spneeds->rules);
-        
+       // $this->validate($request, $spneeds->rules);
+        $message =[
+
+            'description.required' => 'Ocampo descrição é de preenchimento obrigatorio',
+            'description.min' => 'O Número minimo para preencher o campo descrição é de 3 caracteres',
+            'description.max' => 'O Número máximo de caracteres foi atingido para o campo descrição.'
+
+
+
+        ];
+        $validate = Validator::make($dataForm, $spneeds->rules, $message);
+
+        if($validate->fails()){
+
+            return Redirect::to("specialneeds/$spneeds->id/edit")
+                            ->WithErrors($validate)
+                            ->withInput();
+        }
+
         $spneeds->update($request->all());
 
         \Session::flash('mensagem_sucesso', 'Necessidade Especial atualizada com sucesso');

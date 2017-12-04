@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
+use Validator;
 use App\Models\Quota;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -44,7 +45,25 @@ class QuotaController extends Controller
     {
         $quota = new Quota();
 
-        $this->validate($request, $quota->rules);
+        //$this->validate($request, $quota->rules);
+
+       $message =[
+            
+                        'name.required' => 'O campo nome é de preenchimento obrigatório.',
+                        'name.min' => 'O Número mínimo para preencher o campo nome é de 3 caracteres.',
+                        'name.max' => 'O Número máximo de caracteres foi atingido para o campo nome.'
+            
+            
+                    ];
+                    $validate = Validator::make($request->all(), $quota->rules, $message);
+            
+                    if($validate->fails()){
+            
+                        return Redirect::to('quotas/create')
+                                        ->WithErrors($validate)
+                                        ->withInput();
+                    }
+
         $quota->name = $request->name;
 
         $status = $quota->save();
@@ -93,8 +112,24 @@ class QuotaController extends Controller
     public function update(Request $request, $id)
     {
         $quota = Quota::findorfail($id);
+         //$this->validate($request, $quota->rules);
+
+         $message =[
+            
+                        'name.required' => 'O campo nome é de preenchimento obrigatório.',
+                        'name.min' => 'O Número mínimo para preencher o campo nome é de 3 caracteres.',
+                        'name.max' => 'O Número máximo de caracteres foi atingido para o campo nome.'
+            
+            
+                    ];
+                $validate = Validator::make($request->all(), $quota->rules, $message);
         
-        $this->validate($request, $quota->rules);
+                if($validate->fails()){
+        
+                    return Redirect::to("quotas/$quota->id/edit")
+                                    ->WithErrors($validate)
+                                    ->withInput();
+                }
         $quota->update($request->all());
         
                 

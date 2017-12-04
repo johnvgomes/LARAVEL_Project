@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SelectiveProcess;
 use Illuminate\Http\Request;
+use Validator;
 use App\Http\Controllers\Controller;
 use Redirect;
 use App\Models\Quota;
@@ -48,7 +49,40 @@ class SelectiveProcessController extends Controller
     {
         //dd($request);
         $selectiveprocess = new SelectiveProcess();
-    
+    //$this->validate($request, $quota->rules);
+
+    $message =[
+        
+                    'name.required' => 'O campo nome é de preenchimento obrigatório.',
+                    'name.min' => 'O Número mínimo para preencher o campo nome é de 3 caracteres.',
+                    'name.max' => 'O Número máximo de caracteres foi atingido para o campo nome.',
+                   
+                    'start_date.required' => 'O campo data inicio é de preenchimento obrigatório.',
+                    'start_date.date' => 'formato de data invalido',
+                    'start_date.date' => 'A data de inicio não pode vir depois da data de fim.',
+
+
+                    'end_date.required' => 'O campo data fim é de preenchimento obrigatório.',
+                    'end_date.date' => 'formato de data invalido',
+                    'end_date.date' => 'A data de fim não pode vir antes da data de inicio.',
+                   
+                    'active.required' => 'O campo ativo é de preenchimento obrigatório',
+
+                    'description.required' => 'O campo descrição é de preenchimento obrigatório.',
+                    'description.min' => 'O Número mínimo para preencher o campo descrição é de 3 caracteres.',
+                    'description.max' => 'O Número máximo de caracteres foi atingido para o campo descrição.'
+                  
+        
+                ];
+                $validate = Validator::make($request->all(), $selectiveprocess->rules, $message);
+        
+                if($validate->fails()){
+        
+                    return Redirect::to('selectiveprocesses/create')
+                                    ->WithErrors($validate)
+                                    ->withInput();
+                }
+
         $selectiveprocess->name = $request->name;
         $selectiveprocess->start_date = $request->start_date;
         $selectiveprocess->end_date = $request->end_date;
