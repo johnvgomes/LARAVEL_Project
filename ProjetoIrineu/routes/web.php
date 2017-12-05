@@ -77,3 +77,8 @@ Route::get('exemptions/{exemption}/confirmDestroy', 'ExemptionController@confirm
 
 Route::resource('courses', 'CourseController');
 Route::get('courses/{course}/confirmDestroy', 'CourseController@confirmDestroy');
+
+
+###################     rotas do avatar #######################
+
+Route::resource('avatar', 'UserController');

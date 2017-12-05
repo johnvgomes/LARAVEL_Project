@@ -55,20 +55,25 @@ class SubscriptionController extends Controller
         $subscriptions = new Subscription();
         
         //$subscriptions->selective_process_id = Auth::user()->id;
-        $subscriptions->date = $request->date;
-      
-        $subscriptions->user_id = Auth::user()->id;
+        
+        //$subscriptions->user_id = Auth::user()->id;
         
        
-        $selected_selective_process = array();
+        $selected_selective_proccess = array();
         
-                foreach ($request->selective_process as $sp) {
+                foreach ($request->selective_proccess as $sp) {
+                    
+                                        
                     if(array_key_exists('id', $sp)) {
-                        $selected_selective_process[$sp['id']] = array('observation' => "". $sn['observation'], 'permanent' => $sn['permanent']);
+                        
+                       
+                        $selected_selective_proccess[$sp['id']] = $sp['id'];
                     }
                 }
+
+                dd($selected_selective_proccess);
         
-                $profile->specialNeeds()->sync($selected_special_needs);
+                $subscriptions->selectiveprocess()->sync($selected_selective_proccess);
         
         
         \Session::flash('mensagem_sucesso', 'Inscrição feita com sucesso!');

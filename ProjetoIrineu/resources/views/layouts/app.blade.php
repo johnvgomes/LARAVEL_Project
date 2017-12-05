@@ -388,6 +388,9 @@
                                                             document.getElementById('logout-form').submit();">
                                                     Sair
                                                 </a>
+                                                <a href="/avatar">
+                                                Avatar
+                                            </a>
                                                 @if(Auth::user()->profile)
                                                     <a href="/profiles/{{ Auth::user()->profile->id }}/edit">
                                                         Meu Perfil

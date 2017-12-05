@@ -60,7 +60,7 @@ Inscrição
                             </thead>
                             @if ($courses->count() == 0)
                                     <tr> 
-                                        <p>não há processos seletivos cadastrados</p>
+                                        <p>não há cursos cadastrados</p>
                                     </tr>  
                             @else
                                 @foreach ($courses as $course)                
