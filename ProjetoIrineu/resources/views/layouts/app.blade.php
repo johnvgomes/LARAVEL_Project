@@ -43,7 +43,6 @@
         html,
         body {
         height: 100%;
-        background-color: #fff;
         font-family: 'Roboto', sans-serif;
         }
 
