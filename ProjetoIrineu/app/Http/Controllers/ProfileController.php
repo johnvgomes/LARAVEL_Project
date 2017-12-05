@@ -53,49 +53,65 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-            $profile = new Profile();
-          
-            $this->validate($request, $profile->rules);
+        $profile = new Profile();
+        
+        $message =[
+
+            'name.required' => 'O campo descrição é de preenchimento obrigatório.',
+            'name.min' => 'O Número mínimo para preencher o campo descrição é de 3 caracteres.',
+            'name.max' => 'O Número máximo de caracteres atingido para o campo descrição.',
+            'rg.required' => 'O campo descrição é de preenchimento obrigatório.',
+            'rg.min' => 'O Número mínimo para preencher o campo descrição é de 3 caracteres.',
+            'rg.max' => 'O Número máximo de caracteres atingido para o campo descrição.'
+        ];
+        $validate = Validator::make($request->all(), $profile->rules, $message);
+
+        if($validate->fails()){
+
+            return Redirect::to('profiles/create')
+                            ->WithErrors($validate)
+                            ->withInput();
+        }
             
-            $profile->date = $request->date;
-            $profile->rg = $request->rg;
-            $profile->rgemitter = $request->rgemitter;
-            $profile->cpf = $request->cpf;
-            $profile->sex = $request->sex;
-            $profile->namefather = $request->namefather;
-            $profile->namemother = $request->namemother;
-            $profile->passport = $request->passport;
-            $profile->naturaless = $request->naturaless;
-            $profile->phone = $request->phone;
-            $profile->mobile = $request->mobile;
-            $profile->scholarity = $request->scholarity;
-            $profile->user_id = Auth::user()->id;
+        $profile->date = $request->date;
+        $profile->rg = $request->rg;
+        $profile->rgemitter = $request->rgemitter;
+        $profile->cpf = $request->cpf;
+        $profile->sex = $request->sex;
+        $profile->namefather = $request->namefather;
+        $profile->namemother = $request->namemother;
+        $profile->passport = $request->passport;
+        $profile->naturaless = $request->naturaless;
+        $profile->phone = $request->phone;
+        $profile->mobile = $request->mobile;
+        $profile->scholarity = $request->scholarity;
+        $profile->user_id = Auth::user()->id;
 
-            $status = $profile->save();
+        $status = $profile->save();
 
-            $selected_special_needs = array();
-            $a = $request->special_need;
+        $selected_special_needs = array();
+        $a = $request->special_need;
+        
+        foreach ($a as $sn) {
             
-            foreach ($a as $sn) {
-                
-                
-                  if(array_key_exists('id', $sn)) {
-                    $selected_special_needs[$sn['id']] = array('observation' => "".$sn['observation'], 'permanent' => $sn['permanent']);
-               
-                }
+            
+                if(array_key_exists('id', $sn)) {
+                $selected_special_needs[$sn['id']] = array('observation' => "".$sn['observation'], 'permanent' => $sn['permanent']);
+            
             }
+        }
 
-            $profile->specialNeeds()->sync($selected_special_needs);
+        $profile->specialNeeds()->sync($selected_special_needs);
 
-            if ($status){
-                \Session::flash('mensagem_sucesso', 'Perfil cadastrado com sucesso');
-                
-                 return Redirect::to('profiles');
-            } else {
-                \Session::flash('mensagem_sucesso', 'Perfil cadastrado com sucesso');
-                
-                 return Redirect::to('profiles/create');
-            }
+        if ($status){
+            \Session::flash('mensagem_sucesso', 'Perfil cadastrado com sucesso');
+            
+                return Redirect::to('profiles');
+        } else {
+            \Session::flash('mensagem_sucesso', 'Perfil cadastrado com sucesso');
+            
+                return Redirect::to('profiles/create');
+        }
             
     }
 
