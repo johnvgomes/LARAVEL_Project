@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\SelectiveProcess;
+use Redirect;
+use Validator;
 class HomeController extends Controller
 {
     /**
@@ -27,6 +29,10 @@ class HomeController extends Controller
         if (! Auth::user()->profile) {
             return redirect()->route('profiles.create')->with('mensagem_sucesso', 'É necessário completar o cadastro');
         }
-        return view('home');
+        else{
+        $selectiveprocess =  SelectiveProcess::all();
+       
+        return view('home', ['selectiveprocess' => $selectiveprocess]);
+        }
     }
 }

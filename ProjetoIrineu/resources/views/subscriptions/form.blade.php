@@ -27,75 +27,59 @@ Inscrição
                     <table class="mui-table ">
                         <tbody>
                             <thead>
-                                <tr>
-                                    <th>
-                                        Processo Seletivo
-                                    </th>
-                                </tr>
+                               
+                                   
+                            <div class="panel-heading"><div class="mui--text-headline">{{$selectiveprocesses->name}}</div></div>
+                                    
+                                
                             </thead>
-                            @if ($selectiveprocesses->count() == 0)
-                                    <tr> 
-                                        <p>não há processos seletivos cadastrados</p>
-                                    </tr>  
-                            @else
-                                @foreach ($selectiveprocesses as $selectiveprocess)                
-                                    <tr>
-                                        <td class="">
-                                            <span>{{ form::checkbox('selective_proccess[$selectiveprocess->id][id]',$selectiveprocess->id,null,['class' => 'cb', 'id' => ''.$selectiveprocess->name])}}</span>
-                                            <span style="margin-left: 10px;">{{ form::label('name',$selectiveprocess->name)}}</span>
-                                        </td>
-                                    </tr> 
-                                @endforeach
-                            @endif
                         </tbody>
                     </table>
                     <table class="mui-table ">
                         <tbody>
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Curso
-                                    </th>
-                                </tr>
-                            </thead>
+                            
                             @if ($courses->count() == 0)
                                     <tr> 
                                         <p>não há cursos cadastrados</p>
                                     </tr>  
                             @else
-                                @foreach ($courses as $course)                
+                                      
                                     <tr>
                                         <td class="">
-                                            <span>{{ form::checkbox('course[$course->id][id]',$course->id,null,['class' => 'cb', 'id' => ''.$course->name])}}</span>
-                                            <span style="margin-left: 10px;">{{ form::label('name',$course->name)}}</span>
+                                            
+                                            <div class="mui-select">
+                                                      
+                                                 {{ Form::select('course_id', $courses, null, ['autofocus']) }} 
+
+                                                    <label>Curso</label>
+                                            </div>
+
                                         </td>
                                     </tr> 
-                                @endforeach
+                              
                             @endif
                         </tbody>
                     </table>
                     <table class="mui-table ">
                         <tbody>
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Cota
-                                    </th>
-                                </tr>
-                            </thead>
+                            
                             @if ($courses->count() == 0)
                                 <tr> 
                                     <p>não há cotas cadastradas</p>
                                 </tr>  
                             @else
-                                @foreach ($quotas as $quota)                
+                                          
                                     <tr>
                                         <td class="">
-                                            <span>{{ form::checkbox('quota[$quota->id][id]',$quota->id,null,['class' => 'cb', 'id' => ''.$quota->name])}}</span>
-                                            <span style="margin-left: 10px;">{{ form::label('name',$quota->name)}}</span>
-                                        </td>
+                                            <div class="mui-select">
+                                                      
+                                                 {{ Form::select('quota_id', $quotas, null, ['autofocus']) }} 
+
+                                                    <label>Cota</label>
+                                            </div>
+                                            
+                                           </td>
                                     </tr> 
-                                @endforeach
                             @endif
                         </tbody>
                     </table>

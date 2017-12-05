@@ -31,11 +31,13 @@ class SelectiveProcessController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    { 
-        $selectiveprocesses = SelectiveProcess::all();
+    {
+
+        
+        $selectiveprocess = SelectiveProcess::all();
         $quotas = Quota::all();
         $courses = Course::all();
-        return view('selectiveprocesses.form',['selectiveprocesses'=> $selectiveprocesses,'courses'=> $courses ,'quotas'=> $quotas]);
+        return view('selectiveprocesses.form',['selectiveprocess'=> $selectiveprocess,'courses'=> $courses ,'quotas'=> $quotas]);
         
     }
 

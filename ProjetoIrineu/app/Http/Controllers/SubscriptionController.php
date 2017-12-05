@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
+
+
+use Illuminate\Support\Facades\Auth;
 use App\Models\Subscription;
 use App\Models\Course;
 use App\Models\Quota;
 use App\Models\SelectiveProcess;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Redirect;
+
 
 class SubscriptionController extends Controller
 {
@@ -30,16 +36,28 @@ class SubscriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     { 
-
-        $subscriptions = Subscription::all();
+        $subscription = Subscription::findorfail($id);       
         $courses = Course::all();
         $quotas = Quota::all();
         $selectiveprocesses = SelectiveProcess::all();
        
 
-        return view('subscriptions.form',['subscription'=> $subscriptions,'courses'=> $courses, 'quotas'=> $quotas, 'selectiveprocesses'=> $selectiveprocesses]);
+        return view('subscriptions.form',['subscription'=> $subscription,'courses'=> $courses, 'quotas'=> $quotas, 'selectiveprocesses'=> $selectiveprocesses]);
+        
+    }
+
+    public function subscribe($id)
+    { 
+        $subscription = new Subscription;
+        $quotas = Quota::all()->pluck('name','id');
+        $courses = Course::all()->pluck('name','id');
+        $selectiveprocesses = SelectiveProcess::findOrFail($id);
+      
+       
+
+        return view('subscriptions.form',['subscription'=> $subscription,'courses'=> $courses, 'quotas'=> $quotas, 'selectiveprocesses'=> $selectiveprocesses]);
         
     }
 
@@ -53,28 +71,60 @@ class SubscriptionController extends Controller
     {
 
         $subscriptions = new Subscription();
-        
-        //$subscriptions->selective_process_id = Auth::user()->id;
-        
-        //$subscriptions->user_id = Auth::user()->id;
-        
+        //dd()
+
+        //$subscriptions->selective_process_id = $request->$selectiveprocesses->id;
+        $subscriptions->quota_id = $request->quota_id;
+        $subscriptions->course_id = $request->course_id;
+        $subscriptions->user_id = Auth::user()->id;
+        // save da inscrição
        
         $selected_selective_proccess = array();
         
-                foreach ($request->selective_proccess as $sp) {
+        foreach ($request->selective_proccess as $sp) {
+            
+                                
+            if(array_key_exists('id', $sp)) {
+                
+
+                $subscriptions->selective_processes()->save($select_process);
+                
+                $selected_selective_proccess[$sp['id']] = $sp['id'];
+            }
+        }
+
+        
+        $subscriptions->selectiveprocess()->sync($selected_selective_proccess);
+        
+
+        $selected_quotas = array();
+                
+        foreach ($request->quota as $qt) {
                     
                                         
-                    if(array_key_exists('id', $sp)) {
+            if(array_key_exists('id', $qt)) {
                         
-                       
-                        $selected_selective_proccess[$sp['id']] = $sp['id'];
-                    }
-                }
+                $selected_quotas[$qt['id']] = $qt['id'];
+            }
+        }
+        
+                
+        $subscriptions->quota()->sync($selected_quotas);
+        
+        
+        $selected_course = array();
+                
+        foreach ($request->course as $cs) {
+                    
+                                        
+            if(array_key_exists('id', $cs)) {
+                        
+                $selected_course[$cs['id']] = $cs['id'];
+            }
+        }
 
-                dd($selected_selective_proccess);
-        
-                $subscriptions->selectiveprocess()->sync($selected_selective_proccess);
-        
+                
+        $subscriptions->quota()->sync($selected_quotas);
         
         \Session::flash('mensagem_sucesso', 'Inscrição feita com sucesso!');
 

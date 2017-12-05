@@ -90,7 +90,7 @@ class ProfileController extends Controller
             if ($status){
                 \Session::flash('mensagem_sucesso', 'Perfil cadastrado com sucesso');
                 
-                 return Redirect::to('profiles');
+                 return Redirect::to('home');
             } else {
                 \Session::flash('mensagem_sucesso', 'Perfil cadastrado com sucesso');
                 

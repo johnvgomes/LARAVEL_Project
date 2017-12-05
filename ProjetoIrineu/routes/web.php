@@ -19,23 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-###################     rotas da categoria  #######################
-
-Route::resource('categories', 'CategoriesController');
-
-Route::get('categories/{category}/confirmDestroy', 'CategoriesController@confirmDestroy');
-
-#################### ###################### #######################
-
-###################     rotas do produto  #######################
-
-Route::resource('products', 'ProductsController');
-
-Route::get('products/{product}/confirmDestroy', 'ProductsController@confirmDestroy');
-
-#################### ###################### #######################
-
 ################### rotas da necessidade especial #################
 
 Route::resource('specialneeds', 'SpecialNeedController');
@@ -51,6 +34,7 @@ Route::get('selectiveprocesses/{selectiveprocess}/confirmDestroy', 'SelectivePro
 #################### ###################### #######################
 ###################     rotas da inscrição  #######################
 
+Route::get('/subscriptions/{subscription}/subscribe', 'SubscriptionController@subscribe');
 Route::resource('subscriptions', 'SubscriptionController');
 Route::get('subscriptions/{subscription}/confirmDestroy', 'SubscriptionController@confirmDestroy');
 
