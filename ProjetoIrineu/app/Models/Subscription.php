@@ -8,13 +8,13 @@ class Subscription extends Model
 {
     protected $fillable =[
         'selective_process_id',
-        'user_id',
+        'user_id', 
+        'quota_id',
+        'course_id',
         'payment_date',
         'paid',
-        'subscription_date',
-        'course_id',
-        'quota_id'
-    ];
+        'subscription_date'
+    ]; 
 
     public $rules =[
         'payment_date' => 'required|date',
@@ -28,18 +28,18 @@ class Subscription extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    public function selectiveprocess()
-    {
-        return $this->belongsTo('App\Models\SelectiveProcess');
-    }
+    // public function selectiveprocess()
+    // {
+    //     return $this->belongsTo('App\Models\SelectiveProcess');
+    // }
 
-    public function quota()
-    {
-        return $this->belongsTo('App\Models\Quota');
-    }
+    // public function quota()
+    // {
+    //     return $this->belongsTo('App\Models\Quota');
+    // }
 
-    public function course()
-    {
-        return $this->belongsTo('App\Models\Course');
-    }
+    // public function course()
+    // {
+    //     return $this->belongsTo('App\Models\Course');
+    // }
 }

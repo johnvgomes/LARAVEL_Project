@@ -25,10 +25,12 @@ class SelectiveProcess extends Model
         'description' => 'required|min:3|max:100'
 
     ];
-    public function subscription()
-    {
-        return $this->hasMany('App\Models\Subscription');
-    }
+
+    
+    //public function subscription()
+    //{
+      //  return $this->hasMany('App\Models\Subscription');
+    //}
 
     public function courses() {
         return $this->belongsToMany('App\Models\Course')->withPivot('vacancy')->withTimestamps();

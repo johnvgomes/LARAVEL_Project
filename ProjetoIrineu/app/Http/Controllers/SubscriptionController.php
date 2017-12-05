@@ -52,12 +52,25 @@ class SubscriptionController extends Controller
     public function store(Request $request)
     {
 
-       
         $subscriptions = new Subscription();
-    
-        $subscriptions = $subscriptions->create($request->all());
-
-
+        
+        //$subscriptions->selective_process_id = Auth::user()->id;
+        $subscriptions->date = $request->date;
+      
+        $subscriptions->user_id = Auth::user()->id;
+        
+       
+        $selected_selective_process = array();
+        
+                foreach ($request->selective_process as $sp) {
+                    if(array_key_exists('id', $sp)) {
+                        $selected_selective_process[$sp['id']] = array('observation' => "". $sn['observation'], 'permanent' => $sn['permanent']);
+                    }
+                }
+        
+                $profile->specialNeeds()->sync($selected_special_needs);
+        
+        
         \Session::flash('mensagem_sucesso', 'Inscrição feita com sucesso!');
 
         return Redirect::to('subscriptions/create');
