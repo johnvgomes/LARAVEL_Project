@@ -364,7 +364,7 @@
                         </td>
                         @endguest
                         <td>
-                            <a class="logo" href="{{url('/') }}"><img src="/img/IFClogo2.png" style="width: 30px; height: auto;"/></a>
+                            <a class="logo" href="{{url('/home') }}"><img src="/img/IFClogo2.png" style="width: 30px; height: auto;"/></a>
                             <spam style="color: #fff; font: 20px roboto, sans-serif; margin-left: 15px; vertical-align: middle;">
                                 @yield('title')
                             </spam>
