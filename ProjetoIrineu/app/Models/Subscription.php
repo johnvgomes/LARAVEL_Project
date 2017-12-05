@@ -28,10 +28,10 @@ class Subscription extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    // public function selectiveprocess()
-    // {
-    //     return $this->belongsTo('App\Models\SelectiveProcess');
-    // }
+     public function selectiveprocess()
+     {
+         return $this->belongsTo('App\Models\SelectiveProcess');
+     }
 
     // public function quota()
     // {

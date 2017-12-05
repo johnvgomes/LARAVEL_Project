@@ -27,10 +27,10 @@ class SelectiveProcess extends Model
     ];
 
     
-    //public function subscription()
-    //{
-      //  return $this->hasMany('App\Models\Subscription');
-    //}
+    public function subscription()
+    {
+      return $this->hasMany('App\Models\Subscription');
+    }
 
     public function courses() {
         return $this->belongsToMany('App\Models\Course')->withPivot('vacancy')->withTimestamps();
