@@ -99,6 +99,7 @@ class SubscriptionController extends Controller
         $subscriptions->selective_process_id = $id;
         $subscriptions->quota_id = $request->quota_id;
         $subscriptions->course_id = $request->course_id;
+        $subscriptions->paid = 0;
         $subscriptions->user_id = Auth::user()->id;
 
         if($subscriptions->save()) {

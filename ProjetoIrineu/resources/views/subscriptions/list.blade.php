@@ -33,24 +33,15 @@ Inscrição
                                             </div>
                                         </th>
                                         <th>
-                                        <th>
                                             <div style="margin-top: 20px;">
                                                 Cota
                                             </div>
                                         </th>
                                         <th>
-                                        <th>
                                             <div style="margin-top: 20px;">
                                                 Curso
                                             </div>
                                         </th>
-                                        <th>
-                                        <th>
-                                            <div style="margin-top: 20px;">
-                                                Data pagamento
-                                            </div>
-                                        </th>
-                                        <th>
                                         <th>
                                             <div style="margin-top: 20px;">
                                                 Pago
@@ -70,12 +61,11 @@ Inscrição
                                    
                                         <tr style="border-top: 1px solid #E0E0E0; border-collapse: separate;">
                                             <td>{{ $subscriptions->id }}</td>
-                                            <td>{{ $subscriptions->selective_process_id }}</td>
-                                            <td>{{ $subscriptions->user_id }}</td>
-                                            <td>{{ $subscriptions->quota_id }}</td>
-                                            <td>{{ $subscriptions->course_id }}</td>
-                                            <td>{{ $subscriptions->payment_date}}</td>
-                                            <td>{{ $subscriptions->payd}}</td>
+                                            <td>{{ $subscriptions->selectiveProcess->name }}</td>
+                                            <td>{{ $subscriptions->user->name }}</td>
+                                            <td>{{ $subscriptions->quota->name }}</td>
+                                            <td>{{ $subscriptions->course->name }}</td>
+                                            <td>{{ $subscriptions->paid}}</td>
                                            
                                             <td>
                                                 <form action="subscriptions/{{ $subscriptions->id }}/edit" style="margin-top: 10px; margin-left: calc(100% - 70px);">

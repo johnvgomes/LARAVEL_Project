@@ -23,12 +23,12 @@ class Subscription extends Model
 
     ];
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo('App\Models\User');
     }
 
-     public function selectiveprocess()
+     public function selectiveProcess()
      {
          return $this->belongsTo('App\Models\SelectiveProcess');
      }
