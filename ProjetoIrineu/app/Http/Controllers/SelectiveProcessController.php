@@ -168,7 +168,7 @@ class SelectiveProcessController extends Controller
 
         \Session::flash('mensagem_sucesso', 'Processo seletivo atualizado com sucesso!');
         
-         return Redirect::to('selectiveprocesses/'.$selectiveprocess->id.'/edit');
+         return Redirect::to('selectiveprocesses');
     }
 
     /**
