@@ -77,58 +77,41 @@ class SubscriptionController extends Controller
         $subscriptions->quota_id = $request->quota_id;
         $subscriptions->course_id = $request->course_id;
         $subscriptions->user_id = Auth::user()->id;
-        // save da inscrição
-       
-        $selected_selective_proccess = array();
-        
-        foreach ($request->selective_proccess as $sp) {
+
+        if($course->save()) {
             
-                                
-            if(array_key_exists('id', $sp)) {
-                
-
-                $subscriptions->selective_processes()->save($select_process);
-                
-                $selected_selective_proccess[$sp['id']] = $sp['id'];
-            }
-        }
-
-        
-        $subscriptions->selectiveprocess()->sync($selected_selective_proccess);
-        
-
-        $selected_quotas = array();
-                
-        foreach ($request->quota as $qt) {
-                    
-                                        
-            if(array_key_exists('id', $qt)) {
+        \Session::flash('mensagem_sucesso', 'Inscrição cadastrada com sucesso');
                         
-                $selected_quotas[$qt['id']] = $qt['id'];
-            }
-        }
-        
-                
-        $subscriptions->quota()->sync($selected_quotas);
-        
-        
-        $selected_course = array();
-                
-        foreach ($request->course as $cs) {
-                    
-                                        
-            if(array_key_exists('id', $cs)) {
-                        
-                $selected_course[$cs['id']] = $cs['id'];
-            }
-        }
-
-                
-        $subscriptions->quota()->sync($selected_quotas);
-        
-        \Session::flash('mensagem_sucesso', 'Inscrição feita com sucesso!');
-
         return Redirect::to('subscriptions/create');
+        } else {
+                    
+        \Session::flash('mensagem_sucesso', 'Erro ao cadastrar curso');
+                        
+        return Redirect::to('courses.create');
+        }
+    }
+
+    public function subscribeStore(Request $request, $id)
+    {
+
+        $subscriptions = new Subscription();
+
+        $subscriptions->selective_process_id = $id;
+        $subscriptions->quota_id = $request->quota_id;
+        $subscriptions->course_id = $request->course_id;
+        $subscriptions->user_id = Auth::user()->id;
+
+        if($subscriptions->save()) {
+            
+        \Session::flash('mensagem_sucesso', 'Inscrição cadastrada com sucesso');
+                        
+        return Redirect::to('subscriptions');
+        } else {
+                    
+        \Session::flash('mensagem_sucesso', 'Erro ao cadastrar inscricao');
+                        
+        return Redirect::to('courses.create');
+        }
     }
 
     /**

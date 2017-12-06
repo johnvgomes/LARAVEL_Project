@@ -19,9 +19,8 @@ class CreateSubscriptionsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('quota_id')->unsigned();
             $table->integer('course_id')->unsigned();
-            $table->date('payment_date');
-            $table->boolean('paid');
-            $table->date('subscription_date');
+            $table->date('payment_date')->nullable();
+            $table->boolean('paid')->nullable();
             $table->timestamps();
         });
 

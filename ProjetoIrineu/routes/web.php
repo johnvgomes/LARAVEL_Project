@@ -35,6 +35,7 @@ Route::get('selectiveprocesses/{selectiveprocess}/confirmDestroy', 'SelectivePro
 ###################     rotas da inscrição  #######################
 
 Route::get('/subscriptions/{subscription}/subscribe', 'SubscriptionController@subscribe');
+Route::post('/subscriptions/{subscription}/subscribe_store', 'SubscriptionController@subscribeStore');
 Route::resource('subscriptions', 'SubscriptionController');
 Route::get('subscriptions/{subscription}/confirmDestroy', 'SubscriptionController@confirmDestroy');
 
