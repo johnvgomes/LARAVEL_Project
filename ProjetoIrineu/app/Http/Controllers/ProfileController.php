@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Profile;
 use App\Models\SpecialNeed;
 use Illuminate\Http\Request;
-
+use Validator;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Redirect;
@@ -90,16 +90,19 @@ class ProfileController extends Controller
         $status = $profile->save();
 
         $selected_special_needs = array();
-        $a = $request->special_need;
-        
-        foreach ($a as $sn) {
-            
-            
+       
+
+        if(($request->special_need)){
+
+            $a = $request->special_need;
+            foreach ($a as $sn) {
                 if(array_key_exists('id', $sn)) {
-                $selected_special_needs[$sn['id']] = array('observation' => "".$sn['observation'], 'permanent' => $sn['permanent']);
-            
+                    $selected_special_needs[$sn['id']] = array('observation' => "".$sn['observation'], 'permanent' => $sn['permanent']);
+                
+                }
             }
         }
+        
 
         $profile->specialNeeds()->sync($selected_special_needs);
 

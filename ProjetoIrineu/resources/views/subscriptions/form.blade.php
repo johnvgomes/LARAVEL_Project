@@ -19,10 +19,10 @@ Inscrição
 
                 @if(Request::is('*/edit'))
                       <!-- editando -->
-                      {{Form::model($subscriptions, ['method' => 'PATCH','url' => 'subscriptions/'.$subscriptions->id])}}
+                      {{Form::model($subscriptions, ['method' => 'PATCH','url' => 'subscriptions/'.$subscription->id])}}
                 @else
                      <!-- incluindo -->
-                {{ Form::open(['route' => 'subscriptions.store']) }}
+                {{ Form::open(['url' =>  '/subscriptions/'.$selectiveprocesses->id.'/subscribe_store']) }}
                 @endif
                     <table class="mui-table ">
                         <tbody>
