@@ -63,6 +63,10 @@ class ProfileController extends Controller
             'rg.required' => 'O campo descrição é de preenchimento obrigatório.',
             'rg.min' => 'O Número mínimo para preencher o campo descrição é de 3 caracteres.',
             'rg.max' => 'O Número máximo de caracteres atingido para o campo descrição.'
+
+
+
+            
         ];
         $validate = Validator::make($request->all(), $profile->rules, $message);
 

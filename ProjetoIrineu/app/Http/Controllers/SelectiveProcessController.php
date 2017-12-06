@@ -164,6 +164,7 @@ class SelectiveProcessController extends Controller
     {
         $selectiveprocess = SelectiveProcess::findorfail($id);
         
+        $this->validate($request, $selectiveprocess->rules);
         $selectiveprocess->update($request->all());
 
         \Session::flash('mensagem_sucesso', 'Processo seletivo atualizado com sucesso!');
