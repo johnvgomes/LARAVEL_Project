@@ -63,6 +63,11 @@ Route::get('exemptions/{exemption}/confirmDestroy', 'ExemptionController@confirm
 Route::resource('courses', 'CourseController');
 Route::get('courses/{course}/confirmDestroy', 'CourseController@confirmDestroy');
 
+###################     rotas do endereco  #######################
+
+Route::resource('addresses', 'AddressController');
+Route::get('addresses/{address}/confirmDestroy', 'AddressController@confirmDestroy');
+
 
 ###################     rotas do avatar #######################
 

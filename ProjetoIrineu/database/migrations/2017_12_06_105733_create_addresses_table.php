@@ -13,10 +13,10 @@ class CreateAddressTable extends Migration
      */
     public function up()
     {
-        Schema::create('address', function (Blueprint $table) {
+        Schema::create('addresses', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('street'); 
-            $table->string('number');
+            $table->string('street'); 
+            $table->integer('number');
             $table->string('cep');
             $table->string('neighborhood');
             $table->string('typeaddress');
@@ -27,7 +27,7 @@ class CreateAddressTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('address', function(Blueprint $table){
+        Schema::table('addresses', function(Blueprint $table){
             $table->foreign('profile_id')
                   ->references('id')
                   ->on('profiles');
@@ -43,6 +43,6 @@ class CreateAddressTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('address');
+        Schema::dropIfExists('addresses');
     }
 }

@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Redirect;
-class ProfileController extends Controller
+class AddressController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,8 +25,8 @@ class ProfileController extends Controller
 
     public function index()
     {
-        $profile = Profile::all();
-        return view('profiles.list',['profiles'=> $profile]);
+        $address = Address::all();
+        return view('addresses.list',['addresses'=> $address]);
    
     }
 
@@ -37,7 +37,7 @@ class ProfileController extends Controller
      */
     public function create()
     { 
-        return view('profiles.form');
+        return view('addresses.form');
         
     }
 
@@ -49,33 +49,28 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-       
-          $profile = new Profile();
-            $profile->date = $request->date;
-            $profile->rg = $request->rg;
-            $profile->rgemitter = $request->rgemitter;
-            $profile->cpf = $request->cpf;
-            $profile->sex = $request->sex;
-            $profile->namefather = $request->namefather;
-            $profile->namemother = $request->namemother;
-            $profile->passport = $request->passport;
-            $profile->naturaless = $request->naturaless;
-            $profile->phone = $request->phone;
-            $profile->mobile = $request->phone;
-            $profile->scholarity = $request->scholarity;
-            $profile->user_id = Auth::user()->id;
+        $address = new Address();
+        $address->street = $request->street;
+        $address->number = $request->number;
+        $address->cep = $request->cep;
+        $address->neighborhood = $request->neighborhood;
+        $address->typeaddress = $request->typeaddress;
+        $address->city = $request->city;
+        $address->state = $request->state;
+        $address->country = $request->country;
+        $address->profile_id = $request->profile_id;
 
-            if ($profile->save()){
-                \Session::flash('mensagem_sucesso', 'Perfil cadastrado com sucesso');
-                
-                 return Redirect::to('profiles');
-            }
+        if ($address->save()){
+            \Session::flash('mensagem_sucesso', 'Endereço cadastrado com sucesso');
+            
+                return Redirect::to('addresses');
+        }
 
-            else{
-                \Session::flash('mensagem_sucesso', 'Perfil cadastrado com sucesso');
-                
-                 return Redirect::to('profiles/create');
-            }
+        else{
+            \Session::flash('mensagem_sucesso', 'Perfil cadastrado com sucesso');
+            
+                return Redirect::to('addresses/create');
+        }
             
     }
 
@@ -98,9 +93,9 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        $profile = Profile::findorfail($id);
+        $address = Address::findorfail($id);
         
-        return view('profiles.form',['profiles'=> $profile]);
+        return view('addresses.form',['addresses'=> $address]);
           
     }
 
@@ -113,13 +108,13 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $profile = Profile::findorfail($id);
+        $address = Address::findorfail($id);
         
-        $profile->update($request->all());
+        $address->update($request->all());
 
-        \Session::flash('mensagem_sucesso', 'Perfil atualizado com sucesso');
+        \Session::flash('mensagem_sucesso', 'Endereço atualizado com sucesso!');
         
-         return Redirect::to('profiles');
+         return Redirect::to('addresses');
     }
 
     /**
@@ -131,22 +126,22 @@ class ProfileController extends Controller
      public function destroy($id)
      {
          
-        $profile = Profile::findorfail($id);
+        $address = Address::findorfail($id);
         
-        $profile->delete();
+        $address->delete();
 
-       \Session::flash('mensagem_sucesso', 'Perfil deletado com sucesso');
+       \Session::flash('mensagem_sucesso', 'Endereço deletado com sucesso');
        
-        return Redirect::to('profiles');
+        return Redirect::to('addresses');
  
      }
 
     public function confirmdestroy($id)
     {
         
-        $profile = Profile::findorfail($id);
+        $address = Address::findorfail($id);
         
-        return view('profiles.deleteConfirm',['profile'=> $profile]);
+        return view('addresses.deleteConfirm',['address'=> $address]);
 
 
     }
