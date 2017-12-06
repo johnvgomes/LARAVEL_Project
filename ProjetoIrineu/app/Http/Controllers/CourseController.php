@@ -134,7 +134,7 @@ class CourseController extends Controller
         
         
                 ];
-                $validate = Validator::make($request->all(), $quota->rules, $message);
+                $validate = Validator::make($request->all(), $course->rules, $message);
         
                 if($validate->fails()){
         

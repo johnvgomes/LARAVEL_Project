@@ -17,13 +17,10 @@ Inscrição
                   <div class= "alert alert-success">{{ Session::get('mensagem_sucesso')}}</div>
                 @endif
 
-                @if(Request::is('*/edit'))
-                      <!-- editando -->
-                      {{Form::model($subscriptions, ['method' => 'PATCH','url' => 'subscriptions/'.$subscription->id])}}
-                @else
+
                      <!-- incluindo -->
-                {{ Form::open(['url' =>  '/subscriptions/'.$selectiveprocesses->id.'/subscribe_store']) }}
-                @endif
+                     {{ Form::open(['url' =>  '/subscriptions/'.$selectiveprocesses->id.'/subscribe_store']) }}
+            
                     <table class="mui-table ">
                         <tbody>
                             <thead>
@@ -84,7 +81,7 @@ Inscrição
                         </tbody>
                     </table>
                     <div style="margin-left: calc(50% - 115px);">
-                        <a class="mui-btn mui-btn--raised" href="{{url('subscriptions')}}">Voltar</a>
+                        <a class="mui-btn mui-btn--raised" href="{{url('/home')}}">Voltar</a>
                         <button type="submit" class="mui-btn mui-btn--primary">Salvar</button>
                     </div>
                 {{ Form::close() }}

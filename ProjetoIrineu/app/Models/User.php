@@ -27,7 +27,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function subscription()
+    public function subscriptions()
     {
         return $this->hasMany('App\Models\Subscription');
     }

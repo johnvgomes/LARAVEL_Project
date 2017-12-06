@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\SelectiveProcess;
+
+use App\Models\Subscription;
 use Redirect;
 use Validator;
 class HomeController extends Controller
@@ -31,8 +33,9 @@ class HomeController extends Controller
         }
         else{
         $selectiveprocess =  SelectiveProcess::all();
-       
-        return view('home', ['selectiveprocess' => $selectiveprocess]);
+        $subscriptions = Auth::user()->subscriptions;
+
+        return view('home', ['selectiveprocess' => $selectiveprocess, 'subscriptions' => $subscriptions]);
         }
     }
 }

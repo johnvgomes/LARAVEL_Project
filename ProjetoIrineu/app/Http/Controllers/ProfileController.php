@@ -88,21 +88,21 @@ class ProfileController extends Controller
         $profile->user_id = Auth::user()->id;
 
         $status = $profile->save();
-
-        $selected_special_needs = array();
-       
-
-        if(($request->special_need)){
-
-            $a = $request->special_need;
-            foreach ($a as $sn) {
-                if(array_key_exists('id', $sn)) {
-                    $selected_special_needs[$sn['id']] = array('observation' => "".$sn['observation'], 'permanent' => $sn['permanent']);
-                
-                }
-            }
-        }
         
+                $selected_special_needs = array();
+               
+        
+                if(($request->special_need)){
+                    
+                                $a = $request->special_need;
+                                foreach ($a as $sn) {
+                                    if(array_key_exists('id', $sn)) {
+                                        $selected_special_needs[$sn['id']] = array('observation' => "".$sn['observation'], 'permanent' => $sn['permanent']);
+                                    
+                                    }
+                                }
+                            }
+                    
 
         $profile->specialNeeds()->sync($selected_special_needs);
 
@@ -155,8 +155,24 @@ class ProfileController extends Controller
     {
         $profile = Profile::findorfail($id);
 
-          
-        $this->validate($request, $profile->rules);
+        $message =[
+            
+                        'name.required' => 'O campo descrição é de preenchimento obrigatório.',
+                        'name.min' => 'O Número mínimo para preencher o campo descrição é de 3 caracteres.',
+                        'name.max' => 'O Número máximo de caracteres atingido para o campo descrição.',
+                        'rg.required' => 'O campo descrição é de preenchimento obrigatório.',
+                        'rg.min' => 'O Número mínimo para preencher o campo descrição é de 3 caracteres.',
+                        'rg.max' => 'O Número máximo de caracteres atingido para o campo descrição.'
+                    ];
+        $validate = Validator::make($request->all(), $profile->rules, $message);
+            
+        if($validate->fails()){
+            
+            return Redirect::to('profiles/create')
+                ->WithErrors($validate)
+                ->withInput();
+        }
+                        
         $profile->date = $request->date;
         $profile->rg = $request->rg;
         $profile->rgemitter = $request->rgemitter;
@@ -172,14 +188,20 @@ class ProfileController extends Controller
 
         $profile->user_id = Auth::user()->id;
         $status = $profile->save();
-
-        $selected_special_needs = array();
-
-        foreach ($request->special_need as $sn) {
-            if(array_key_exists('id', $sn)) {
-                $selected_special_needs[$sn['id']] = array('observation' => "". $sn['observation'], 'permanent' => $sn['permanent']);
-            }
-        }
+        
+                $selected_special_needs = array();
+               
+        
+                if(($request->special_need)){
+                    
+                                $a = $request->special_need;
+                                foreach ($a as $sn) {
+                                    if(array_key_exists('id', $sn)) {
+                                        $selected_special_needs[$sn['id']] = array('observation' => "".$sn['observation'], 'permanent' => $sn['permanent']);
+                                    
+                                    }
+                                }
+                            }
 
         $profile->specialNeeds()->sync($selected_special_needs);
 

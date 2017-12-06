@@ -106,7 +106,7 @@ class SubscriptionController extends Controller
             
         \Session::flash('mensagem_sucesso', 'Inscrição cadastrada com sucesso');
                         
-        return Redirect::to('subscriptions');
+        return Redirect::to('/home');
         } else {
                     
         \Session::flash('mensagem_sucesso', 'Erro ao cadastrar inscricao');
@@ -134,9 +134,14 @@ class SubscriptionController extends Controller
      */
     public function edit($id)
     {
-        $subscriptions = Subscription::findorfail($id);
-        
-        return view('subscriptions.form',['subscriptions'=> $subscriptions]);
+        $subscription = Subscription::findorfail($id);       
+        $courses = Course::all()->pluck('name', 'id');
+        $quotas = Quota::all()->pluck('name', 'id');
+        $selectiveprocesses = SelectiveProcess::all();
+       
+
+        return view('subscriptions.edit',['subscription'=> $subscription,'courses'=> $courses, 'quotas'=> $quotas, 'selectiveprocesses'=> $selectiveprocesses]);
+    
           
     }
 
@@ -155,7 +160,7 @@ class SubscriptionController extends Controller
 
         \Session::flash('mensagem_sucesso', 'Inscrição atualizada com sucesso!');
         
-         return Redirect::to('subscriptions/'.$subscriptions->id.'/edit');
+         return Redirect::to('/home');
     }
 
     /**
