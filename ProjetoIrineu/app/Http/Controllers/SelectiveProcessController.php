@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\SelectiveProcess;
 use Illuminate\Http\Request;
 use Validator;
@@ -19,6 +20,9 @@ class SelectiveProcessController extends Controller
     
     public function index()
     {
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         $selectiveprocesses = SelectiveProcess::all();
         
 
@@ -32,7 +36,9 @@ class SelectiveProcessController extends Controller
      */
     public function create()
     {
-
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         
         $selectiveprocess = SelectiveProcess::all();
         $quotas = Quota::all();
@@ -49,6 +55,9 @@ class SelectiveProcessController extends Controller
      */
     public function store(Request $request)
     {
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         //dd($request);
         $selectiveprocess = new SelectiveProcess();
     //$this->validate($request, $quota->rules);
@@ -134,7 +143,9 @@ class SelectiveProcessController extends Controller
      */
     public function show($id)
     {
-        //
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
     }
 
     /**
@@ -145,6 +156,9 @@ class SelectiveProcessController extends Controller
      */
     public function edit($id)
     {
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         $selectiveprocess = SelectiveProcess::findorfail($id);
 
         $quotas = Quota::all();
@@ -162,6 +176,9 @@ class SelectiveProcessController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         $selectiveprocess = SelectiveProcess::findorfail($id);
         
         
@@ -249,10 +266,15 @@ class SelectiveProcessController extends Controller
      */
     public function destroy($id)
     {
-
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
     }
 
     public function confirmDestroy($id)
     {
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
     }
 }

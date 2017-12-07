@@ -26,6 +26,10 @@ class CourseController extends Controller
     
     public function index()
     {
+
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         $course = Course::all();
         return view('courses.list',compact('course'));
    
@@ -38,6 +42,9 @@ class CourseController extends Controller
      */
     public function create()
     { 
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         return view('courses.form');
         
     }
@@ -50,6 +57,9 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
        
         $course = new Course();
           //$this->validate($request, $courses->rules);
@@ -95,7 +105,9 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        //
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
     }
 
     /**
@@ -106,6 +118,9 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         $course = Course::findorfail($id);
         
         return view('courses.form',['courses'=> $course]);
@@ -121,6 +136,9 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         $course = Course::findorfail($id);
 
         
@@ -165,6 +183,9 @@ class CourseController extends Controller
      */
      public function destroy($id)
      {
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
          
         $course = Course::findorfail($id);
         
@@ -176,7 +197,9 @@ class CourseController extends Controller
 
     public function confirmDestroy($id)
     {
-        
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         $course = Course::findorfail($id);
         
         return view('courses.deleteConfirm',['course'=> $course]);

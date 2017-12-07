@@ -39,26 +39,32 @@ class SubscriptionController extends Controller
      */
     public function create($id)
     { 
-        $subscription = Subscription::findorfail($id);       
-        $courses = Course::all();
-        $quotas = Quota::all();
-        $selectiveprocesses = SelectiveProcess::all();
-       
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem permissao para acessar esta pagina.');
+        }
 
-        return view('subscriptions.form',['subscription'=> $subscription,'courses'=> $courses, 'quotas'=> $quotas, 'selectiveprocesses'=> $selectiveprocesses]);
-        
+       
+          
     }
 
     public function subscribe($id)
     { 
-        $subscription = new Subscription;
-        $quotas = Quota::all()->pluck('name','id');
-        $courses = Course::all()->pluck('name','id');
-        $selectiveprocesses = SelectiveProcess::findOrFail($id);
-      
-       
 
-        return view('subscriptions.form',['subscription'=> $subscription,'courses'=> $courses, 'quotas'=> $quotas, 'selectiveprocesses'=> $selectiveprocesses]);
+        if (! Auth::user()->permission) {
+            $subscription = new Subscription;
+            $quotas = Quota::all()->pluck('name','id');
+            $courses = Course::all()->pluck('name','id');
+            $selectiveprocesses = SelectiveProcess::findOrFail($id);
+          
+           
+    
+            return view('subscriptions.form',['subscription'=> $subscription,'courses'=> $courses, 'quotas'=> $quotas, 'selectiveprocesses'=> $selectiveprocesses]);
+            
+        
+        }else{
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não pode se inscrever em processo seletivo como ADMINISTRADOR!, Deslogue e tente novamente como usuario comum');
+        }
+
         
     }
 

@@ -21,6 +21,9 @@ class QuotaController extends Controller
     
     public function index()
     {
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         $quota = Quota::all();
         return view('quotas.list',compact('quota'));
    
@@ -32,6 +35,9 @@ class QuotaController extends Controller
      */
     public function create()
     { 
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         return view('quotas.form');
         
     }
@@ -87,7 +93,9 @@ class QuotaController extends Controller
      */
     public function show($id)
     {
-        //
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
     }
     /**
      * Show the form for editing the specified resource.
@@ -97,6 +105,9 @@ class QuotaController extends Controller
      */
     public function edit($id)
     {
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         $quota = Quota::findorfail($id);
         
         return view('quotas.form',['quotas'=> $quota]);
@@ -111,6 +122,9 @@ class QuotaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         $quota = Quota::findorfail($id);
          //$this->validate($request, $quota->rules);
 
@@ -153,7 +167,9 @@ class QuotaController extends Controller
      */
      public function destroy($id)
      {
-         
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         $quota = Quota::findorfail($id);
         
         $quota->delete();
@@ -163,6 +179,9 @@ class QuotaController extends Controller
      }
     public function confirmDestroy($id)
     {
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         
         $quota = Quota::findorfail($id);
         

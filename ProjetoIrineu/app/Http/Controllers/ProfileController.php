@@ -26,6 +26,9 @@ class ProfileController extends Controller
 
     public function index()
     {
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         $profile = Profile::all();
         return view('profiles.list',['profile'=> $profile]);
    
@@ -38,6 +41,9 @@ class ProfileController extends Controller
      */
     public function create()
     { 
+        if (Auth::user()->permission) {
+            return redirect()->route('/home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         $profile = Profile::all();
         $specialNeeds = SpecialNeed::all();
 
@@ -130,7 +136,9 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        //
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
     }
 
     /**
@@ -230,7 +238,9 @@ class ProfileController extends Controller
      */
      public function destroy($id)
      {
-         
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         $profile = Profile::findorfail($id);
         
         $profile->delete();
@@ -244,6 +254,9 @@ class ProfileController extends Controller
 
     public function confirmdestroy($id)
     {
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         
         $profile = Profile::findorfail($id);
         

@@ -27,6 +27,9 @@ Dashboard
     @if(Session::has('mensagem_sucesso'))
                   <div class= "alert alert-success">{{ Session::get('mensagem_sucesso')}}</div>
     @endif
+    @if(Session::has('mensagem_aviso'))
+                  <div class= "alert alert-warning">{{ Session::get('mensagem_aviso')}}</div>
+    @endif
     <div class="row">
         <div class="mui-col-md-8 mui-col-md-offset-2">
             <div class="mui-panel">

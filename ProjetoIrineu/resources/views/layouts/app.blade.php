@@ -343,16 +343,19 @@
     <div class="dash"></div>
         <li>
             <a href="{{url('/home') }}" style="text-decoration: none;"><strong style="color: #000; font-size:12;">Home</strong></a>
+           
+            @if (Auth::user()->permission)
+            
             <strong style="color: #000; font-size:12;">Cadastros</strong>
             <ul>
             <li><a href="{{url('/quotas') }}" style="color:#000;">Cotas</a></li>
             <li><a href="{{url('/courses') }}" style="color:#000;">Cursos</a></li>
-            <!--<li><a href="{{url('/subscriptions') }}" style="color:#000;">Inscrição</a></li>-->
             <li><a href="{{url('/exemptions') }}" style="color:#000;">Isenção</a></li>
             <li><a href="{{url('/specialneeds') }}" style="color:#000;">Necessidades Especiais</a></li>
-            <!--<li><a href="{{url('/profiles') }}" style="color:#000;">Perfis</a></li>-->
             <li><a href="{{url('/selectiveprocesses') }}" style="color:#000;">Processos Seletivos</a></li>
             </ul>
+
+            @endif
         </li>
         </ul>
     @endguest
@@ -394,9 +397,11 @@
                                                             document.getElementById('logout-form').submit();">
                                                     Sair
                                                 </a>
+                                                 <!--
                                                 <a href="/avatar">
                                                 Avatar
-                                            </a>
+                                                </a>
+                                                -->
                                                 @if(Auth::user()->profile)
                                                     <a href="/profiles/{{ Auth::user()->profile->id }}/edit">
                                                         Meu Perfil

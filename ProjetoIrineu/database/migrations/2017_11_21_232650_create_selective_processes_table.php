@@ -19,6 +19,7 @@ class CreateSelectiveProcessesTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->boolean('active')->nullable();
+            $table->boolean('price')->nullable();
             $table->string('description');
             $table->timestamps();
         });

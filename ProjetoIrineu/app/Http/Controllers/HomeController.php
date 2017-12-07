@@ -28,18 +28,31 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (! Auth::user()->profile) {
+
+        
+        if (! Auth::user()->profile && ! Auth::user()->permission) {
             return redirect()->route('profiles.create')->with('mensagem_sucesso', 'É necessário completar o cadastro');
         }
-        $profile = Profile::findOrfail(Auth::user()->id);
-        if (! $profile->address) {
-            return redirect()->route('addresses.create')->with('mensagem_sucesso', 'É necessário completar o cadastro');
+        if(!Auth::user()->profile && Auth::user()->permission){
+            $selectiveprocess =  SelectiveProcess::all();
+            $subscriptions = Auth::user()->subscriptions;
+    
+            return view('home', ['selectiveprocess' => $selectiveprocess, 'subscriptions' => $subscriptions]);
+           
+
         }
         else{
-        $selectiveprocess =  SelectiveProcess::all();
-        $subscriptions = Auth::user()->subscriptions;
-
-        return view('home', ['selectiveprocess' => $selectiveprocess, 'subscriptions' => $subscriptions]);
+            $profile = Profile::findOrfail(Auth::user()->id);
+            if (! $profile->address  && ! Auth::user()->permission) {
+                return redirect()->route('addresses.create')->with('mensagem_sucesso', 'É necessário completar o cadastro');
+            }
+            else{
+            $selectiveprocess =  SelectiveProcess::all();
+            $subscriptions = Auth::user()->subscriptions;
+    
+            return view('home', ['selectiveprocess' => $selectiveprocess, 'subscriptions' => $subscriptions]);
+            }
         }
+        
     }
 }

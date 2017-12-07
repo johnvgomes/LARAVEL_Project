@@ -3,11 +3,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\SpecialNeed;
 use Validator;
 use App\Models\Profile;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Redirect;
@@ -26,6 +26,9 @@ class SpecialNeedController extends Controller
 
     public function index()
     {
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         $spneeds = SpecialNeed::all();
         return view('specialneeds.list',['spneeds'=> $spneeds]);
    
@@ -38,6 +41,9 @@ class SpecialNeedController extends Controller
      */
     public function create()
     { 
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         return view('specialneeds.form');
         
     }
@@ -50,7 +56,9 @@ class SpecialNeedController extends Controller
      */
     public function store(Request $request)
     {
-       
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
           $spneeds = new SpecialNeed();
             // $this->validate($request, $spneeds->rules);
             $message =[
@@ -85,7 +93,9 @@ class SpecialNeedController extends Controller
      */
     public function show($id)
     {
-        //
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
     }
 
     /**
@@ -96,6 +106,9 @@ class SpecialNeedController extends Controller
      */
     public function edit($id)
     {
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         $spneeds = SpecialNeed::findorfail($id);
         
         return view('specialneeds.form',['spneeds'=> $spneeds]);
@@ -111,6 +124,9 @@ class SpecialNeedController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         $spneeds = SpecialNeed::findorfail($id);
 
         $spneeds = new SpecialNeed();
@@ -147,6 +163,9 @@ class SpecialNeedController extends Controller
      */
      public function destroy($id)
      {
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
          
         $spneeds = SpecialNeed::findorfail($id);
         
@@ -160,7 +179,9 @@ class SpecialNeedController extends Controller
 
     public function confirmdestroy($id)
     {
-        
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         $spneeds = SpecialNeed::findorfail($id);
         
         return view('specialneeds.deleteConfirm',['spneeds'=> $spneeds]);
