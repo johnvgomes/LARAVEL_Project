@@ -164,14 +164,83 @@ class SelectiveProcessController extends Controller
     {
         $selectiveprocess = SelectiveProcess::findorfail($id);
         
-        $this->validate($request, $selectiveprocess->rules);
-        $selectiveprocess->update($request->all());
-
-        \Session::flash('mensagem_sucesso', 'Processo seletivo atualizado com sucesso!');
         
-         return Redirect::to('selectiveprocesses');
+    //$this->validate($request, $quota->rules);
+
+    $message =[
+        
+                    'name.required' => 'O campo nome é de preenchimento obrigatório.',
+                    'name.min' => 'O Número mínimo para preencher o campo nome é de 3 caracteres.',
+                    'name.max' => 'O Número máximo de caracteres foi atingido para o campo nome.',
+                   
+                    'start_date.required' => 'O campo data inicio é de preenchimento obrigatório.',
+                    'start_date.date' => 'formato de data invalido',
+                    'start_date.date' => 'A data de inicio não pode vir depois da data de fim.',
+
+
+                    'end_date.required' => 'O campo data fim é de preenchimento obrigatório.',
+                    'end_date.date' => 'formato de data invalido',
+                    'end_date.date' => 'A data de fim não pode vir antes da data de inicio.',
+                   
+                    'active.required' => 'O campo ativo é de preenchimento obrigatório',
+
+                    'description.required' => 'O campo descrição é de preenchimento obrigatório.',
+                    'description.min' => 'O Número mínimo para preencher o campo descrição é de 3 caracteres.',
+                    'description.max' => 'O Número máximo de caracteres foi atingido para o campo descrição.'
+                  
+        
+                ];
+                $validate = Validator::make($request->all(), $selectiveprocess->rules, $message);
+        
+                if($validate->fails()){
+        
+                    return Redirect::to('selectiveprocesses/create')
+                                    ->WithErrors($validate)
+                                    ->withInput();
+                }
+
+        $selectiveprocess->name = $request->name;
+        $selectiveprocess->start_date = $request->start_date;
+        $selectiveprocess->end_date = $request->end_date;
+        $selectiveprocess->description = $request->description;
+        $selectiveprocess->active = $request->active;
+
+        $status = $selectiveprocess->update();
+
+        $selected_courses = array();
+        $selected_quotas = array();
+     
+        foreach ($request->course as $course) {
+            if(array_key_exists('id', $course)) {
+                $selected_courses[$course['id']] = array('vacancy' => "".$course['vacancy']);
+            }
+        }
+
+       // dd($selected_courses);
+
+        $selectiveprocess->courses()->sync($selected_courses);
+
+
+        foreach ($request->quotas as $quotas) {
+            if(array_key_exists('id', $quotas)) {
+                $selected_quotas[$quotas['id']] = array('vacancy' => "".$quotas['vacancy']);
+            }
+        }
+
+        $selectiveprocess->quotas()->sync($selected_quotas);
+
+        if ($status){
+            \Session::flash('mensagem_sucesso', 'Processo Seletivo atualizado com sucesso!');
+            
+             return Redirect::to('selectiveprocesses');
+        } else {
+            \Session::flash('error', 'Ocorreu algum erro ao cadastrar o Processo Seletivo!');
+            
+             return Redirect::to('selectiveprocesses/create');
+        }
     }
 
+       
     /**
      * Remove the specified resource from storage.
      *
@@ -180,25 +249,10 @@ class SelectiveProcessController extends Controller
      */
     public function destroy($id)
     {
-        
-       $selectiveprocess = SelectiveProcess::findorfail($id);
-       $selectiveprocess->courses()->detach();
-       $selectiveprocess->quotas()->detach();
-
-       $selectiveprocess->delete();
-
-      \Session::flash('mensagem_sucesso', 'Processo seletivo deletado com sucesso!');
-      
-       return Redirect::to('selectiveprocesses');
 
     }
 
     public function confirmDestroy($id)
     {
-        
-        $selectiveprocess = SelectiveProcess::findorfail($id);
-        
-        return view('selectiveprocesses.deleteConfirm',['selectiveprocesses'=> $selectiveprocess]);
-
     }
 }

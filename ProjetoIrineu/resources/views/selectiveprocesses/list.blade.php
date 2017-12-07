@@ -56,11 +56,6 @@ Processos Seletivos
                                                 <form action="selectiveprocesses/{{ $selectiveprocess->id }}/edit" style="margin-top: 10px; margin-left: calc(100% - 55px);">
                                                     <button class="mui-btn mui-btn--small mui-btn--raised mui-btn--primary" style="display: inline; font-size: 25;"><img src="/icon/ic_mode_edit_white_24px.svg" height="20" width="20"/></button>
                                                 </form>    
-                                            </td> 
-                                            <td>                
-                                                <form action="selectiveprocesses/{{ $selectiveprocess->id }}/confirmDestroy" style="margin-top: 10px; margin-left: calc(10% - 25px);">
-                                                    <button class="mui-btn mui-btn--small mui-btn--raised mui-btn--danger" style="display: inline; font-size: 20;"><img src="/icon/ic_delete_forever_white_24px.svg" height="20" width="20" /></button>
-                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

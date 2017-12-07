@@ -39,7 +39,6 @@ class ExemptionController extends Controller
      */
     public function create()
     { 
-        return view('exemptions.form');
         
     }
 
@@ -51,16 +50,7 @@ class ExemptionController extends Controller
      */
     public function store(Request $request)
     {
-       
-        $exemption = new Exemption();
-        $exemption = $exemption->create($request->all());
-
-
-        if($exemption->save()) {
-            return redirect()->route('exemptions.index')->with('success_message', 'Isenção solicitada com sucesso!');
-        } else {
-            return redirect()->route('exemptions.create', $id)->with('error_message', 'Houve um erro ao solicitar a isenção!');
-        }
+      
             
     }
 
@@ -85,7 +75,7 @@ class ExemptionController extends Controller
     {
         $exemption = Exemption::findorfail($id);
         
-        return view('exemptions.form',['exemptions'=> $exemption]);
+        return view('exemptions.edit',['exemption'=> $exemption]);
           
     }
 
@@ -103,9 +93,14 @@ class ExemptionController extends Controller
         $exemption->update($request->all());
 
         if($exemption->save()) {
-            return redirect()->route('exemptions.index')->with('success_message', 'isenção alterada com sucesso!');
+            \Session::flash('mensagem_sucesso', 'Isemção atualizada com sucesso');
+            
+            return Redirect::to('exemptions'); 
         } else {
-            return redirect()->route('exemptions.edit', $id)->with('error_message', 'Houve um erro ao alterar a isenção!');
+
+            \Session::flash('mensagem_error', 'Erro ao atualizar isencão');
+            
+            return Redirect::to('exemptions'); 
         }
     }
 

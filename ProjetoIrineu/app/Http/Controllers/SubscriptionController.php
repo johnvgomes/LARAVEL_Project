@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Subscription;
 use App\Models\Course;
 use App\Models\Quota;
+use App\Models\Exemption;
 use App\Models\SelectiveProcess;
 use Illuminate\Http\Request;
 
@@ -103,6 +104,13 @@ class SubscriptionController extends Controller
         $subscriptions->user_id = Auth::user()->id;
 
         if($subscriptions->save()) {
+        
+        $exemption = new Exemption();
+       
+        $exemption->reason = $request->reason;
+        $exemption->subscription_id = $subscriptions->id;
+        $exemption->save();
+        
             
         \Session::flash('mensagem_sucesso', 'Inscrição cadastrada com sucesso');
                         

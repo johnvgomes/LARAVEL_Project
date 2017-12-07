@@ -16,7 +16,7 @@ class CreateExemptionsTable extends Migration
         Schema::create('exemptions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('subscription_id')->unsigned();
-            $table->string('reason');
+            $table->string('reason')->nullable();
             $table->boolean('homologated')->default(false);
             $table->timestamps();
         });

@@ -79,7 +79,24 @@ Inscrição
                                     </tr> 
                             @endif
                         </tbody>
+
+                        
                     </table>
+
+                    <table class="mui-table ">
+                        <tr>
+                            <td class="">
+                            
+                                <div class="mui-textfield mui-textfield--float-label">
+                                    {{ Form::textarea('reason', null, ['size' => '30x3']) }}
+                                    <label>Motivo da Isenção (Se houver) </label>
+                                </div> 
+                            </td>
+                        </tr> 
+            
+                    </table>
+
+                   
                     <div style="margin-left: calc(50% - 115px);">
                         <a class="mui-btn mui-btn--raised" href="{{url('/home')}}">Voltar</a>
                         <button type="submit" class="mui-btn mui-btn--primary">Salvar</button>

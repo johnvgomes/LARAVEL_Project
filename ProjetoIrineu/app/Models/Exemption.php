@@ -10,6 +10,8 @@ class Exemption extends Model
         
                 'homologated',
                 'reason',
+                'subscription_id'
+                
             ];
 
 
@@ -18,4 +20,10 @@ class Exemption extends Model
         'reason' =>'required|min:3|max:100'
 
     ];
+
+
+    public function subscription()
+    {
+      return $this->BelongsTo('App\Models\Subscription');
+    }
 }

@@ -50,8 +50,7 @@ Inscrição
                                 <label>Descrição</label>
                                 </div>
 
-
-
+                                
                                 <table class="mui-table ">
                                 <div class="mui-divider"></div>
                                   <tbody>
@@ -76,7 +75,7 @@ Inscrição
                                                         <div class="mui-checkbox">
                                                         
                                                                     <label>
-                                                                    {{ form::checkbox("course[$csp->id][id]",$csp->id,($subscription->course->find($csp->id)) ? true : false, ['id' => ''.$csp->name, 'disabled'])}}
+                                                                    {{ form::checkbox("course[$csp->id][id]",$csp->id,($subscription->selectiveProcess->courses->find($csp->id)) ? true : false, ['id' => ''.$csp->name, 'disabled'])}}
                                                                     {{$csp->name}}
                                                                     </label>
                                                         </div>
@@ -124,7 +123,7 @@ Inscrição
                                                                 <div class="mui-checkbox">
                                                                 
                                                                             <label>
-                                                                            {{ form::checkbox("quotas[$qsp->id][id]",$qsp->id , ($subscription->quota->find($qsp->id)) ? true : false,[ 'id' => ''.$qsp->name, 'disabled'])}}
+                                                                            {{ form::checkbox("quotas[$qsp->id][id]",$qsp->id , ($subscription->selectiveProcess->quotas->find($qsp->id)) ? true : false,[ 'id' => ''.$qsp->name, 'disabled'])}}
                                                                             {{$qsp->name}}
                                                                             </label>
                                                                 </div>
@@ -145,28 +144,31 @@ Inscrição
                                         </tbody>
                                     </table>
                                         
-                                    @if ($courses->count() == 0)
-                                            <tr> 
-                                                <p>não há cursos cadastrados</p>
-                                            </tr>  
-                                    @else
-                                              
-                                            <tr>
-                                                <td class="">
+
+                                    <table class="mui-table ">
+                                        <tbody>
+                                            @if ($courses->count() == 0)
+                                                    <tr> 
+                                                        <p>não há cursos cadastrados</p>
+                                                    </tr>  
+                                            @else
                                                     
-                                                    <div class="mui-select">
-                                                              
-                                                         {{ Form::select('course_id', $courses, null, ['autofocus','disabled']) }} 
-        
-                                                            <label>Curso</label>
-                                                    </div>
-        
-                                                </td>
-                                            </tr> 
-                                      
-                                    @endif
-                                </tbody>
-                            </table>
+                                                    <tr>
+                                                        <td class="">
+                                                            
+                                                            <div class="mui-select">
+                                                                    
+                                                                {{ Form::select('course_id', $courses, null, ['autofocus','disabled']) }} 
+                
+                                                                    <label>Curso</label>
+                                                            </div>
+                
+                                                        </td>
+                                                    </tr> 
+                                            
+                                            @endif
+                                    </tbody>
+                                </table>
                             <table class="mui-table ">
                                 <tbody>
                                     
@@ -190,7 +192,42 @@ Inscrição
                                     @endif
                                 </tbody>
                             </table>
-                            <div style="margin-left: calc(55% - 115px);">
+                            
+
+                            <table class="mui-table ">
+                                    <tbody>
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Valor do Processo Seletivo
+                                                </th>
+                                            </tr>
+                                        </thead>               
+                                            <tr>
+                                                <td class="">
+                                                <div class="mui-textfield mui-textfield--float-label">
+
+                                                    
+                                            @foreach ($subscription->exemption as $sbe) 
+
+                                                    @if($sbe->homologated)
+                                                        {{ form::input('text','homologated','Isento',['autofocus', 'disabled'])}}
+                                                    @else
+                                                        {{ form::input('text','homologated','28,90',['autofocus', 'disabled'])}}
+                                                    @endif
+                                            @endforeach 
+                                            
+                                                    <label>R$</label>
+                                                </div>
+                                                                        
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                           
+                           
+                            
+                            <div style="margin-left: calc(58% - 115px);">
                                 <a class="mui-btn mui-btn--raised" href="{{url('/home')}}">Voltar</a>
                             </div>
                         {{ Form::close() }}

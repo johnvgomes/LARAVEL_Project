@@ -35,11 +35,13 @@ Dashboard
                  
                                       
                     @foreach ($subscriptions as $sub)        
+
+                    @if($sub->selectiveProcess->active)
                         <div id="outer" class="mui-panel bgimg">
                             <div class="xs-12 md-8 inner" style="margin-top:15px;">{{$sub->selectiveProcess->name}}</div>      
                             <div class="xs-6 md-4 inner" style="float:right;"><form action="subscriptions/{{ $sub->id }}"><button class="mui-btn mui-btn--small mui-btn--primary mui-btn--fab" style="display: inline-block; font-size: 25; margin-top: 10px; margin-left: calc(100% - 70px);"><img src="/icon/ic_info_outline_white_24px.svg" height="20" width="20" style="margin-left: -4px;"/></button></form></div>
                         </div>
-                                     
+                    @endif                 
 
                     @endforeach
 
@@ -53,16 +55,18 @@ Dashboard
       <div class="row">
         <div class="mui-col-md-8 mui-col-md-offset-2">
             <div class="mui-panel">
-                <div class="panel-heading"><div class="mui--text-headline">Processos Seletivos</div></div>
+                <div class="panel-heading"><div class="mui--text-headline">Processos Seletivos Abertos</div></div>
                 <div class="panel-body">
                     <div class="mui--text-subhead">Inscreva-se em um processo seletivo:</div><br />                    
                         
-                    @foreach ($selectiveprocess as $sp)        
+                    @foreach ($selectiveprocess as $sp)
+
+                    @if($sp->active)        
                         <div id="outer" class="mui-panel bgimg">
                             <div class="xs-12 md-8 inner" style="margin-top:15px;">{{$sp->name}}</div>      
                             <div class="xs-6 md-4 inner" style="float:right;"><form action="subscriptions/{{$sp->id}}/subscribe"><button class="mui-btn mui-btn--small mui-btn--primary mui-btn--fab" style="display: inline-block; font-size: 25; margin-top: 10px; margin-left: calc(100% - 70px); background-color: #27b522"><img src="/icon/ic_border_color_white_24px.svg" height="20" width="20" style="margin-left: -4px;"/></button></form></div>
                         </div>
-                                     
+                    @endif                 
 
                     @endforeach
                     </div>

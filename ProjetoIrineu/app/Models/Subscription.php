@@ -42,4 +42,9 @@ class Subscription extends Model
      {
          return $this->belongsTo('App\Models\Course');
      }
+
+     public function exemption()
+     {
+         return $this->HasMany('App\Models\Exemption');
+     }
 }

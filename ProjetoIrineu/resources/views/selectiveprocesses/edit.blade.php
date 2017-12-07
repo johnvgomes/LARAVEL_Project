@@ -129,7 +129,7 @@ Processos Seletivos
                                     <div class="mui-checkbox">
                                     
                                     <label>
-                                    {{ form::checkbox("quotas[$qsp->id][id]",$qsp->id , ($selectiveprocesses->quotas->find($qsp->id)) ? true : false,[ 'id' => ''.$qsp->name, 'disabled'])}}
+                                    {{ form::checkbox("quotas[$qsp->id][id]",$qsp->id , ($selectiveprocesses->quotas->find($qsp->id)) ? true : false,[ 'id' => ''.$qsp->name])}}
                                     {{$qsp->name}}
                                     </label>
 
@@ -138,7 +138,7 @@ Processos Seletivos
 
                                  <div class="form-group col-md-6 ">
                                     <div class="mui-textfield mui-textfield--float-label">
-                                    {{ form::input('number',"quotas[$qsp->id][vacancy]",($selectiveprocesses->quotas->find($qsp->id)) ? ($selectiveprocesses->quotas->find($qsp->id)->pivot->vacancy) : false,['autofocus', 'disabled'])}}
+                                    {{ form::input('number',"quotas[$qsp->id][vacancy]",($selectiveprocesses->quotas->find($qsp->id)) ? ($selectiveprocesses->quotas->find($qsp->id)->pivot->vacancy) : false,['autofocus'])}}
                                     
                                         <label>Vagas</label>
                                     </div>
