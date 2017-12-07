@@ -37,7 +37,7 @@ Dashboard
                     @foreach ($subscriptions as $sub)        
                         <div id="outer" class="mui-panel bgimg">
                             <div class="xs-12 md-8 inner" style="margin-top:15px;">{{$sub->selectiveProcess->name}}</div>      
-                            <div class="xs-6 md-4 inner" style="float:right;"><form action="subscriptions/{{ $sub->id }}/edit"><button class="mui-btn mui-btn--small mui-btn--primary mui-btn--fab" style="display: inline-block; font-size: 25; margin-top: 10px; margin-left: calc(100% - 70px);"><img src="/icon/ic_info_outline_white_24px.svg" height="20" width="20" style="margin-left: -4px;"/></button></form></div>
+                            <div class="xs-6 md-4 inner" style="float:right;"><form action="subscriptions/{{ $sub->id }}"><button class="mui-btn mui-btn--small mui-btn--primary mui-btn--fab" style="display: inline-block; font-size: 25; margin-top: 10px; margin-left: calc(100% - 70px);"><img src="/icon/ic_info_outline_white_24px.svg" height="20" width="20" style="margin-left: -4px;"/></button></form></div>
                         </div>
                                      
 

@@ -149,7 +149,7 @@ class SelectiveProcessController extends Controller
 
         $quotas = Quota::all();
         $courses = Course::all();
-        return view('selectiveprocesses.form',['selectiveprocesses'=> $selectiveprocess,'courses'=> $courses ,'quotas'=> $quotas]);
+        return view('selectiveprocesses.edit',['selectiveprocesses'=> $selectiveprocess,'courses'=> $courses ,'quotas'=> $quotas]);
           
     }
 

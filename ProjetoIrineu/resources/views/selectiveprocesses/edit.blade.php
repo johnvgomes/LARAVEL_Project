@@ -26,11 +26,8 @@ Processos Seletivos
                 <div class= "alert alert-success">{{ Session::get('mensagem_sucesso')}}</div>
               @endif
 
-
-                
-                     <!-- incluindo -->
-
-                    {{ Form::open(['route' => 'selectiveprocesses.store']) }}
+                      <!-- editando -->
+                      {{Form::model($selectiveprocesses, ['method' => 'PATCH','url' => 'selectiveprocesses/'.$selectiveprocesses->id])}}
                
 
                 <div class="mui-textfield mui-textfield--float-label">
@@ -76,7 +73,7 @@ Processos Seletivos
                             <p>não há cursos cadastrados</p>
                         </tr>  
                 @else
-                    @foreach ($courses as $course)                
+                    @foreach ($courses as $csp)                
                         <tr>
                             <td class="">
                             
@@ -84,16 +81,16 @@ Processos Seletivos
                                 <div class="form-group col-md-6 ">
                                     <div class="mui-checkbox">
                                     
-                                                <label>
-                                                {{ form::checkbox("course[$course->id][id]",$course->id,null,['class' => 'cb', 'id' => ''.$course->name])}}
-                                                {{$course->name}}
-                                                </label>
+                                            <label>
+                                            {{ form::checkbox("course[$csp->id][id]",$csp->id,($selectiveprocesses->courses->find($csp->id)) ? true : false, ['id' => ''.$csp->name])}}
+                                            {{$csp->name}}
+                                            </label>
                                     </div>
                                  </div>
 
                                  <div class="form-group col-md-6 ">
                                     <div class="mui-textfield mui-textfield--float-label">
-                                        {{ form::input('number',"course[$course->id][vacancy]",null,['autofocus'])}}
+                                            {{ form::input('number',"course[$csp->id][vacancy]",($selectiveprocesses->courses->find($csp->id)) ? ($selectiveprocesses->courses->find($csp->id)->pivot->vacancy) : false,['autofocus'])}}
                                     
                                         <label>Vagas</label>
                                     </div>
@@ -123,7 +120,7 @@ Processos Seletivos
                         <p>não há cursos cadastrados</p>
                     </tr>    
                 @else
-                    @foreach ($quotas as $quotas)                
+                    @foreach ($quotas as $qsp)                
                         <tr>
                         <td class="">
                             
@@ -131,16 +128,17 @@ Processos Seletivos
                                 <div class="form-group col-md-6 ">
                                     <div class="mui-checkbox">
                                     
-                                                <label>
-                                                {{ form::checkbox("quotas[$quotas->id][id]",$quotas->id,null,['class' => 'cb', 'id' => ''.$quotas->name])}}
-                                                {{$quotas->name}}
-                                                </label>
+                                    <label>
+                                    {{ form::checkbox("quotas[$qsp->id][id]",$qsp->id , ($selectiveprocesses->quotas->find($qsp->id)) ? true : false,[ 'id' => ''.$qsp->name, 'disabled'])}}
+                                    {{$qsp->name}}
+                                    </label>
+
                                     </div>
                                  </div>
 
                                  <div class="form-group col-md-6 ">
                                     <div class="mui-textfield mui-textfield--float-label">
-                                                {{ form::input('number',"quotas[$quotas->id][vacancy]",null)}}
+                                    {{ form::input('number',"quotas[$qsp->id][vacancy]",($selectiveprocesses->quotas->find($qsp->id)) ? ($selectiveprocesses->quotas->find($qsp->id)->pivot->vacancy) : false,['autofocus', 'disabled'])}}
                                     
                                         <label>Vagas</label>
                                     </div>

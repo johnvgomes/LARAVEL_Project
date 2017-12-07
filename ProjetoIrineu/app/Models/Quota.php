@@ -18,4 +18,8 @@ class Quota extends Model
     public function selectiveProcess() {
         return $this->belongsToMany('App\Models\SelectiveProcess')->withPivot('vacancy');
     }
+
+    public function subscription() {
+        return $this->HasMany('App\Models\Subscription')->withPivot('vacancy');
+    }
 }

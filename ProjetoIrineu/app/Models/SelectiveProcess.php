@@ -21,7 +21,6 @@ class SelectiveProcess extends Model
         'name' => 'required|min:3|max:100',
         'start_date' => 'required|date|before:end_date',
         'end_date' => 'required|date|after:start_date',
-        'active' => 'required',
         'description' => 'required|min:3|max:100'
 
     ];

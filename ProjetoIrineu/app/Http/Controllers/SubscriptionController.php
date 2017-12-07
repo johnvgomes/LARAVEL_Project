@@ -123,7 +123,18 @@ class SubscriptionController extends Controller
      */
     public function show($id)
     {
-        //
+        
+        $subscription = Subscription::findorfail($id);       
+        $courses = Course::all()->pluck('name', 'id');
+        $courseSp = Course::all();
+        $quotas = Quota::all()->pluck('name', 'id');
+        $quotaSp = Quota::all();
+        $selectiveprocesses = SelectiveProcess::all();
+       
+
+        return view('subscriptions.show',['subscription'=> $subscription,'courses'=> $courses,'courseSp'=> $courseSp, 'quotas'=> $quotas, 'quotaSp'=> $quotaSp, 'selectiveprocesses'=> $selectiveprocesses]);
+    
+          
     }
 
     /**
@@ -134,15 +145,6 @@ class SubscriptionController extends Controller
      */
     public function edit($id)
     {
-        $subscription = Subscription::findorfail($id);       
-        $courses = Course::all()->pluck('name', 'id');
-        $quotas = Quota::all()->pluck('name', 'id');
-        $selectiveprocesses = SelectiveProcess::all();
-       
-
-        return view('subscriptions.edit',['subscription'=> $subscription,'courses'=> $courses, 'quotas'=> $quotas, 'selectiveprocesses'=> $selectiveprocesses]);
-    
-          
     }
 
     /**
