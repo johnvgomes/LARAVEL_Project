@@ -113,32 +113,32 @@ class SpecialNeedController extends Controller
     {
         $spneeds = SpecialNeed::findorfail($id);
 
-       // $this->validate($request, $spneeds->rules);
+        $spneeds = new SpecialNeed();
+        // $this->validate($request, $spneeds->rules);
         $message =[
-
-            'description.required' => 'Ocampo descrição é de preenchimento obrigatorio',
-            'description.min' => 'O Número minimo para preencher o campo descrição é de 3 caracteres',
-            'description.max' => 'O Número máximo de caracteres foi atingido para o campo descrição.'
-
-
-
-        ];
-        $validate = Validator::make($dataForm, $spneeds->rules, $message);
-
+            
+                        'description.required' => 'O campo descrição é de preenchimento obrigatório.',
+                        'description.min' => 'O Número mínimo para preencher o campo descrição é de 3 caracteres.',
+                        'description.max' => 'O Número máximo de caracteres foi atingido para o campo descrição.'
+                        
+            
+            
+                    ];
+        $validate = Validator::make($request->all(), $spneeds->rules, $message);
+            
         if($validate->fails()){
-
-            return Redirect::to("specialneeds/$spneeds->id/edit")
+            
+            return Redirect::to('specialneeds/create')
                             ->WithErrors($validate)
                             ->withInput();
         }
-
-        $spneeds->update($request->all());
-
-        \Session::flash('mensagem_sucesso', 'Necessidade Especial atualizada com sucesso');
         
-         return Redirect::to('specialneeds');
-    }
+        $spneeds = $spneeds->update($request->all());
 
+            \Session::flash('mensagem_sucesso', 'Necessidade especial atualizada com sucesso');
+
+            return Redirect::to('specialneeds');
+    }
     /**
      * Remove the specified resource from storage.
      *

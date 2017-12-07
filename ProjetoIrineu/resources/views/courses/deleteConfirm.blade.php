@@ -2,7 +2,7 @@
 <br /><br /><br /><br />
 @section('title')
 <img src="/icon/seta.svg" height="30" width="25" style="margin-top: -3px;"/>
-Curso
+Cursos
 @endsection
 <div class="container">
     <div class="row">
@@ -11,7 +11,7 @@ Curso
                 <div class="panel-heading">Deletar Curso</div>
                 <div class="panel-body">
                     <div class="form-group col-md-12">
-                        Deseja excluir o processo seletivo: {{ $course->name }}?
+                        Deseja excluir o curso: {{ $course->name }}?
                     </div>
                 
                     <div class="mui-col-md-1">
@@ -24,7 +24,7 @@ Curso
                     </div>
                         
                     <div class="mui-col-md-offset-2">
-                        <a href="../../selectiveprocesses" class="mui-btn mui-btn--danger">
+                        <a href="../../courses" class="mui-btn mui-btn--danger">
                             NÃO
                         </a>
                     </div>

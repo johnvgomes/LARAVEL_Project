@@ -2,7 +2,7 @@
 <br /><br /><br /><br />
 @section('title')
 <img src="/icon/seta.svg" height="30" width="25" style="margin-top: -3px;"/>
-Processos Seletivos
+Isenções
 @endsection
 <div class="mui-container">
     <div class="row">

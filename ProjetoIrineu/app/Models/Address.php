@@ -15,7 +15,6 @@ class Address extends Model
         'typeaddress',
         'city',
         'state',
-        'country',
         'profile_id'
     ];
 
@@ -23,11 +22,10 @@ class Address extends Model
         'street' => 'required|min:3|max:100',
         'number' => 'numeric|min:3',
         'cep' => 'required|min:3|max:100',
-        'neighbordhood' => 'required|min:3|max:100',
+        'neighborhood' => 'required|min:3|max:100',
         'typeaddress' => 'required|min:3|max:100',
         'city' => 'required|min:3|max:100',
-        'state' => 'required|min:3|max:100',
-        'country' => 'required|min:3|max:100',
+        'state' => 'required|min:2|max:100'
 
     ];
     public function profile(){

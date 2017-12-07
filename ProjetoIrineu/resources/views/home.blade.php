@@ -21,10 +21,11 @@ Dashboard
     }
 </style>
 <div class="mui-container">
-    @if (session('status'))
-        <div class="alert alert-success">
-            {{ session('status') }}
-        </div>
+    
+
+
+    @if(Session::has('mensagem_sucesso'))
+                  <div class= "alert alert-success">{{ Session::get('mensagem_sucesso')}}</div>
     @endif
     <div class="row">
         <div class="mui-col-md-8 mui-col-md-offset-2">

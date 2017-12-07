@@ -22,7 +22,6 @@ class CreateAddressesTable extends Migration
             $table->string('typeaddress');
             $table->string('city');
             $table->string('state');
-            $table->string('country');
             $table->integer('profile_id')->unsigned();
             $table->timestamps();
         });

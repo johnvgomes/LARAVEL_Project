@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\SelectiveProcess;
-
+use App\Models\Profile;
 use App\Models\Subscription;
 use Redirect;
 use Validator;
@@ -30,6 +30,10 @@ class HomeController extends Controller
     {
         if (! Auth::user()->profile) {
             return redirect()->route('profiles.create')->with('mensagem_sucesso', 'É necessário completar o cadastro');
+        }
+        $profile = Profile::findOrfail(Auth::user()->id);
+        if (! $profile->address) {
+            return redirect()->route('addresses.create')->with('mensagem_sucesso', 'É necessário completar o cadastro');
         }
         else{
         $selectiveprocess =  SelectiveProcess::all();

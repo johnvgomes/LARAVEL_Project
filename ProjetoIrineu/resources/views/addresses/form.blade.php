@@ -17,50 +17,83 @@ Endereços
                 @if(isset($errors) && count($errors)>0)
                 <div class= "alert alert-danger">
                 
-                @foreach($errors->all() as $error)
-                <p>{{$error}}</p>
-                @endforeach
+                    @foreach($errors->all() as $error)
+                    <p>{{$error}}</p>
+                    @endforeach
                 </div>
-              @endif
+                @endif
               @if(Session::has('mensagem_sucesso'))
                 <div class= "alert alert-success">{{ Session::get('mensagem_sucesso')}}</div>
               @endif
 
-                <div class="mui-textfield mui-textfield--float-label">
-                    {{ form::input('text','street',null)}}
-                    <label>Rua</label>
+              @if(Request::is('*/edit'))
+                      <!-- editando -->
+                      {{Form::model($address, ['method' => 'PATCH','url' => 'addresses/'.$address->id])}}
+                @else
+                     <!-- incluindo -->
+
+                {{ Form::open(['route' => 'addresses.store']) }}
+              @endif
+              
+
+               <div class="form-group col-md-12 ">
+                     <div class="mui-textfield mui-textfield--float-label">
+                         {{ form::input('text','cep',null,['maxlength' => 9, 'id' => 'cep'])}}
+                         <label>CEP</label>
+                    </div>
+                </div>
+               
+                <div class="form-group col-md-9 ">
+                    <div class="mui-textfield mui-textfield">
+                        {{ form::input('text','street',null,[ 'id' => 'rua'])}}
+                        <label>Rua</label>
+                    </div>
                 </div>
 
-                <div class="mui-textfield mui-textfield--float-label">
-                    {{ form::input('number','number',null)}}
-                    <label>Nº Endereço</label>
+                <div class="form-group col-md-3 ">
+                    <div class="mui-textfield mui-textfield">
+                        {{ form::input('number','number',null,[ 'id' => 'numero'])}}
+                        <label>Nº Endereço</label>
+                    </div>
+                </div>
+              
+                <div class="form-group col-md-12 ">
+                    <div class="mui-textfield mui-textfield">
+                          {{ form::input('text','neighborhood',null,[ 'id' => 'bairro'])}}
+                         <label>Bairro</label>
+                    </div>
+                </div>
+                <div class="form-group col-md-9 ">
+                    <div class="mui-textfield mui-textfield">
+                        {{ form::input('text','city',null,['id' => 'cidade'])}}
+                        <label>Cidade</label>
+                    </div>
+                </div>
+                <div class="form-group col-md-3 ">
+                    <div class="mui-textfield mui-textfield">
+                        {{ form::input('text','state',null, ['id' => 'uf'])}}
+                        <label>Estado</label>
+                    </div>
                 </div>
 
-                <div class="mui-textfield mui-textfield--float-label">
-                    {{ form::input('text','street',null)}}
-                    <label>Rua</label>
+                <div class="form-group col-md-12 ">
+                    <div class="mui-select">
+                        {{ Form::select('typeaddress',  [
+                            
+                            'Comercial' => 'Comercial',
+                            'Residencial' => 'Residencial'
+                            ], null, ['autofocus']) 
+                    }}  
+
+                            <label>Tipo de endereço</label>
+                    </div>
                 </div>
 
-
-                <div class="mui-textfield mui-textfield">
-                {{ form::date('end_date',null,['class' => '', 'autofocus'])}}
-                 
-                     <label>Data de Fim</label>
-                </div>
-
-                <div class="mui-textfield mui-textfield--float-label">
-                    {{ form::input('text','description')}}
-                    <label>Descrição</label>
-                </div>
-
-                <div class="form-group col-md-2 ">
-                    {{ form::checkbox('active',true)}}
-                    <span style="margin-left: 10px;">{{ form::label('active','Ativo')}}</span>
-                </div>             
+                        
                 
                <!-- btn voltar -->
                <div style="margin-left: calc(50% - 115px);">
-               <a class="mui-btn mui-btn--raised" href="{{url('selectiveprocesses')}}">Voltar</a>
+               <a class="mui-btn mui-btn--raised" href="{{url('profiles/'.$address->profile->id.'/edit')}}">Voltar</a>
                <button type="submit" class="mui-btn mui-btn--primary">Salvar</button>
                  </div>
      

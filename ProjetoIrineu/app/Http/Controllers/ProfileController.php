@@ -211,9 +211,9 @@ class ProfileController extends Controller
 
         
         if ($status){
-            \Session::flash('mensagem_sucesso', 'Perfil atualizado com sucesso');
+            \Session::flash('mensagem_sucesso', 'Perfil atualizado com sucesso, Se necessario atualize seu endereço');
             
-             return Redirect::to('profiles');
+             return Redirect::to('addresses/'.$profile->address->id.'/edit');
         } else {
             \Session::flash('mensagem_sucesso', 'Erro ao atualizar o perfil.');
             

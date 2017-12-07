@@ -26,7 +26,7 @@ class AddressController extends Controller
     public function index()
     {
         $address = Address::all();
-        return view('addresses.list',['addresses'=> $address]);
+        return view('addresses.list',['address'=> $address]);
    
     }
 
@@ -50,6 +50,8 @@ class AddressController extends Controller
     public function store(Request $request)
     {
         $address = new Address();
+
+        $this->validate($request, $address->rules);
         $address->street = $request->street;
         $address->number = $request->number;
         $address->cep = $request->cep;
@@ -57,17 +59,16 @@ class AddressController extends Controller
         $address->typeaddress = $request->typeaddress;
         $address->city = $request->city;
         $address->state = $request->state;
-        $address->country = $request->country;
-        $address->profile_id = $request->profile_id;
+        $address->profile_id = Auth::user()->profile->id;
 
         if ($address->save()){
             \Session::flash('mensagem_sucesso', 'Endereço cadastrado com sucesso');
             
-                return Redirect::to('addresses');
+                return Redirect::to('/home');
         }
 
         else{
-            \Session::flash('mensagem_sucesso', 'Perfil cadastrado com sucesso');
+            \Session::flash('mensagem_sucesso', 'Erro ao cadastrar endereco');
             
                 return Redirect::to('addresses/create');
         }
@@ -95,7 +96,7 @@ class AddressController extends Controller
     {
         $address = Address::findorfail($id);
         
-        return view('addresses.form',['addresses'=> $address]);
+        return view('addresses.form',['address'=> $address]);
           
     }
 
@@ -109,12 +110,14 @@ class AddressController extends Controller
     public function update(Request $request, $id)
     {
         $address = Address::findorfail($id);
+
+        $this->validate($request, $address->rules);
         
         $address->update($request->all());
 
         \Session::flash('mensagem_sucesso', 'Endereço atualizado com sucesso!');
         
-         return Redirect::to('addresses');
+         return Redirect::to('/home');
     }
 
     /**
@@ -125,24 +128,12 @@ class AddressController extends Controller
      */
      public function destroy($id)
      {
-         
-        $address = Address::findorfail($id);
-        
-        $address->delete();
-
-       \Session::flash('mensagem_sucesso', 'Endereço deletado com sucesso');
-       
-        return Redirect::to('addresses');
- 
-     }
+              }
 
     public function confirmdestroy($id)
     {
         
-        $address = Address::findorfail($id);
         
-        return view('addresses.deleteConfirm',['address'=> $address]);
-
 
     }
 }

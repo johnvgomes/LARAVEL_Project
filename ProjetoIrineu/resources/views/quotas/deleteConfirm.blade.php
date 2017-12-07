@@ -11,7 +11,7 @@ Cotas
                 <div class="panel-heading">Deletar Cota</div>
                 <div class="panel-body">
                     <div class="form-group col-md-12">
-                        Deseja excluir o processo seletivo: {{ $quota->name }}?
+                        Deseja excluir a cota: {{ $quota->name }}?
                     </div>
                 
                     <div class="mui-col-md-1">
@@ -24,7 +24,7 @@ Cotas
                     </div>
 
                     <div class="mui-col-md-offset-2">
-                        <a href="../../selectiveprocesses" class="mui-btn mui-btn--danger">
+                        <a href="../../quotas" class="mui-btn mui-btn--danger">
                             NÃO
                         </a>
                     </div>
