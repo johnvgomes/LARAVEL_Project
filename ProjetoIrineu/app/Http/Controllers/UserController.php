@@ -25,9 +25,12 @@ class UserController extends Controller
     }
     
     public function index()
-    {
-        
-        return view('avatar.list', ['user' => Auth::user()]);
+    { if (! Auth::user()->permission) {
+        return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+    }
+
+        $user = User::all();
+        return view('users.list', ['user' => $user]);
         
     }
 
@@ -38,7 +41,9 @@ class UserController extends Controller
      */
     public function create()
     { 
-        return view('courses.form');
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         
     }
 
@@ -50,41 +55,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-       
-        $course = new Course();
-          //$this->validate($request, $courses->rules);
-
-       $message =[
-        
-                    'name.required' => 'O campo descrição é de preenchimento obrigatório.',
-                    'name.min' => 'O Número mínimo para preencher o campo descrição é de 3 caracteres.',
-                    'name.max' => 'O Número máximo de caracteres atingido para o campo descrição.'
-        
-        
-                ];
-                $validate = Validator::make($request->all(), $course->rules, $message);
-        
-                if($validate->fails()){
-        
-                    return Redirect::to('courses/create')
-                                    ->WithErrors($validate)
-                                    ->withInput();
-                }
-        $course= $course->create($request->all());
-
-     
-        if($course->save()) {
-            
-        \Session::flash('mensagem_sucesso', 'Curso cadastrado com sucesso');
-                        
-        return Redirect::to('courses');
-        } else {
-                    
-        \Session::flash('mensagem_sucesso', 'Erro ao cadastrar curso');
-                        
-        return Redirect::to('courses.create');
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
         }
-            
+        
     }
 
     /**
@@ -95,7 +69,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
+        
     }
 
     /**
@@ -106,9 +83,13 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $course = Course::findorfail($id);
+
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
+        $user = User::findorfail($id);
         
-        return view('courses.form',['courses'=> $course]);
+        return view('users.edit',['user'=> $user]);
           
     }
 
@@ -121,39 +102,23 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $course = Course::findorfail($id);
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
+        $user = user::findorfail($id);
+        
+        $user->permission = $request->permission;
+        
+        if($user->save()) {
 
-        
-           //$this->validate($request, $courses->rules);
-
-       $message =[
-        
-                    'name.required' => 'O campo descrição é de preenchimento obrigatório.',
-                    'name.min' => 'O Número mínimo para preencher o campo descrição é de 3 caracteres.',
-                    'name.max' => 'O Número máximo de caracteres atingido para o campo descrição.'
-        
-        
-                ];
-                $validate = Validator::make($request->all(), $quota->rules, $message);
-        
-                if($validate->fails()){
-        
-                    return Redirect::to("courses/$course->id/edit")
-                                    ->WithErrors($validate)
-                                    ->withInput();
-                }
-        $course->update($request->all());
-
-        if($course->save()) {
-
-            \Session::flash('mensagem_sucesso', 'Curso atualizado com sucesso');
+            \Session::flash('mensagem_sucesso', 'Usuario atualizado com sucesso');
             
-            return Redirect::to('courses');
+            return Redirect::to('users');
         } else {
         
-            \Session::flash('mensagem_sucesso', 'Erro ao atualizado curso');
+            \Session::flash('mensagem_erro', 'Erro ao atualizar usuario');
             
-            return Redirect::to('courses.edit');
+            return Redirect::to('users.edit');
         }
     }
 
@@ -165,22 +130,17 @@ class UserController extends Controller
      */
      public function destroy($id)
      {
-         
-        $course = Course::findorfail($id);
-        
-        $course->delete();
-        \Session::flash('mensagem_sucesso', 'Curso deletado com sucesso');
-        
-        return Redirect::to('courses');
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
      }
 
     public function confirmDestroy($id)
     {
         
-        $course = Course::findorfail($id);
-        
-        return view('courses.deleteConfirm',['course'=> $course]);
-
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
 
     }
 }

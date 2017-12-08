@@ -350,9 +350,12 @@
             <ul>
             <li><a href="{{url('/quotas') }}" style="color:#000;">Cotas</a></li>
             <li><a href="{{url('/courses') }}" style="color:#000;">Cursos</a></li>
+            <li><a href="{{url('/subscriptions') }}" style="color:#000;">Inscrição</a></li>
             <li><a href="{{url('/exemptions') }}" style="color:#000;">Isenção</a></li>
             <li><a href="{{url('/specialneeds') }}" style="color:#000;">Necessidades Especiais</a></li>
             <li><a href="{{url('/selectiveprocesses') }}" style="color:#000;">Processos Seletivos</a></li>
+            <li><a href="{{url('/users') }}" style="color:#000;">Usuarios</a></li>
+           
             </ul>
 
             @endif
@@ -392,11 +395,7 @@
 
                                         <ul class="mui-dropdown__menu mui-dropdown__menu--right">
                                             <li>
-                                                <a href="{{ route('logout') }}"
-                                                    onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();">
-                                                    Sair
-                                                </a>
+                                                
                                                  <!--
                                                 <a href="/avatar">
                                                 Avatar
@@ -411,6 +410,11 @@
                                                         Meu Perfil
                                                     </a>
                                                 @endif
+                                                <a href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault();
+                                                            document.getElementById('logout-form').submit();">
+                                                    Sair
+                                                </a>
                                             
 
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

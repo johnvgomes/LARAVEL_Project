@@ -43,15 +43,12 @@ class HomeController extends Controller
         }
         else{
             $profile = Profile::findOrfail(Auth::user()->id);
-            if (! $profile->address  && ! Auth::user()->permission) {
-                return redirect()->route('addresses.create')->with('mensagem_sucesso', 'É necessário completar o cadastro');
-            }
-            else{
+           
             $selectiveprocess =  SelectiveProcess::all();
             $subscriptions = Auth::user()->subscriptions;
     
             return view('home', ['selectiveprocess' => $selectiveprocess, 'subscriptions' => $subscriptions]);
-            }
+            
         }
         
     }

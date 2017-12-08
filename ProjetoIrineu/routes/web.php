@@ -71,4 +71,8 @@ Route::get('addresses/{address}/confirmDestroy', 'AddressController@confirmDestr
 
 ###################     rotas do avatar #######################
 
-Route::resource('avatar', 'UserController');
+Route::resource('avatars', 'UserController');
+
+###################     rotas do usuario #######################
+
+Route::resource('users', 'UserController');

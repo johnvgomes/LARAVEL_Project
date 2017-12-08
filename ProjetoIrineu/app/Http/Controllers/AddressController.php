@@ -25,8 +25,9 @@ class AddressController extends Controller
 
     public function index()
     {
-        $address = Address::all();
-        return view('addresses.list',['address'=> $address]);
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
    
     }
 
@@ -37,8 +38,9 @@ class AddressController extends Controller
      */
     public function create()
     { 
-        return view('addresses.form');
         
+        $address = Address::all();
+        return view('addresses.form',['address'=> $address]);
     }
 
     /**
@@ -64,13 +66,13 @@ class AddressController extends Controller
         if ($address->save()){
             \Session::flash('mensagem_sucesso', 'Endereço cadastrado com sucesso');
             
-                return Redirect::to('/home');
+                return Redirect::to('home');
         }
 
         else{
             \Session::flash('mensagem_sucesso', 'Erro ao cadastrar endereco');
             
-                return Redirect::to('addresses/create');
+                return Redirect::to('home');
         }
             
     }
@@ -96,7 +98,7 @@ class AddressController extends Controller
     {
         $address = Address::findorfail($id);
         
-        return view('addresses.form',['address'=> $address]);
+        return view('addresses.edit',['address'=> $address]);
           
     }
 
@@ -117,7 +119,7 @@ class AddressController extends Controller
 
         \Session::flash('mensagem_sucesso', 'Endereço atualizado com sucesso!');
         
-         return Redirect::to('/home');
+         return Redirect::to('home');
     }
 
     /**

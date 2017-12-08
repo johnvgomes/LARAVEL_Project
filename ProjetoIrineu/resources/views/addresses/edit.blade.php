@@ -26,12 +26,9 @@ Endereços
                 <div class= "alert alert-success">{{ Session::get('mensagem_sucesso')}}</div>
               @endif
 
-              
-                     <!-- incluindo -->
-
-                {{ Form::open(['route' => 'addresses.store']) }}
-           
-              
+                      <!-- editando -->
+                      {{Form::model($address, ['method' => 'PATCH','url' => 'addresses/'.$address->id])}}
+               
 
                <div class="form-group col-md-12 ">
                      <div class="mui-textfield mui-textfield--float-label">
@@ -90,7 +87,7 @@ Endereços
                 
                <!-- btn voltar -->
                <div style="margin-left: calc(50% - 115px);">
-               <a class="mui-btn mui-btn--raised" href='profiles/{{Auth::user()->profile->id}}/edit'>Voltar</a>
+               <a class="mui-btn mui-btn--raised" href='profiles/{{$address->profile->id}}/edit'>Voltar</a>
                <button type="submit" class="mui-btn mui-btn--primary">Salvar</button>
                  </div>
      

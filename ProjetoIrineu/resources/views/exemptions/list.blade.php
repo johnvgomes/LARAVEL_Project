@@ -51,7 +51,13 @@ Isenções
                                 <td>{{ $exemptions->id }}</td>
                                 <td>{{ $exemptions->subscription->user->name }}</td>
                                 <td>{{ $exemptions->subscription->selectiveProcess->name }}</td>
-                                <td>{{ $exemptions->homologated }}</td>
+                                <td>
+                                    @if($exemptions->homologated)
+                                        Sim
+                                    @else
+                                        Não
+                                    @endif
+                                </td>
                                 
                                             <td>
                                                 <form action="exemptions/{{ $exemptions->id }}/edit" style="margin-top: 10px; margin-left: calc(100% - 55px);">

@@ -13,7 +13,7 @@ Registrar
 
                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                     <div class="mui-textfield mui-textfield--float-label">
-                        <input id="name" type="text" name="name" value="{{ old('name') }}" required>
+                        <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus>
                         <label>Nome</label>
                     </div>
                     @if ($errors->has('name'))
@@ -25,7 +25,7 @@ Registrar
 
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <div class="mui-textfield mui-textfield--float-label">
-                        <input id="email" type="email" name="email" value="{{ old('email') }}" required>
+                        <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
                         <label>E-mail</label>
                     </div>
                     @if ($errors->has('email'))

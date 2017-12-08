@@ -42,7 +42,7 @@ class ProfileController extends Controller
     public function create()
     { 
         if (Auth::user()->permission) {
-            return redirect()->route('/home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não precisa preencher o perfil pois é Admin');
         }
         $profile = Profile::all();
         $specialNeeds = SpecialNeed::all();
@@ -119,7 +119,7 @@ class ProfileController extends Controller
             if ($status){
                 \Session::flash('mensagem_sucesso', 'Perfil cadastrado com sucesso');
                 
-                 return Redirect::to('home');
+                 return Redirect::to('addresses/create');
             } else {
                 \Session::flash('mensagem_sucesso', 'Perfil cadastrado com sucesso');
                 

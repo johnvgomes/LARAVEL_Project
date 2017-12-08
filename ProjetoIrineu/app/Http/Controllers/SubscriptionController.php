@@ -27,6 +27,10 @@ class SubscriptionController extends Controller
     
     public function index()
     {
+
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
         $subscriptions = Subscription::all();
 
         return view('subscriptions.list',['subscription'=> $subscriptions]);
@@ -159,6 +163,15 @@ class SubscriptionController extends Controller
      */
     public function edit($id)
     {
+
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
+        $subscription = Subscription::findOrfail($id);
+        
+        return view('subscriptions.edit',['subscription'=> $subscription]);
+            
+        
     }
 
     /**
@@ -170,13 +183,19 @@ class SubscriptionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $subscriptions = Subscription::findorfail($id);
+
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
+        $subscription = Subscription::findorfail($id);
         
-        $subscriptions->update($request->all());
+        $subscription->paid = $request->paid;
+
+        $subscription->save();
 
         \Session::flash('mensagem_sucesso', 'Inscrição atualizada com sucesso!');
         
-         return Redirect::to('/home');
+         return Redirect::to('subscriptions');
     }
 
     /**
@@ -187,7 +206,9 @@ class SubscriptionController extends Controller
      */
     public function destroy($id)
     {
-        
+        if (! Auth::user()->permission) {
+            return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
        $subscriptions = Subscription::findorfail($id);
        
        $subscriptions->delete();
@@ -199,7 +220,11 @@ class SubscriptionController extends Controller
     }
 
     public function confirmDestroy($id)
-    {
+    { 
+        
+        if (! Auth::user()->permission) {
+        return redirect()->route('home')->with('mensagem_aviso', 'Você não tem os privilegios para acessar esta pagina');
+        }
 
         $subscriptions = Subscription::findorfail($id);
         

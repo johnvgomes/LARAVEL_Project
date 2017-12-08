@@ -183,7 +183,7 @@ Perfis
                 @endforeach
 <!-- btn voltar -->
                     <div style="margin-left: calc(50% - 115px);">
-                        <a class="mui-btn mui-btn--raised" href="{{url('profiles')}}">Voltar</a>
+                        <a class="mui-btn mui-btn--raised" href="{{url('home')}}">Voltar</a>
                         <button type="submit" class="mui-btn mui-btn--primary">Salvar</button>
                     </div>
                 {{ Form::close() }}
